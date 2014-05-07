@@ -1,0 +1,48 @@
+<html>
+
+<head>
+	<title>Data types and variables</title>
+	
+</head>
+<body>
+	Please check your browser console
+	<script>
+		// task 1
+		var number = 1,
+			bool = true,
+			arr = new Array(17,18),
+			undef, // will be undefined
+			array2 = ['one', 'two'],
+			func = function (){return 'hello';},
+			lora = {name: 'lora', age: 18}, 
+			str = 'this is string',
+			empty = null, 
+			numAsStr = '6';
+
+		// task 2
+		console.log('----- task 2 ------');
+		var greeting = "'How you doin\'?', Joey said.";
+		console.log(greeting);
+
+		// task 3
+		console.log('----- task 3 ------');
+		var varsNames = ['number', 'bool', 'arr', 'undef', 'array2', 'func', 'lora', 'str', 'empty', 'numAsStr'];
+		var allVarsFromTaskOne = [number, bool, arr, undef, array2, func, lora, str, empty, numAsStr]; 
+		for (var i = 0; i < allVarsFromTaskOne.length; i++) {
+			console.log(varsNames[i] + ' is ' + typeof allVarsFromTaskOne[i]);
+		} 
+
+		// task 4
+		console.log('----- task 4 ------');
+		var undef_empty,
+			undef_init_str = 'undefined',
+			undef_init_lit = undefined, 
+			null_var = null;
+			console.log('undef_empty = ' + typeof undef_empty);
+			console.log('undef_init_str = ' + typeof undef_init_str);
+			console.log('undef_init_lit = '+ typeof undef_init_lit);
+			console.log('null_var = ' + typeof null_var);
+
+	</script> 
+</body>
+</html>

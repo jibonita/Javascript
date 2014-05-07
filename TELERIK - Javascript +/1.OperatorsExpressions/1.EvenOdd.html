@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Operators and Expressions</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+	<link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+	<span class="info">Press 'Enter' to process the input</span>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script src="scripts/my-js.js"></script>
+	<script>
+		jsConsole.writeLine("Write an expression that checks if given integer is odd or even<br>");
+		Exec("Please enter an integer number: ", "value", function(value){
+
+			if (value % 2 === 0) {
+				return value + " is Even";
+			}
+			else {
+				return value + " is Odd";
+			}
+
+		});
+	</script>
+</body>
+</html>
