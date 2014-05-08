@@ -1,5 +1,4 @@
-<html>
-<head>
+ad>
 	<title>Operators and Expressions</title>
 	<link href="styles/js-console.css" rel="stylesheet" />
 	<link href="styles/styles.css" rel="stylesheet" />
@@ -10,17 +9,15 @@
 	<script src="scripts/js-console.js"></script>
 	<script src="scripts/my-js.js"></script>
 	<script>
-		jsConsole.writeLine("Write an expression that checks if given integer is odd or even<br>");
-		Exec("Please enter an integer number: ", "value", "", function(value){
+		jsConsole.writeLine("Write an expression that calculates rectangle area by given width and height<br>");
 
-			if (value % 2 === 0) {
-				return value + " is Even";
-			}
-			else {
-				return value + " is Odd";
-			}
+		Exec("width: ", "width", "", function(w){
+			Exec("height: ", "height", "The area is ", function(h){
 
-		});
+				return w * h;
+
+			});
+		}, false);
 	</script>
 </body>
 </html>

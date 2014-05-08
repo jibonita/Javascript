@@ -10,15 +10,13 @@
 	<script src="scripts/js-console.js"></script>
 	<script src="scripts/my-js.js"></script>
 	<script>
-		jsConsole.writeLine("Write an expression that checks if given integer is odd or even<br>");
-		Exec("Please enter an integer number: ", "value", "", function(value){
+		jsConsole.writeLine("Write an expression that checks for given integer if its third digit is 7<br>");
 
-			if (value % 2 === 0) {
-				return value + " is Even";
-			}
-			else {
-				return value + " is Odd";
-			}
+		Exec("", "value", "Is the third digit 7? ", function(num){
+
+			num = Math.floor(num / 100);
+            num = num % 10;
+            return (num === 7);
 
 		});
 	</script>

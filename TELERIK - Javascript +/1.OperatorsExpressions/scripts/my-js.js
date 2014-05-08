@@ -1,4 +1,4 @@
-function Exec(inputMsg, selector, handler){
+function Exec(inputMsg, selector, outputmsg, handler, isPrintOrReturn){
 	//input message for the user
 	if (inputMsg.length == 0) {
 		// default message  
@@ -11,11 +11,19 @@ function Exec(inputMsg, selector, handler){
 
             var value = jsConsole.read('#'+selector);
 			var result = handler(value);
-			jsConsole.writeLine(result);
+
 			// remove the focus of the input field
 			this.blur();
 			this.disabled = true;
-        } 
 
+			//jsConsole.writeLine(selector+":"+(isPrintOrReturn=== false));
+			if(typeof isPrintOrReturn === false){
+				return result;
+			} else {
+				jsConsole.write(outputmsg);
+				jsConsole.write(result);
+       		}
+
+		} 
 	});
 }

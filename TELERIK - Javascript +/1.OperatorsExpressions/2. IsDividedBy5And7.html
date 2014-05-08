@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Operators and Expressions</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+	<link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+	<span class="info">Press 'Enter' to process the input</span>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script src="scripts/my-js.js"></script>
+	<script>
+		jsConsole.writeLine("Write a boolean expression that checks for given integer if it can be divided (without remainder) by 7 and 5 in the same time<br>");
+		
+		Exec("", "value", "", function(value){
+
+			if (value % 5 == 0 && value % 7 == 0) {
+                return "Number " + value + " divides with no reminder to 5 and 7";
+            }
+            else {
+                return "Number " + value + " does NOT divide with no reminder to 5 and 7 at the same time";
+            }
+
+		});
+	</script>
+</body>
+</html>
