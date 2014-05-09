@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>Operators and Expressions</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+	<link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+	<span class="info">Press 'Enter' to process the input</span>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script src="scripts/my-js.js"></script>
+	<script>
+		jsConsole.writeLine("Write an expression that checks if given positive integer number n (n ≤ 100) is prime.<br>");
+
+		Exec("", "value", "Is prime?:", function(num) {
+		    
+		    var isPrime = true;
+            for (var i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            return isPrime;
+
+		});
+	</script>
+</body>
+</html>

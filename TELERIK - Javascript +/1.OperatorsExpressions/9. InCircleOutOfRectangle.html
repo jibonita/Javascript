@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Operators and Expressions</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+	<link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+	<span class="info">Press 'Enter' to process the input</span>
+	<div id="js-console"></div>
+	<canvas id="coordsys"></canvas>
+	<script src="scripts/js-console.js"></script>
+	<script src="scripts/my-js.js"></script>
+	<script>
+		jsConsole.writeLine("checks for given point (x, y) if it is within the circle K( (1,1), 3) and out of the rectangle R(top=1, left=-1, width=6, height=2)<br>");
+
+		Exec("x: ", "x", "", function(x) {
+		    Exec("y: ", "y", "Is Point In Circle & Out of Rect: ", function(y) {
+
+		        var r = 3;
+			    var bInCircle = Math.sqrt((x - 1) * (x - 1) + (y - 1) * (y - 1)) < r;
+			    var bInRect = (x >= -1 && x <= 5) && (y >= -1 && y <= 1);
+			    return (bInCircle && !bInRect ? "yes" : "no");
+
+		    });
+		});
+	</script>
+</body>
+</html>

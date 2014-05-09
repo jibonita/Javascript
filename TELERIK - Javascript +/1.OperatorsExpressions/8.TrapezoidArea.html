@@ -10,15 +10,17 @@
 	<script src="scripts/js-console.js"></script>
 	<script src="scripts/my-js.js"></script>
 	<script>
-		jsConsole.writeLine("Write an expression that calculates rectangle area by given width and height<br>");
+		jsConsole.writeLine("Expression that calculates trapezoid's area by given sides a and b and height h<br>");
 
-		Exec("width: ", "width", "", function(w){
-			Exec("height: ", "height", "The area is ", function(h){
+		Exec("a: ", "a", "", function(a) {
+		    Exec("b: ", "b", "", function(b) {
+		        Exec("h: ", "h", "Trapezoid area: ", function(h) {
 
-				return w * h;
+		            return (a + b) * h / 2;
 
-			});
-		}, false);
+		        });
+		    });
+		});
 	</script>
 </body>
 </html>

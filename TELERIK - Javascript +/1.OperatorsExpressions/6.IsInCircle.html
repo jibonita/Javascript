@@ -10,15 +10,15 @@
 	<script src="scripts/js-console.js"></script>
 	<script src="scripts/my-js.js"></script>
 	<script>
-		jsConsole.writeLine("Write an expression that calculates rectangle area by given width and height<br>");
+		jsConsole.writeLine("Checks if given point (x,  y) is within a circle K(O, 5)<br>");
 
-		Exec("width: ", "width", "", function(w){
-			Exec("height: ", "height", "The area is ", function(h){
+		Exec("x: ", "x", "", function(x) {
+		    Exec("y: ", "y", "Is Point In (0,5) Circle: ", function(y) {
 
-				return w * h;
+		        return (Math.sqrt(x * x + y * y) <= 5 ? "yes" : "no");
 
-			});
-		}, false);
+		    });
+		});
 	</script>
 </body>
 </html>
