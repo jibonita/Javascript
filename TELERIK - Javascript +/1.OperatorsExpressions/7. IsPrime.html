@@ -10,12 +10,13 @@
 	<script src="scripts/js-console.js"></script>
 	<script src="scripts/my-js.js"></script>
 	<script>
-		jsConsole.writeLine("Write an expression that checks if given positive integer number n (n ≤ 100) is prime.<br>");
+		jsConsole.writeLine("Write an expression that checks if given positive integer number n (n <= 100) is prime.<br>");
 
-		Exec("", "value", "Is prime?:", function(num) {
+		Exec("", "value", "Is prime?: ", function(num) {
 		    
 		    var isPrime = true;
-            for (var i = 2; i <= Math.sqrt(num); i++) {
+		    var maxDivider = Math.sqrt(num);
+            for (var i = 2; i <= maxDivider; i++) {
                 if (num % i == 0) {
                     isPrime = false;
                     break;

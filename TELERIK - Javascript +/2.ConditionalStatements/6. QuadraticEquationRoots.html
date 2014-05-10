@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Quadratic equation Roots</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <span class="info">Press 'Enter' to process the input</span>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that enters the coefficients a, b and c of a quadratic equation<br>    a*x2 + b*x + c = 0 <br> and calculates and prints its real roots. Note that quadratic equations <br>may have 0, 1 or 2 real roots<br>");
+
+        Exec("a = ", "a", "", function(a) {
+            Exec("b = ", "b", "", function(b) {
+                Exec("c = ", "c", "", function(c) {  
+
+                    //** implementation starts here
+                    var result = '';
+                    var D = b * b - 4 * a * c;
+                    var x1, x2;
+                    if (a == 0) {
+                        if (b != 0) {
+                            x1 = -c / b;
+                            result = "This is not a quadratic equation. It's a linear eq. and its root is " + x1;
+                        }
+                        else if (c == 0) {
+                            result = "All numbers are roots";
+                        }
+                        else {
+                            result = "Incorrect data entered";
+                        }
+                    }
+                    else {
+                        if (D < 0)
+                            result = "No solution of the quadratic equation";
+                        else {
+                            if (D == 0) {
+                                x1 = x2 = -b / (2 * a);
+                                result = "Only one root: " + x1;
+                            }
+                            else {
+                                x1 = (-b + Math.sqrt(D)) / (2 * a);
+                                x2 = (-b - Math.sqrt(D)) / (2 * a);
+                                result = "x1 = " + x1 + ", x2 = " + x2;
+                            }
+                        }
+                    }
+                    return result;
+                    //** end of implementation
+
+                });
+            }, false);
+        }, false);
+      
+    </script>
+</body>
+</html>

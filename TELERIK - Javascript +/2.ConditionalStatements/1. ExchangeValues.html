@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Exchange values</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <span class="info">Press 'Enter' to process the input</span>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        jsConsole.writeLine("Write an if statement that examines two integer variables and exchanges their values if the first one is greater than the second one<br>");
+
+        Exec("a = ", "a", "", function(a) {
+            Exec("b = ", "b", "Result: ", function(b) {
+
+                if (a > b) {
+                    a = a - b;
+                    b = a + b;
+                    a = b - a;
+                }
+                return "a = " + a + ", b = " + b;
+
+            });
+        }, false);
+      
+    </script>
+</body>
+</html>

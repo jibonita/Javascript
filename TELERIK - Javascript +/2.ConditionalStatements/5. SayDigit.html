@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Say Digit</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <span class="info">Press 'Enter' to process the input</span>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        jsConsole.writeLine("Write script that asks for a digit and depending on the input shows the name of that digit (in English) using a switch statement<br>");
+
+        Exec("digit: ", "value", "", function(digit) {
+
+            //** implementation starts here
+            var res;
+            switch (digit) {
+                case 0: res = "zero"; break;
+                case 1: res = "one"; break;
+                case 2: res = "two"; break;
+                case 3: res = "three"; break;
+                case 4: res = "four"; break;
+                case 5: res = "five"; break;
+                case 6: res = "six"; break;
+                case 7: res = "seven"; break;
+                case 8: res = "eight"; break;
+                case 9: res = "nine"; break;
+                default:
+                    res = "Please enter a digit between 0 and 9";
+            }
+            return res;
+            //** end of implementation
+
+        });
+      
+    </script>
+</body>
+</html>
