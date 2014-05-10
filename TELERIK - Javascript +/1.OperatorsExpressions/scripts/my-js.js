@@ -9,7 +9,7 @@ function Exec(inputMsg, selector, outputmsg, handler, isPrintOrReturn) {
     jsConsole.addInputField(selector, function(e) {
         if (e.keyCode === 13) {
 
-            var value = jsConsole.readInteger('#' + selector);
+            var value = jsConsole.read('#' + selector);
             var result = handler(value);
 
             // remove the focus of the input field
