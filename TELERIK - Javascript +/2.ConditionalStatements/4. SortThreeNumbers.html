@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Sort Three Numbers</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <span class="info">Press 'Enter' to process the input</span>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        jsConsole.writeLine("Sort 3 real values in descending order using nested if statements<br>");
+
+        Exec("a = ", "a", "", function(a) {
+            Exec("b = ", "b", "", function(b) {
+                Exec("c = ", "c", "", function(c) { 
+
+                    //** implementation starts here
+                    var res = '';
+                    if (a > b) {
+                        if (c > a)
+                            res += "c a b";
+                        else {
+                            res += "a ";
+                            if (b >= c)
+                                res += "b c"
+                            else
+                                res += "c b"
+                        }
+                    }
+                    else {
+                        if (c > b)
+                            res += "c b a";
+                        else {
+                            res += "b ";
+                            if (a >= c)
+                                res += "a c";
+                            else
+                                res += "c a";
+                        }
+                    }
+                    return res.replace("a", a).replace("b", b).replace("c", c);
+                    //** end of implementation
+
+                });
+            }, false);
+        }, false);
+      
+    </script>
+</body>
+</html>
