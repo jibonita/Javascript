@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Print numbers 1 to N</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <span class="info">Press 'Enter' to process the input</span>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        jsConsole.writeLine("A script that prints all the numbers from 1 to N<br>");
+
+        execute("N = ", "value", "", function(number){
+
+            //** implementation starts here
+            var res = '';
+            for (var i = 1; i <= number; i++) {
+                res += i + ', ';
+            }
+            // remove the comma symbol after the last number
+            res = res.trim().replace(/,$/, '');
+            return res;
+            //** end of implementation
+
+        });
+    </script>
+</body>
+</html>

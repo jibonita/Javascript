@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Max and Min in Sequence</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+         jsConsole.writeLine("Finds the max and min number from a sequence of numbers<br>");
+
+        
+        var min, max, seq = [2, 6, 9, 14, -3, 29, -17, 4, 18, 23, 7];
+        min = max = seq[0];
+        jsConsole.writeLine("Sequence: " + seq.join(','));
+        for (var i = 0; i < seq.length; i++) {
+            if (seq[i] < min) min = seq[i];
+            if (seq[i] > max) max = seq[i];
+        }
+        jsConsole.writeLine('min: ' + min + ', max: ' + max);
+       
+    </script>
+</body>
+</html>

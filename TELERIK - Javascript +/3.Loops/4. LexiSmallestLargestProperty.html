@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Properties in document, window, navigator</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Find the lexicographically smallest and largest property in document, window and navigator objects<br>");
+
+        function printSmallestAndLargest(obj, objName) {
+            //** set for initial values characters at the beginning and at the end of the ASCII table
+            var smallest = String.fromCharCode(255);
+            var largest = String.fromCharCode(0);
+
+            for (var property in obj) {
+                if (property > largest) largest = property;
+                if (property < smallest) smallest = property;
+            }
+            jsConsole.writeLine(objName + "--> Smallest: " + smallest + ",  Largest: " + largest);
+            jsConsole.writeLine("");
+        }
+
+        printSmallestAndLargest(document, "document");
+        printSmallestAndLargest(window, "window");
+        printSmallestAndLargest(navigator, "navigator");
+
+    </script>
+</body>
+</html>
