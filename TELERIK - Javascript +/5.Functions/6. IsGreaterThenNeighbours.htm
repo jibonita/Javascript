@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Is Greater than Neighbours in an Array</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    Write a function that checks if the element at given position in given array of
+    integers is bigger than its two neighbors (when such exist).
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        var arrNumbers = [3, 5, 8, 1, 9, 23, 9, 12, 4, 7, 4, 6];
+        printArray(arrNumbers);
+        
+        function isBiggerThanNeighbours(pos, arr) {
+            var isBigger = true;
+            if (pos < 0 || pos > arr.length - 1) {
+                jsConsole.writeLine("index out of array boundaries!")
+                return "";
+            }
+            else {
+                //** check the left neighbour
+                if (pos > 0) {
+                    if (arr[pos - 1] >= arr[pos]) isBigger = false;
+                } else {
+                    isBigger = false;
+                    jsConsole.writeLine("No left neighbour")
+                }
+                //** check the left neighbour
+                if (pos < arr.length - 1) {
+                    if (arr[pos + 1] >= arr[pos]) isBigger = false;
+                } else {
+                    isBigger = false;
+                    jsConsole.writeLine("No right neighbour");
+                }
+            }
+
+            jsConsole.writeLine("Is the number at index " + pos + " bigger than its neighbours? ");
+
+            return isBigger ? "Yes" : "No";
+        }
+
+
+        //** using console like block to get the input and print the result from the function
+        execute("position index = ", "num", "", function (pos) {
+
+            return isBiggerThanNeighbours(pos, arrNumbers);
+
+        });
+
+        
+    </script>
+</body>
+</html>

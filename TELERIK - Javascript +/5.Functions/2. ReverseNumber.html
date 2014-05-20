@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Reverse Number</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <span class="info">Press 'Enter' to process the input</span>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        //** works for int values from -9007199254740992 to 9007199254740992
+        //** input: 1000000 will return 1
+        //** input -102 will return -201
+
+        function reverseNumber(num) {
+            var sReversedNum = '', sign = '';
+
+            if (num == 0) {
+                sReversedNum = num;
+            } else if (num < 0) {
+                sign = '-';
+                num = Math.abs(num);
+            }
+            while (num != 0) {
+                //** If the reversed number is about to start with 0, do not add it.
+                if (num % 10 != 0 || sReversedNum.length != 0) {
+                    sReversedNum += num % 10;
+                }
+                num /= 10;
+                num = Math.floor(num);
+            }
+
+            return sign + sReversedNum;
+        }
+
+        //** using console like block to get the input and print the result from the function
+        jsConsole.writeLine("Function that reverses the digits of given decimal number");
+
+        execute( "N = ", "num", "", function (number) {
+
+            return reverseNumber(number);
+
+        });
+
+        
+    </script>
+</body>
+</html>

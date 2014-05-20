@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Say Last Digit</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <span class="info">Press 'Enter' to process the input</span>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+
+        function getLastDigit(number) {
+            number = parseInt(number, 10);
+            return Math.abs(number) % 10;
+        }
+        function tellMeTheDigit(digit) {
+            var res;
+            switch (digit) {
+                case 0:
+                    res = "zero";
+                    break;
+                case 1:
+                    res = "one";
+                    break;
+                case 2:
+                    res = "two";
+                    break;
+                case 3:
+                    res = "three";
+                    break;
+                case 4:
+                    res = "four";
+                    break;
+                case 5:
+                    res = "five";
+                    break;
+                case 6:
+                    res = "six";
+                    break;
+                case 7:
+                    res = "seven";
+                    break;
+                case 8:
+                    res = "eight";
+                    break;
+                case 9:
+                    res = "nine";
+                    break;
+                default:
+                    res = "Not a valid number!";
+            }
+            return res;
+        }
+
+        //** using console like block to get the input and print the result from the function
+        jsConsole.writeLine("Function that returns the last digit of given integer as an English word");
+
+        execute( "N = ", "num", "", function (number) {
+
+            return tellMeTheDigit(getLastDigit(number));
+
+        });
+      
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Count Divs on Page</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    Write a function to count the number of divs on the web page
+    <div id="js-console">
+    </div><div><div></div></div><div></div><div></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+
+        function CountTags(tag) {
+            var arrDivs = document.getElementsByTagName(tag);
+            return arrDivs.length;
+        }
+      
+        jsConsole.writeLine(CountTags("div"));
+
+    </script>
+</body>
+</html>

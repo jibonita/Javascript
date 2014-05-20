@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Index of the First Element Greater than Neighbours in an Array</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    Write a Function that returns the index of the first element in array that is bigger
+    than its neighbors, or -1, if there’s no such element.
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        var arrNumbers = [3, 5, 8, 1, 9, 23, 9, 12, 4, 7, 4, 6];
+        //arrNumbers = [0,0,0,0] // result: -1
+
+        printArray(arrNumbers);
+
+
+        function isBiggerThanNeighbours(pos, arr) {
+            var isBigger = true;
+            if (pos < 0 || pos > arr.length - 1) {
+                jsConsole.writeLine("index out of array boundaries!")
+                return false;
+            }
+            else {
+                //** check the left neighbour
+                if (pos > 0) {
+                    if (arr[pos - 1] >= arr[pos]) isBigger = false;
+                }
+                else {
+                    isBigger = false;
+                    //jsConsole.writeLine("No left neighbour")
+                }
+                //** check the left neighbour
+                if (pos < arr.length - 1) {
+                    if (arr[pos + 1] >= arr[pos]) isBigger = false;
+                }
+                else {
+                    isBigger = false;
+                    //jsConsole.writeLine("No right neighbour");
+                }
+            }
+
+            return isBigger;
+        }
+
+        function GetFirstNMaxNeighbourElement(arr) {
+            var res = -1;
+            for (var i = 0; i < arr.length; i++) {
+                if (isBiggerThanNeighbours(i, arr)) return i;
+            }
+            return res;
+        }
+
+        jsConsole.write("the index of the 1st bigger elem is: ");
+        jsConsole.writeLine(GetFirstNMaxNeighbourElement(arrNumbers));
+
+               
+    </script>
+</body>
+</html>

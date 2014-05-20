@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>All Word Ocurrencies</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    Write a function that finds all the occurrences of word in a text<br />
+    The search can case sensitive or case insensitive<br />
+    Use function overloading
+    <span class="info">Press 'Enter' to process the input</span>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        var text = "We are living in an yellow submarine. We don't have anything else. Inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days. In two days will increase it. Please come in.";
+        jsConsole.writeLine("Text::: (try to search for 'in')");
+        jsConsole.writeLine(text);
+
+        //** using console like block to get the input and print the result from the function
+        execute("word: ", "word", "Matches: ", function (word) {
+
+            return FindWordOcurrencies(word, text);
+
+        }, true, true);
+
+
+        function FindWordOcurrencies(word, text, isCaseSensitive) {
+            if (word.length == 0) return "Not a valid input";
+
+            //** by default it is not case sensitive. Add value "true" to perform case sensitive search
+            isCaseSensitive = isCaseSensitive || false;
+            var myRegExp =  new RegExp("\\b"+ word + "\\b", "g");
+
+            if (!isCaseSensitive) {
+                myRegExp = new RegExp(myRegExp.source, "ig");
+            }
+            var matches = text.match(myRegExp);
+
+           //** the following block returns an array of the start index of each occurency
+           //** remove the comment lines if you want to check it
+//            var results = new Array(); 
+//            while (myRegExp.exec(text)) {
+//                results.push(myRegExp.lastIndex-word.length);
+//            }
+//            jsConsole.writeLine(results);
+
+            var occurs = 0;
+            if (!!matches) occurs = matches.length;
+
+            return occurs;
+        }
+    </script>
+</body>
+</html>
