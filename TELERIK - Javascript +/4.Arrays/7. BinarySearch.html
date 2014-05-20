@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Binary Search</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    Write a program that finds the index of given element in a sorted array of integers
+    by using the binary search algorithm<br>
+    <span class="info">Press 'Enter' to process the input</span>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        var array = [-4, -2, 0, 2, 2, 3, 4, 6, 7, 8, 9, 10, 15, 17, 25];
+
+        execute("Number to find: ", "value", "", function(findN){
+        
+            //** implementation starts here
+            var end = array.length,
+            start = 0,
+            res = -1;
+            
+            do {
+                mid = Math.floor((end - start) / 2 + start);
+                if (array[mid] == findN) {
+                    //** index found
+                    res = mid;
+                    break;
+                }
+                else {
+                    if (findN < array[mid]) {
+                        end = mid;
+                    }
+                    else {
+                        //** if start is equal to mid, we are in 'not found' case. stop from looping
+                        if (start == mid)
+                            break;
+                        else
+                            start = mid;
+                    }
+                }
+            }
+            while (start < end);
+            return findN + (res != -1 ? ' at index ' + res : ' not found!');
+            //** end implementation
+
+
+        });
+
+              
+    </script>
+</body>
+</html>

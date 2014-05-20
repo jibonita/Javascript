@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Maximal Sequence of Equal Elements</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    Write a script that finds the maximal increasing sequence in an array<br />
+    (I'm printing all possible solutions)
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+
+        var array = new Array(3, 2, 3, 4, 2, 2, 4, 4, 5, 6, 1);
+        printArray(array);
+
+        var aLen = array.length,
+                seqLen = 1, tstart = 0, tlen = 1;
+        var res = '', res1 = '';
+        var arMaxIncSeqs = new Array();
+        if (aLen > 1) {
+            for (var i = 0; i < aLen - 1; i++) {
+                if (array[i] < array[i + 1]) {
+                    tlen++;
+
+                    if (seqLen <= tlen) {
+                        if (seqLen < tlen) {
+                            seqLen = tlen;
+
+                            arMaxIncSeqs.length = 0; //** empty the arMaxIncSeqs array
+                        }
+                        arMaxIncSeqs.push(tstart);
+                        arMaxIncSeqs.push(tlen);
+                    }
+                }
+                else {
+                    tlen = 1;
+                    tstart = i + 1;
+                }
+            }
+        }
+
+        for (var i = 0; i < arMaxIncSeqs.length; i = i + 2) {
+            res += '{';
+            for (var j = 0; j < arMaxIncSeqs[i + 1]; j++) {
+                res1 += array[arMaxIncSeqs[i] + j] + ',';
+            }
+            res1 = res1.trim().replace(/,$/, '');
+            res += res1 + '} ';
+            res1 = '';
+        }
+        jsConsole.writeLine("Result: " + res);
+      
+    </script>
+</body>
+</html>

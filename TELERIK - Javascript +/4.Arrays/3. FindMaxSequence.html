@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Maximal Sequence of Equal Elements</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    Write a script that finds the maximal sequence of equal elements in an array
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+
+        var array = new Array(2, 1, 1, 2, 3, 3, 2, 2, 2, 1);
+        printArray(array);
+        //array = new Array(2, 1, 1, 2, 3, 3, 2, 2, 2, 1, 1, 1, 1);
+        //array = new Array(2, 1, 1, 2, 3, 3, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+
+        function findMaxEqESequence(array) {
+            var aLen = array.length,
+                seqLen = 1, tstart = 0, tlen = 1;
+            var arSequencesL = new Array();
+            if (aLen > 1) {
+                for (var i = 0; i < aLen - 1; i++) {
+                    if (array[i] == array[i + 1]) {
+                        tlen++;
+
+                        if (seqLen <= tlen) {
+                            if (seqLen < tlen) {
+                                seqLen = tlen;
+
+                                arSequencesL.length = 0; //** empty the arSequences array
+                            }
+
+                            arSequencesL.push(tstart);
+                            arSequencesL.push(tlen);
+                        }
+                    } else {
+                        tlen = 1;
+                        tstart = i + 1;
+                    }
+                }
+            }
+            return arSequencesL;
+        }
+
+        function PrintSequence(arSequencesL) {
+            var res = '', res1 = '';
+            for (var i = 0; i < arSequencesL.length; i = i + 2) {
+                res += '{';
+                for (var j = 0; j < arSequencesL[i + 1]; j++) {
+                    res1 += array[arSequencesL[i]] + ',';
+                }
+                res1 = res1.trim().replace(/,$/, '');
+                res += res1 + '} ';
+                res1 = '';
+            }
+
+            jsConsole.writeLine("Maximal sequence: " + res);
+        }
+
+        PrintSequence(findMaxEqESequence(array));
+      
+    </script>
+</body>
+</html>

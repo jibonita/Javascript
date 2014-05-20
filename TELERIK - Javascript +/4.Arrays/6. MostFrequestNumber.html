@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Most Frequesnt Number in an Array</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    Write a program that finds the most frequent number in an array
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script src="scripts/my-js.js"></script>
+    <script>
+        var model = new Array(4, 1, 1, 4, 2, 3, 4, 4, 1, 2, 4, 9, 3);
+
+        if (model.length == 0) {
+            jsConsole.writeLine("Empty array");
+        }
+        else {
+            printArray(model);
+            
+            var res = '';
+            //** use selectionSort function defined in Task 5 **/
+            model = selectionSort(model);
+
+            //** use findMaxEqESequence function defined in Task 3 **/
+            var arFreqs = findMaxEqESequence(model);
+
+            for (var i = 0; i < arFreqs.length; i++) {
+                res += model[arFreqs[i]] + ': ' + arFreqs[++i] + " times, ";
+            }
+            res = res.trim().replace(/,$/, '');
+
+            //** print result
+            if (res.length > 0)
+                jsConsole.writeLine(res);
+            else
+                jsConsole.writeLine("No elements that repeat");
+
+        }
+        function selectionSort(arr5) {
+            var len = arr5.length;
+            var minE;
+            for (var i = 0; i < len - 1; i++) {
+                //** find the smallest element
+                minE = i;
+                for (var j = i + 1; j < len; j++) {
+                    if (arr5[j] <= arr5[minE]) minE = j;
+                }
+
+                //** replace the smallest element with the elem at position i
+                if (i != minE) {
+                    arr5[i] = arr5[i] - arr5[minE];
+                    arr5[minE] = arr5[i] + arr5[minE];
+                    arr5[i] = arr5[minE] - arr5[i];
+                }
+            }
+            return arr5;
+        }
+        function findMaxEqESequence(array) {
+            var aLen = array.length,
+                seqLen = 1, tstart = 0, tlen = 1;
+            var arSequencesL = new Array();
+            if (aLen > 1) {
+                for (var i = 0; i < aLen - 1; i++) {
+                    if (array[i] == array[i + 1]) {
+                        tlen++;
+
+                        if (seqLen <= tlen) {
+                            if (seqLen < tlen) {
+                                seqLen = tlen;
+
+                                arSequencesL.length = 0; //** empty the arSequences array
+                            }
+
+                            arSequencesL.push(tstart);
+                            arSequencesL.push(tlen);
+                        }
+                    } else {
+                        tlen = 1;
+                        tstart = i + 1;
+                    }
+                }
+            }
+            return arSequencesL;
+        }
+              
+    </script>
+</body>
+</html>
