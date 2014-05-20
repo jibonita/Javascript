@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Group Persons</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/jsfuncs.js" type="text/javascript"></script>
+</head>
+<body>
+    Write a function that groups an array of persons by age, first or last name. The
+    function must return an associative array, with keys - the groups, and values -arrays
+    with persons in this groups
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* check the jsfuncs.js file */
+
+        var persons = [
+            { firstname: "Gosho", lastname: "Petrov", age: 18 },
+            { firstname: "Bay", lastname: "Ivan", age: 17 },
+            { firstname: "Marlena", lastname: "Mclaughin", age: 21 },
+            { firstname: "Jonathon", lastname: "Mcmanis", age: 17 },
+            { firstname: "Bertram", lastname: "Sheppard", age: 25 },
+            { firstname: "Annette", lastname: "Dagenhart", age: 22 },
+            { firstname: "Debbie", lastname: "Campagna", age: 20 },
+            { firstname: "Samatha", lastname: "Bulmer", age: 16 },
+            { firstname: "Bay", lastname: "Ivan", age: 81 },
+            { firstname: "Marlena", lastname: "Barriga", age: 16 },
+            { firstname: "Jonathon", lastname: "Mcmanis", age: 17 },
+            { firstname: "Marlena", lastname: "Dagenhart", age: 22 },
+            { firstname: "Katerine", lastname: "Charron", age: 22 },
+            { firstname: "Debbie", lastname: "Campagna", age: 20 },
+            { firstname: "Samatha", lastname: "Bulmer", age: 16 },
+            { firstname: "Annette", lastname: "Dagenhart", age: 20 },
+            { firstname: "Debbie", lastname: "Barriga", age: 18}];
+
+        function printResult(array) {
+            for (var item in array) {
+                jsConsole.writeLine(item + ": [");
+                for (var i = 0; i < array[item].length; i++) {
+                    jsConsole.writeLine("    " + printPerson(array[item][i]));
+                }
+                jsConsole.writeLine(" ]");
+            }
+        }
+
+        var groupedByFname = groupBy(persons, "firstname");
+        printResult(groupedByFname);
+
+        var groupedByAge = groupBy(persons, "age");
+       // printResult(groupedByAge);
+
+        
+    </script>
+</body>
+</html>

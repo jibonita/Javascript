@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Has Property</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/jsfuncs.js" type="text/javascript"></script>
+</head>
+<body>
+    Write a function that checks if a given object contains a given property
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* check the jsfuncs.js file */
+
+        var point = new Point(2, 3);
+        jsConsole.writeLine("Has Point property 'x'? " + hasProperty(point, "x"));
+        jsConsole.writeLine("Has Point property 'length'? " + hasProperty(point, "length"));
+
+        var num = 45;
+        jsConsole.writeLine("Has 45 property 'x'? " + hasProperty(num, "x"));
+        for (i in point)
+            jsConsole.writeLine(i + '=' + point[i]);
+    </script>
+</body>
+</html>

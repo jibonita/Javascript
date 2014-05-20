@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Shapes</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+
+    <script src="scripts/jsfuncs.js"></script>
+</head>
+<body>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* check the jsfuncs.js file */
+
+        var point1 = new Point(2, 3);
+        var point2 = new Point(7, 8);
+
+        var line = new Line(point1, point2);
+
+        jsConsole["writeLine"]("Distance between Point(" + point1.x + "," + point1.y + ") and Point(" + point2.x + "," + point2.y + "): " + point1.distance(point2));
+    
+        var line2 = new Line(new Point(-3,7), new Point(0,9));
+        var line3 = new Line(new Point(6, -2), new Point(1, 5)); // try with end: new Point(1,10)
+
+        jsConsole.writeLine("Line1: " + line);
+        jsConsole.writeLine("Line2: " + line2);
+        jsConsole.writeLine("Line3: " + line3);
+
+        jsConsole.writeLine("Can form triangle: " + line.formsTriangleWith(line2, line3));
+
+    </script>
+</body>
+</html>

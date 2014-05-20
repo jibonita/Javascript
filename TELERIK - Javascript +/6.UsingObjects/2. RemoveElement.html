@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove Elements with Given Value</title>
+    <link href="styles/styles.css" rel="stylesheet" />
+    <link href="styles/js-console.css" rel="stylesheet" />
+
+    <script src="scripts/jsfuncs.js"></script></head>
+<body>
+Write a function that removes all elements with a given value
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        /* check the jsfuncs.js file */
+
+        var arr = [1, 2, 1, 4, 1, 3, 4, 1, 111, 3, 2, 1, "1"];
+        jsConsole.writeLine("Before: " + arr + "/len="+arr.length);
+        
+        arr.remove(1);
+
+        jsConsole.writeLine("After: " + arr + "/len=" + arr.length);
+    </script>
+</body>
+</html>
