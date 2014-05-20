@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Brackets</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    Write a JavaScript function to check if in a given expression the brackets are put
+    correctly.
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+
+        function checkValidBrackets(expr) {
+
+            var openBrackets = [];
+            var closeBrackets = [];
+            var isValid = true;
+
+            for (var i = 0; i < expr.length; i++) {
+                var symbol = expr[i];
+
+                if (symbol == '(') {
+                    openBrackets.push('(');
+                }
+                if (symbol == ')') {
+                    closeBrackets.push(')');
+                    if (closeBrackets.length > openBrackets.length) {
+                        isValid = false;
+                        break;
+                    }
+                }
+            }
+
+            if (closeBrackets.length != openBrackets.length) {
+                isValid = false;
+            }
+            return isValid;
+        }
+
+
+        var expr1 = "((a+b)/5-d)";
+        var expr2 = ")(a+b))";
+        var expr3 = ")a + b(";
+
+        jsConsole.writeLine("Is valid?");
+        jsConsole.writeLine(expr1 + " : " + checkValidBrackets(expr1));
+        jsConsole.writeLine(expr2 + " : " + checkValidBrackets(expr2));
+        jsConsole.writeLine(expr3 + " : " + checkValidBrackets(expr3));
+    </script>
+</body>
+</html>

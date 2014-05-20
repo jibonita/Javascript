@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Reverse String</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+    <script src="scripts/my-js.js"></script>
+</head>
+<body>
+    <span class="info">Press 'Enter' to process the input</span>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+
+        function reverse(phrase) {
+            var reversed = "";
+            for (var i = phrase.length - 1; i >= 0; i--) {
+                reversed += phrase[i];
+            }
+            return reversed.toString();
+        }
+
+        //** add reverse to the string object
+        String.prototype.reverse = function () {
+            return reverse(this);
+        }
+
+        execute( "text = ", "text", "", function (str) {
+
+            jsConsole.writeLine("Original string: " + str);
+            jsConsole.writeLine("Reversed string: " + reverse(str));
+            jsConsole.writeLine("using the string.reverse method: " + str.reverse());
+
+        }, false, true);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Create UL and LIs</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/jsfuncs.js" type="text/javascript"></script>
+</head>
+<body>
+    <!-- Write a function that creates a HTML UL using a template for every HTML LI. The source of the list should be an array of elements. Replace all placeholders marked with –{…}–   with the value of the corresponding property of the object -->
+    <div data-type="template" id="list-item" style="display: none;">
+        <strong>-{name}-</strong> <span>-{age}-</span>
+    </div>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+
+        function generateList(data, format) {
+
+            var list = '<ul>';
+            for (var i = 0; i < data.length; i++) {
+                list += '<li>' + formatString(format, data[i].name, data[i].age) + '</li>';
+            }
+            list += '</ul>';
+            return list;
+        }
+
+        function formatString() {
+            var text = arguments[0];
+            var pattern = /-{name}-/g;
+            text = text.replace(pattern, arguments[1]);
+            var pattern = /-{age}-/g;
+            text = text.replace(pattern, arguments[2]);
+            return text;
+        }
+
+        var people = [
+            { name: "Peter", age: 14 }, { name: "Bay", age: 81 },
+            { name: "Marlena", age: 21 }, { name: "Jonathon", age: 17 },
+            { name: "Bertram", age: 25 }, { name: "Katerine", age: 22 },
+            { name: "Debbie", age: 20 }, { name: "Samatha", age: 16 },
+            { name: "Annette", age: 23 }, { name: "Miguel", age: 18}];
+
+        var template = document.getElementById("list-item").innerHTML;
+        var peopleList = generateList(people, template);
+
+        jsConsole.writeLine(peopleList.htmlEscape());
+        
+    </script>
+</body>
+</html>

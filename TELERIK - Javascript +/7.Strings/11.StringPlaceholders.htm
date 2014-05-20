@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Format String with Placeholders</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Write a function that formats a string using placeholders -->
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+
+        function stringFormat() {
+
+            var text = arguments[0];
+            for (i = 1; i < arguments.length; i++) {
+                var pattern = "[{]" + (i - 1) + "[}]";
+                var regex = new RegExp(pattern, "g"); // new RegExp('\\{'+ (i - 1) + '\\}');
+                text = text.replace(regex, arguments[i]);
+            }
+
+            return text;
+        }
+
+        var format = "{0}, {1}, {0} text {2} {30} {500}";
+        var str = stringFormat(format, 1, "Pesho", "Gosho", "Zori");
+
+        jsConsole.writeLine(str);   //str = "1, Pesho, 1 text Gosho"
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Extract palindromes</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/jsfuncs.js" type="text/javascript"></script>
+</head>
+<body>
+    <!-- Write a program that extracts from a given text all palindromes, e.g. "ABBA", "lamal", "exe". -->
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function extractPalindromes(text) {
+            var i;
+            //** put all words in an array
+            var aWords = text.split(/[\s,.]+/);
+
+            for (i = 0; i < aWords.length; i++) {
+                if (isPalindrome(aWords[i])) {
+                    jsConsole.writeLine(aWords[i]);
+                }
+            }
+        }
+        
+        function isPalindrome(word) {
+
+            var isPalindrome = true;
+            var len = word.length;
+            if (len < 2) return false;
+
+            //** interesting check for palindrome
+            isPalindrome = (word == word.split("").reverse().join("") && word.length > 1);
+
+            //** the common method to check if a word is palindrome
+//            for (var i = 0; i < len / 2; i++) {
+//                if (word[i] != (word[len - 1 - i])) {
+//                    isPalindrome = false;
+//                    break;
+//                }
+            //            }
+
+            return isPalindrome;
+        }
+
+        var text = "The other reason I wasn't down at the game was because I was on my way to say good-by exe to old Spencer, my history ABBA teacher. He had the grippirg, and I figured I probably wouldn't see him again till lamal Christmas vacation started.";
+
+        extractPalindromes(text);
+  
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Upper Lower Mixed tags</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/jsfuncs.js" type="text/javascript"></script>
+</head>
+<body>
+    You are given a text. Write a function that changes the text in all regions:<br />
+    &lt;upcase>text&lt;/upcase> to uppercase.<br />
+    &lt;lowcase>text&lt;/lowcase> to lowercase<br />
+    &lt;mixcase>text&lt;/mixcase> to mix casing(random)
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+
+        String.prototype.toMixedCase = function () {
+            var mixedstr = '';
+            var char = '';
+            var funcs = ['toLowerCase', 'toUpperCase'];
+            for (var i = 0; i < this.length; i++) {
+                char = this[i][funcs[Math.floor((Math.random() * 2))]]();
+                mixedstr += char;
+            }
+            return mixedstr;
+        }
+
+        function replaceUpLowMixTags(text) {
+            var pattern, myRegExp;
+
+            pattern = /<upcase>(.*?)<\/upcase>/ig;
+            text = text.replace(pattern, function ($1) { return $1.toUpperCase() });
+            text = text.replace(pattern, "$1");
+
+
+            pattern = /<lowcase>(.*?)<\/lowcase>/ig;
+            text = text.replace(pattern, function ($1) { return $1.toLowerCase() });
+            text = text.replace(pattern, "$1");
+
+            pattern = /<mixcase>(.*?)<\/mixcase>/ig;
+            text = text.replace(pattern, function ($1) { return $1.toMixedCase() });
+            text = text.replace(pattern, "$1");
+
+            return text;
+        }
+
+        var text = "We are <mixcase>living</mixcase> in a <upcase>yellow submarine</upcase>. We <mixcase>don't</mixcase> have <lowcase>anything</lowcase> else. <upcase>Do I have to</upcase> replace everything in <lowcase>UPPER case</lowcase>?";
+
+        jsConsole.writeLine("<u>Original</u><br>" + text.htmlEscape());
+
+        jsConsole.writeLine("<br><u>Result:</u><br>" + replaceUpLowMixTags(text).htmlEscape());
+
+    </script>
+</body>
+</html>

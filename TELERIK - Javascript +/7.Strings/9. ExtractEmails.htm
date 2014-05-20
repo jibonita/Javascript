@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Extract Email Addresses</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/jsfuncs.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function extractEmails(text) {
+            var splitPattern = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/ig;
+            return text.match(splitPattern);
+        }
+
+        var text = "zebra@wild.com What is my text email address albatross@verizon.com or something" +
+            "I read that it is your number@vtext.com and verified this works." +
+            "The local part of an address (before the @ sign) is case-sensitive (with the exception of " +
+            "postmaster@example.com). The general format of an email address is jsmith@example.org. There is now a free " +
+            "and simple way to get an liliput@msn.com email address, just send email to request@ask.me";
+
+        var emails = extractEmails(text);
+        for (var i = 0; i < emails.length; i++) {
+            jsConsole.writeLine(emails[i]);
+        }
+
+    </script>
+</body>
+</html>

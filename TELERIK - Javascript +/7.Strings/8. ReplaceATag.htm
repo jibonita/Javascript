@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Replace 'a' with [URL]</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/jsfuncs.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function replaceATags(html) {
+
+            //var pattern = /<\s*a\s[^>]*>*\bhref\s*=\s*('(?:[^']*)'|"(?:[^"]*)"|(?:\S*))[^>]*>((?:.|\s)*?)<\s*\/a\s*>/ig
+            var pattern, result = "";
+            var replacePtn = "[URL=$1]$2[/URL]";
+
+            //** I wasn't able to make the regex work for "", '' or emty href= attribute, so I'm replacing them in 3 steps
+            //** replace ""
+            pattern = /<\s*a\s[^>]*>*\bhref\s*=\s*"([^"]*)"[^>]*>((?:.|\s)*?)<\s*\/a\s*>/ig
+            result = html.replace(pattern, replacePtn);
+
+            //** replace ''
+            pattern = /<\s*a\s[^>]*>*\bhref\s*=\s*'([^']*)'[^>]*>((?:.|\s)*?)<\s*\/a\s*>/ig
+            result = result.replace(pattern, replacePtn);
+
+            //** replace empty href=
+            pattern = /<\s*a\s[^>]*>*\bhref\s*=\s*(?:\S*)[^>]*>((?:.|\s)*?)<\s*\/a\s*>/ig
+            result = result.replace(pattern, "[URL=]$1[/URL]");
+
+            return result;
+        }
+
+        var html = "<p>Please visit <a href=\"http://academy.telerik. com\" color=pepe>our site</a> to choose a training course. Also visit <a href= 'www.devbg.org'>our forum</a> to discuss the courses. They also may put <a href= >empty link</a></p>";
+
+        jsConsole.writeLine(replaceATags(html).htmlEscape());
+
+    </script>
+</body>
+</html>
