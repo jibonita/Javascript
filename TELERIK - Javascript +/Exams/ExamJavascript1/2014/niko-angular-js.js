@@ -1,16 +1,7 @@
 function solve(args) {
     var result = [];
     var n = args[0] | 0,
-        keyValueModel = {};
-
-    for (var i = 0; i < n; i++) {
-        var pairs = args[i + 1].split('-');
-        if (pairs[1].indexOf(';') > -1) {
-            keyValueModel[pairs[0]] = pairs[1].split(';');
-        } else {
-            keyValueModel[pairs[0]] = pairs[1];
-        }
-    }
+        keyValueModel = readModelData();
 
     var viewLinesCount = args[n + 1] | 0,
         code = '',
@@ -19,7 +10,13 @@ function solve(args) {
         templateName = '',
         templateCode = [],
         templates = {},
-        isTagOpened = false;
+        isTagOpened = false, 
+        isLoopOpened = false, 
+        loopContent = [],
+        loopTitle = '',
+        loopItem = '',
+        loopProperty = '', 
+        loopInObject = [];
 
     for (var line = 0; line < viewLinesCount; line++) {
         code = args[n + 2 + line];
@@ -27,10 +24,29 @@ function solve(args) {
         if (isHTMLstarted) {
             // parse
             if (isTagOpened) {
-                //check for closing tag ....
+                //check for closing tag. Sinxw thwew won't be nested if or repeats, we are checking for open tag in the same place ....
                 if (code.indexOf('</nk-if>') > -1) {
                     isTagOpened = false;
                     continue;
+                }
+
+                if (isLoopOpened) {
+                    if (code.indexOf('</nk-if>') > -1) {
+                        isTagOpened = false;
+                        isLoopOpened = false;
+                        // TODO.......
+                        // produce loop content
+                        // for (var i = 0; i < Things.length; i++) {
+                        //     Things[i]
+                        // };
+                        continue;
+                    } else {
+                        if (code.indexOf('<nk-template') > -1) {
+                            loopContent = renderTemplate(code, loopContent);
+                        } else {
+                            loopContent.push(code);
+                        }
+                    }
                 }
             }
 
@@ -48,40 +64,38 @@ function solve(args) {
                         result.push(processModel(code));
                     } else {
                         if (code.indexOf('<nk-template') > -1) {
-                            renderTemplate(code);
+                            result = renderTemplate(code, result);
                         } else {
-                            if (code.indexOf('<nk-if')) {
+                            if (code.indexOf('<nk-if') > -1) {
                                 // condition ....
                                 var condition = getProperty(code);
                                 if (keyValueModel[condition].toLowerCase() === 'true') {
                                     isTagOpened = true;
                                     continue;
                                 } else {
-                                    // loop till the closing nk-if tag becasue these lines will not be displayed
-                                    do {
-                                        line++;
-                                        code = args[n + 2 + line];
-                                    }
-                                    while (code.indexOf('</nk-if>') === -1);
+                                    processFalseIf(code);
                                     isTagOpened = false;
                                 }
 
                             } else {
-                                if (code.indexOf('<nk-repeat')) {
-                                    // loop =...
+                                if (code.indexOf('<nk-repeat') > -1) {
+                                    loopTitle = getProperty(code),
+                                    loopItem = loopTitle.substring(0, loopTitle.indexOf(' ')),
+                                    loopProperty = loopTitle.substr(loopTitle.lastIndexOf(' ')+1), 
+                                    loopInObject = keyValueModel[loopProperty];
 
-                                    isTagOpened = false; //temp
-                                    result.push(code);
-
-                                };
+                                    //console.log(loopProperty)
+                                    
+                                    isTagOpened = true; 
+                                    isLoopOpened = true;
+                                    //result.push(code);
+                                    //result.push('stef')
+                                }
                             }
                         }
                     }
                 }
             }
-
-
-
         } else {
             if (code.indexOf('<!DOCTYPE') > -1) {
                 isHTMLstarted = true;
@@ -92,12 +106,23 @@ function solve(args) {
         }
     }
 
-    //console.log(templates)
-
-    //console.log(result);
+    //console.log(result.join(''));
     for (var c = 0; c < result.length; c++) {
         console.log(result[c]);
     };
+
+    function readModelData(){
+        var keyValueModel = {};
+        for (var i = 0; i < n; i++) {
+            var pairs = args[i + 1].split('-');
+            if (pairs[1].indexOf(';') > -1) {
+                keyValueModel[pairs[0]] = pairs[1].split(';');
+            } else {
+                keyValueModel[pairs[0]] = pairs[1];
+            }
+        }
+        return keyValueModel;
+    }
 
     function getTemplates(code) {
         if (!isTemplateStarted) {
@@ -143,7 +168,7 @@ function solve(args) {
         return code;
     }
 
-    function renderTemplate(code) {
+    function renderTemplate(code, result) {
         // template render
         templateName = getProperty(code);
         // get tag complete code...
@@ -152,6 +177,16 @@ function solve(args) {
         for (var i = 0; i < templates[templateName].length; i++) {
             result.push(templates[templateName][i]);
         };
+        return result;
+    }
+
+    function processFalseIf(code){
+        // loop till the closing nk-if tag becasue these lines will not be displayed
+        do {
+            line++;
+            code = args[n + 2 + line];
+        }
+        while (code.indexOf('</nk-if>') === -1);
     }
 }
 
@@ -162,45 +197,7 @@ var input = [6,
     'showMarks-false',
     'marks-3;4;5;6',
     'students-Ivan;Gosho;Pesho',
-    24,
-    '<nk-template name="menu">',
-    '    <ul id="menu">',
-    '        <li>Home</li>',
-    '        <li>About us</li>',
-    '    </ul>',
-    '</nk-template>',
-    '<nk-template name="footer">',
-    '    <footer>',
-    '        Copyright Telerik Academy 2014',
-    '   </footer>',
-    '</nk-template>',
-    '<!DOCTYPE html>',
-    '<html>',
-    '<head>',
-    '    <title>Telerik Academy</title>',
-    '</head>',
-    '<body>',
-    '<nk-template render="menu" />',
-    '',
-    '    <h1><nk-model>title</nk-model></h1>',
-    '    <nk-if condition="showSubtitle">',
-    '        <h2><nk-model>subTitle</nk-model></h2>',
-    '        <div>{{<nk-model>subTitle</nk-model>}} ;)</div>',
-    '    </nk-if>',
-
-
-
-
-]
-
-input = [6,
-    'title-Telerik Academy',
-    'showSubtitle-true',
-    'subTitle-Free training',
-    'showMarks-false',
-    'marks-3;4;5;6',
-    'students-Ivan;Gosho;Pesho',
-    20,
+    28,
     '<nk-template name="menu">',
     '    <ul id="menu">',
     '        <li>Home</li>',
