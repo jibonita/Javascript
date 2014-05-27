@@ -10,12 +10,12 @@ function solve(args) {
         templateName = '',
         templateCode = [],
         templates = {},
-        isTagOpened = false, 
-        isLoopOpened = false, 
+        isTagOpened = false,
+        isLoopOpened = false,
         loopContent = [],
         loopTitle = '',
         loopItem = '',
-        loopProperty = '', 
+        loopProperty = '',
         loopInObject = [];
 
     for (var line = 0; line < viewLinesCount; line++) {
@@ -31,14 +31,15 @@ function solve(args) {
                 }
 
                 if (isLoopOpened) {
-                    if (code.indexOf('</nk-if>') > -1) {
+                    if (code.indexOf('</nk-repeat>') > -1) {
                         isTagOpened = false;
                         isLoopOpened = false;
                         // TODO.......
                         // produce loop content
-                        // for (var i = 0; i < Things.length; i++) {
-                        //     Things[i]
-                        // };
+                        for (var item = 0; item < loopInObject.length; item++) {
+                            code = processLoopUnit(loopContent, loopItem, loopInObject[item]);
+                        }
+                        loopContent = [];
                         continue;
                     } else {
                         if (code.indexOf('<nk-template') > -1) {
@@ -46,56 +47,60 @@ function solve(args) {
                         } else {
                             loopContent.push(code);
                         }
+                        continue;
                     }
                 }
             }
 
             // if not in opened NikoAng. tag and there is no tag in the current line => just add it to the result
-            if (code.indexOf('<nk-') === -1) {
-                result.push(code);
+            // if (code.indexOf('<nk-') === -1) {
+            //     result.push(code);
+            // } else {
+            //     // check for tags that should be escaped
+            //     if (isEcapedTag(code)) {
+            //         result.push(code.replace('{{', '').replace('}}', ''));
+            //     } else {
+            //         // check which is the tag
+            //         if (code.indexOf('<nk-model') > -1) {
+            //             // model is at one line, so process here
+            //             result.push(processModel(code));
+            //         } else {
+            //             if (code.indexOf('<nk-template') > -1) {
+            //                 result = renderTemplate(code, result);
+            //             } 
+            if (checkForSimpleTags(code)) {
+
             } else {
-                // check for tags that should be escaped
-                if (isEcapedTag(code)) {
-                    result.push(code.replace('{{', '').replace('}}', ''));
-                } else {
-                    // check which is the tag
-                    if (code.indexOf('<nk-model') > -1) {
-                        // model is at one line, so process here
-                        result.push(processModel(code));
+                if (code.indexOf('<nk-if') > -1) {
+                    // condition ....
+                    var condition = getProperty(code);
+                    if (keyValueModel[condition].toLowerCase() === 'true') {
+                        isTagOpened = true;
+                        continue;
                     } else {
-                        if (code.indexOf('<nk-template') > -1) {
-                            result = renderTemplate(code, result);
-                        } else {
-                            if (code.indexOf('<nk-if') > -1) {
-                                // condition ....
-                                var condition = getProperty(code);
-                                if (keyValueModel[condition].toLowerCase() === 'true') {
-                                    isTagOpened = true;
-                                    continue;
-                                } else {
-                                    processFalseIf(code);
-                                    isTagOpened = false;
-                                }
+                        processFalseIf(code);
+                        isTagOpened = false;
+                    }
 
-                            } else {
-                                if (code.indexOf('<nk-repeat') > -1) {
-                                    loopTitle = getProperty(code),
-                                    loopItem = loopTitle.substring(0, loopTitle.indexOf(' ')),
-                                    loopProperty = loopTitle.substr(loopTitle.lastIndexOf(' ')+1), 
-                                    loopInObject = keyValueModel[loopProperty];
+                } else {
+                    if (code.indexOf('<nk-repeat') > -1) {
+                        loopTitle = getProperty(code),
+                        loopItem = loopTitle.substring(0, loopTitle.indexOf(' ')),
+                        loopProperty = loopTitle.substr(loopTitle.lastIndexOf(' ') + 1),
+                        loopInObject = keyValueModel[loopProperty];
 
-                                    //console.log(loopProperty)
-                                    
-                                    isTagOpened = true; 
-                                    isLoopOpened = true;
-                                    //result.push(code);
-                                    //result.push('stef')
-                                }
-                            }
-                        }
+                        //console.log(loopItem)
+
+                        isTagOpened = true;
+                        isLoopOpened = true;
+                        //result.push(code);
+                        //result.push('stef')
                     }
                 }
             }
+            //         }
+            //     }
+            // }
         } else {
             if (code.indexOf('<!DOCTYPE') > -1) {
                 isHTMLstarted = true;
@@ -106,12 +111,13 @@ function solve(args) {
         }
     }
 
-    //console.log(result.join(''));
+    // console.log(result.join(''));
     for (var c = 0; c < result.length; c++) {
         console.log(result[c]);
     };
 
-    function readModelData(){
+
+    function readModelData() {
         var keyValueModel = {};
         for (var i = 0; i < n; i++) {
             var pairs = args[i + 1].split('-');
@@ -146,6 +152,32 @@ function solve(args) {
         }
     }
 
+    function checkForSimpleTags(code) {
+        //console.log('---->>>' + code)
+        //if not in opened NikoAng. tag and there is no tag in the current line => just add it to the result
+        if (code.indexOf('<nk-') === -1) {
+            result.push(code);
+        } else {
+            // check for tags that should be escaped
+            if (isEcapedTag(code)) {
+                result.push(code.replace('{{', '').replace('}}', ''));
+            } else {
+                // check which is the tag
+                if (code.indexOf('<nk-model') > -1) {
+                    // model is at one line, so process here
+                    result.push(processModel(code));
+                } else {
+                    if (code.indexOf('<nk-template') > -1) {
+                        result = renderTemplate(code, result);
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     function isEcapedTag(code) {
         var escapeOpenIndex = code.indexOf('{{<nk-'),
             escapeCloseindex = code.indexOf('>}}');
@@ -161,9 +193,11 @@ function solve(args) {
             endTagIndex = code.indexOf('</nk-model>'),
             key = code.substring(startTagIndex + 10, endTagIndex);
 
-        code = code.replace(key, keyValueModel[key]);
-        // remove model tags
-        code = code.replace('<nk-model>', '').replace('</nk-model>', '');
+        if (keyValueModel.hasOwnProperty(key)) {
+            code = code.replace(key, keyValueModel[key]);
+            // remove model tags
+            code = code.replace('<nk-model>', '').replace('</nk-model>', '');
+        }
 
         return code;
     }
@@ -180,13 +214,24 @@ function solve(args) {
         return result;
     }
 
-    function processFalseIf(code){
+    function processFalseIf(code) {
         // loop till the closing nk-if tag becasue these lines will not be displayed
         do {
             line++;
             code = args[n + 2 + line];
         }
         while (code.indexOf('</nk-if>') === -1);
+    }
+
+    function processLoopUnit(content, item, value) {
+        for (var line = 0; line < content.length; line++) {
+            var specialModel = '<nk-model>' + item + '</nk-model>';
+            if (content[line].indexOf(specialModel) > -1) {
+                result.push(content[line].replace(specialModel, value));
+            } else {
+                checkForSimpleTags(content[line])
+            }
+        }
     }
 }
 
@@ -197,7 +242,7 @@ var input = [6,
     'showMarks-false',
     'marks-3;4;5;6',
     'students-Ivan;Gosho;Pesho',
-    28,
+    42,
     '<nk-template name="menu">',
     '    <ul id="menu">',
     '        <li>Home</li>',
@@ -207,10 +252,15 @@ var input = [6,
     '<nk-template name="footer">',
     '    <footer>',
     '        Copyright Telerik Academy 2014',
-    '   </footer>',
+    '    </footer>',
     '</nk-template>',
     '<!DOCTYPE html>',
-    '<nk-template render="menu" />',
+    '<html>',
+    '<head>',
+    '    <title>Telerik Academy</title>',
+    '</head>',
+    '<body>',
+    '    <nk-template render="menu" />',
     '',
     '    <h1><nk-model>title</nk-model></h1>',
     '    <nk-if condition="showSubtitle">',
@@ -226,9 +276,21 @@ var input = [6,
     '            <li>Multiline <nk-model>title</nk-model></li>',
     '        </nk-repeat>',
     '    </ul>',
+    '    <nk-if condition="showMarks">',
+    '        <div>',
+    '            <nk-model>marks</nk-model>',
+    '        </div>',
+    '    </nk-if>',
+    '',
+    '    <nk-template render="footer" />',
+    '</body>',
+    '</html>'
+
 
 
 
 
 ]
+
+
 solve(input)
