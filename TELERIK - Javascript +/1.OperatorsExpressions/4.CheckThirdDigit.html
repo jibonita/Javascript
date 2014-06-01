@@ -14,7 +14,7 @@
 
 		Exec("", "value", "Is the third digit 7? ", function(num){
 
-			num = Math.floor(num / 100);
+			num = Math.floor(Math.abs(num) / 100);
             num = num % 10;
             return (num === 7);
 
