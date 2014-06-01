@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM</title>
+	<style>
+		div, section{
+			border: 1px dashed blue;
+			margin: 20px;}
+		li{
+			display: inline-block;
+		}
+	</style>
+	<script src="scripts/select-divs.js"></script>
+</head>
+<body>
+	<button onclick="selectDirectDivsQS()">Select DIVs with QuerySelectorAll</button>
+	<button onclick="selectDirectDivsTN()">Select DIVs with getElementsByTagName</button>
+	<!-- README::: I copied this HTML from a random page. All DIV & SECTION elements have blue dashed border. I changed some of the DIV elements from the code with SECTION for the purpose of this task -->
+
+
+	<div class="wrapper">
+		<noscript>
+		<div class="global-site-notice noscript">
+			<div class="notice-inner">
+				<p>
+				<strong>JavaScript seems to be disabled in your browser.</strong><br />
+				You must have JavaScript enabled in your browser to utilize the functionality of this website.                </p>
+			</div>
+		</div>
+		</noscript>
+		<div id="header">
+			<div class="contents">
+				<div class="headerbox rightbox">
+					<div class="topbox">
+						<form id="search_mini_form" action="http://www.mountain-equipment.co.uk/catalogsearch/result/" method="get">
+							<div class="form-search">
+								<input id="search" type="text" name="q" value="" class="input-text" maxlength="128" />
+								<button type="submit" title="Search" class="button"><span><span>Search</span></span></button>
+								<div id="search_autocomplete" class="search-autocomplete"></div>
+							</div>
+						</form>
+						<ul class="social-list">
+							<li class="title"><span>Follow us on</span></li>
+							<li><a class="no-text fb-link" href="https://www.facebook.com/MTNEQUIPMENT" target="_blank">Facebook</a></li>
+							<li><a class="no-text tw-link" href="https://twitter.com/MTNEQUIPMENT" target="_blank">Twitter</a></li>
+							<li><a class="no-text ins-link" href="http://instagram.com/mountainequipment" target="_blank">Instagram</a></li>
+							<li><a class="no-text yt-link" href="http://www.youtube.com/MountainEquipmentUK" target="_blank">Youtube</a></li>
+							<li class="last"><a class="no-text vm-link" href="https://vimeo.com/mountainequipment" target="_blank">Vimeo</a></li>
+						</ul>            </div>
+						<section>
+							<div class="bottombox">
+								<p class="no-text mob-nav-expand">Expand</p>
+								<ul class="header-links">
+									<li class="level0"><a href="#">Dealers</a>
+										<div class="drop-box" style="display: none;">
+											<ul>
+												<li><a href="http://www.mountain-equipment.co.uk/stockists/">Shops</a></li>
+												<li><a href="http://www.mountain-equipment.co.uk/stockists-online/">Online</a></li>
+												<li class="last"><a href="http://www.mountain-equipment.co.uk/internationaldistributors/">International</a></li>
+											</ul>
+										</div>
+									</li>
+									<li class="level0"><a href="#">Help Desk</a>
+										<div class="drop-box" >
+											<ul>
+												<li><a href="http://www.mountain-equipment.co.uk/care-instructions/">Care Instructions</a></li>
+												<li><a href="http://www.mountain-equipment.co.uk/size-chart/">Size Chart</a></li>
+												<li><a href="http://www.mountain-equipment.co.uk/faq/">FAQ's</a></li>
+												<li><a href="http://www.mountain-equipment.co.uk/returns/">Returns</a></li>
+												<li class="last"><a href="http://www.mountain-equipment.co.uk/contacts/">Contact us</a></li>
+											</ul>
+										</div>
+									</li>
+									<li class="level0"><a href="#">The Brand</a>
+										<div class="drop-box" style="display: none;">
+											<ul>
+												<li><a href="http://www.mountain-equipment.co.uk/aboveandbeyond/">Above &amp; Beyond</a></li>
+												<li><a href="http://www.mountain-equipment.co.uk/news/">News</a></li>
+												<li><a href="http://www.mountain-equipment.co.uk/pro-team/">Pro Team</a></li>
+												<li><a href="http://www.mountain-equipment.co.uk/wesupport/">We Support</a></li>
+												<li class="last"><a href="http://www.mountain-equipment.co.uk/jobs/">Jobs</a></li>
+											</ul>
+										</div>
+									</li>
+								</ul>            </div>
+							</div>
+						</section>
+						<h1 class="logo"><a href="http://www.mountain-equipment.co.uk/" title="Mountain Equipment"><img src="http://www.mountain-equipment.co.uk/skin/frontend/mountainequipment/default/images/logo.png" alt="Mountain Equipment" /></a></h1>
+						
+					</div>
+				</div>
+				<div class="stickynav" style="display: none">
+					<div class="contents">
+						
+						
+						<a class="sticky-logo" href="http://www.mountain-equipment.co.uk/">
+						<span><img src="http://www.mountain-equipment.co.uk/skin/frontend/mountainequipment/default/images/logo-sticky.png" alt="" /></span></a>
+						<div class="stickybox rightbox">
+							<ul class="stickylinks">
+								<li><a href="#">Dealers </a></li>
+								<li><a href="#">Help Desk </a></li>
+								<li><a href="#">The Brand</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="main-container col1-layout">
+					<div id="body">
+						<div class="contents">
+							<div class="std">
+								<h2>Home Page</h2>
+							</div>
+							<div id="homecontent">
+								<section class="homecategory">
+									<div class="col col-last">
+										<div class="subcol last">
+											<a href="matrix" class="name">Sleeping bags</a>
+											<a href="matrix" class="img"><img src="http://www.mountain-equipment.co.uk/media/jbanners/ME_Matrix_III_ocean_side_1.png" alt="Sleeping bags"/></a>
+											<a href="matrix" class="no-text viewmore">+</a>
+											<div class="moreinfo" style="display:none">
+												<span>Matrix,
+												Our NEW Range of Hybrid Sleeping bags</span>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
