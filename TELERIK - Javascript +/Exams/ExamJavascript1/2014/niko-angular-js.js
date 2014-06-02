@@ -52,25 +52,8 @@ function solve(args) {
                 }
             }
 
-            // if not in opened NikoAng. tag and there is no tag in the current line => just add it to the result
-            // if (code.indexOf('<nk-') === -1) {
-            //     result.push(code);
-            // } else {
-            //     // check for tags that should be escaped
-            //     if (isEcapedTag(code)) {
-            //         result.push(code.replace('{{', '').replace('}}', ''));
-            //     } else {
-            //         // check which is the tag
-            //         if (code.indexOf('<nk-model') > -1) {
-            //             // model is at one line, so process here
-            //             result.push(processModel(code));
-            //         } else {
-            //             if (code.indexOf('<nk-template') > -1) {
-            //                 result = renderTemplate(code, result);
-            //             } 
-            if (checkForSimpleTags(code)) {
+            if (!checkForSimpleTags(code)) {
 
-            } else {
                 if (code.indexOf('<nk-if') > -1) {
                     // condition ....
                     var condition = getProperty(code);
@@ -93,14 +76,10 @@ function solve(args) {
 
                         isTagOpened = true;
                         isLoopOpened = true;
-                        //result.push(code);
-                        //result.push('stef')
                     }
                 }
             }
-            //         }
-            //     }
-            // }
+
         } else {
             if (code.indexOf('<!DOCTYPE') > -1) {
                 isHTMLstarted = true;
