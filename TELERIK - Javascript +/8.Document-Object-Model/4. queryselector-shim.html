@@ -3,8 +3,30 @@
 <head>
 	<title>DOM - QuerySelector shim</title>
 	<script src="scripts/qs-shim.js"></script>
+	<style>
+		.nav  li >a :hover{
+			color: green;
+		}
+	</style>
 </head>
 <body>
-
+<div id="wrapper">
+	<ul class="nav">
+		<li class="list-ietm"><a href="#">One</a></li>
+		<li class="list-ietm selected"><a href="#">Two</a></li>
+		<li class="list-ietm"><a href="#">Three</a>
+			<ul class="sub-menu">
+				<li class="sub-li nice"><span class="hold"><a href="" class="linky">Uno</a></span></li>
+				<li class="sub-li nice"><span class="hold"><a href="" class="linky">Dos</a></span></li>
+				<li class="sub-li nice"><span class="hold"><a href="" class="linky">Tres</a></span></li>
+				<li class="sub-li nice"><span class="hold"><a href="" class="linky">Cuatro</a></span></li>
+				<li class="sub-li nice"><span class="hold"><a href="" class="linky">Cinco</a></span></li>
+				<li class="sub-li nice"><span class="hold"><a href="" class="linky">Seis</a></span></li>
+			</ul></li>
+		<li class="list-ietm"><a href="#">Four</a></li>
+		<li class="list-ietm"><a href="#">Five</a></li>
+	</ul>
+	<nav></nav>
+</div>
 </body>
 </html>
