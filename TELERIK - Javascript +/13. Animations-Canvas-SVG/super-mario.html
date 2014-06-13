@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Super Mario</title>
+		<script src='scripts/libs/raphael.min.js'></script>
+		<script src='scripts/libs/kinetic.min.js'></script>
+		<style>
+			#mario-container svg {
+				border: 1px solid black;
+				background: #6096ff;
+			}
+			#mario-pal {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Background is created with Raphael JS. It has fixed sky and path of 2 rows of bricks. There are a hill and a bush images that move and create the sensation of the Mario walking.
+		Mario is created using KineticJS and a sprite image for different states of Mario's walk
+		-->
+		<div id="mario-container">
+			<div id="mario-pal"></div>
+		</div>
+		<script>
+		// size of the play field
+		var width = 1068,
+			height = 600;
+		</script>
+		<script src='scripts/super-mario-background.js'></script>
+		<script src='scripts/super-mario.js'></script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tag Cloud</title>
+    <style>
+        #cloud-container {
+            width: 200px;
+            border: 1px solid #000;
+        }
+        #cloud-container div {
+            float: left;
+            margin-right: 3px;
+        }
+
+        #cloud-container:after {
+            content: "";
+            clear: both;
+            display: block;
+            height: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="cloud-container"></div>
+    <script src="js/tag-cloud.js"></script>
+</body>
+</html>

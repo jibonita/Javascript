@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Move In Circle</title>
+    <style>
+        #content {
+            text-align: center;
+        }
+
+        #circle-path {
+            margin: 50px auto;
+            height: 400px;
+            width: 400px;
+            position: relative;
+            border-radius: 200px;
+            /* comment the next two line if you want to have a transparent element */
+            border: 1px solid #999;
+            background: #ffd800;
+        }
+
+        #circle-path div {
+            position: absolute;
+            border-style: solid;
+            height: 25px;
+            width: 25px;
+            background: #b6ff00;
+            top: 0;
+            right: 0;
+        }
+
+        a {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <a onclick="stopRolling()">Stop Rolling</a>
+    </div>
+    <script src="js/circle-move.js"></script>
+    <script src="js/common-funcs.js"></script>
+</body>
+</html>
