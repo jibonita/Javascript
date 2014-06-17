@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 3 - Handlebars</title>	
+	<link rel="stylesheet" href="table-styles.css">
+</head>
+<body>
+	<div id="table">
+	</div>
+	<script id="table-template" type='text/x-handlebars-template'>
+		<div id="table">
+			<table>
+				<tr>
+					<th>№</th><th>Title</th><th>Date #1</th><th>Date #2</th>
+				</tr>
+				{{#each rows}}
+					<tr>
+						<td>{{@index}}</td>
+						<td class="unit-title">{{unit}}</td>
+						{{#dates}}
+						<td>{{this}}</td>
+						{{/dates}}
+					</tr>
+				{{/each}}
+			</table>
+		</div>
+	</script>
+	<script src="../libs/handlebars-v1.3.0.js"></script>
+	<script src="table-handlebars-script.js"></script>
+	
+
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task 3 - Handlebars</title>	
+</head>
+<body>
+	<div id="the-select">
+	</div>
+	<script id="select-template" type='text/x-handlebars-template'>
+		<select>
+			{{#each options}}
+				<option value="{{value}}">{{text}}</option>
+			{{/each}}
+		</select>
+	</script>
+	<script src="../libs/handlebars-v1.3.0.js"></script>
+	<script src="dynamic-select-handlebars-script.js"></script>
+</body>
+</html>
