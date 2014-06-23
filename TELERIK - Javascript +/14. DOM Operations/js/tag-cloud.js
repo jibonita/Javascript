@@ -1,4 +1,5 @@
-﻿var tags = ["cms", "css", "javascript", "web", "js", "ASP.NET MVC", ".net", ".net", "wordpress", "xaml", "js", "http", "asp.net", "asp.net MVC", "ASP.NET MVC", "wp", "javascript", "js", "cms", "html", "javascript", "http", "http", "CMS"]
+﻿//var tags = ["cms", "css", "javascript", "web", "js", "ASP.NET MVC", ".net", ".net", "wordpress", "xaml", "js", "http", "asp.net", "asp.net MVC", "ASP.NET MVC", "wp", "javascript", "js", "cms", "html", "javascript", "http", "http", "CMS"]
+var tags = ["cms", "javascript", "cms", "javascript", "cms", "javascript", "cms", "javascript", "cms", "javascript", "cms", "javascript", "cms", "javascript", "cms", "javascript", "javascript", "javascript", "javascript", "javascript", "javascript", "cms", "cms", "javascript", "javascript", "javascript"]
 
 var tagCloud = generateTagCloud(tags, 17, 42);
 
