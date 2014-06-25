@@ -1,8 +1,82 @@
 <html>
 <head>
 	<title>Google Logo 23-june-2014</title>
+	<style>
+		#container svg{
+			background: #dcdede;
+
+			border: 1px solid red;
+			border-radius: 10px;
+		}
+	</style>
 </head>
 <body>
 <!-- LINK http://www.google.com/doodles/world-cup-2014-27 -->
+<div id="container"></div>
+<script src='scripts/libs/raphael-min.js'></script>
+<script src='scripts/settings.js'></script>
+<script>
+
+var paper = Raphael(containerID, containerWidth, containerHeight);
+
+// background 1st - base level
+paper.rect(0, 0, containerWidth, 60).attr({
+    fill: '#acadac',
+    stroke: 'none'
+});
+
+paper.rect(0, containerHeight-60, containerWidth, 60).attr({
+    fill: '#acadac',
+    stroke: 'none'
+});
+
+// draw chart outside the office
+drawOutOfficeChart(22,90,paper);
+
+function drawOutOfficeChart(x, y,paper){
+	var st = paper.set();
+	st.push(
+		paper.rect(0,14,82,49).attr({
+		    fill: '#d0cacd',
+		    stroke: 'none'
+		})
+	);
+	var st2 = paper.set();
+	st2.push(
+	    paper.rect(8,42,14,14),
+	    paper.rect(26,29,14,27),
+	    paper.rect(44,36,14,21),
+	    paper.rect(62,41,14,15)
+	).attr({
+	    fill: '#adacad',
+	    stroke: 'none'
+	});
+
+	st.push(st2);
+
+	st.push(
+		paper.path("M28,14 L41,0 L54,14)").attr({stroke: '#888688'})
+	).transform('t'+x+','+y);
+
+}
+// paper.rect(23,104,82,48).attr({
+//     fill: '#d0cacd',
+//     stroke: 'none'
+// });
+// var st = paper.set();
+// st.push(
+//     paper.rect(31,132,14,14),
+//     paper.rect(),
+//     paper.rect(),
+//     paper.rect()
+// );
+// st.attr({
+//     fill: '#adacad',
+//     stroke: 'none'
+// });
+// paper.path("M50,106 L64,90 L78,106)").attr({fill: '#888688'});
+
+
+</script>
 </body>
 </html>
