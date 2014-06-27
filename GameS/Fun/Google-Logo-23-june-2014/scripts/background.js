@@ -19,6 +19,8 @@
 
     drawWorkTable(paper, 135, 27);
 
+    drawChairs(paper, 135, 27);
+
     drawRoomChart(paper, 135, 27);
 
     drawClock(paper, 135, 27);
@@ -91,7 +93,8 @@
 
     function drawCabinet(paper, x, y) {
         var st = paper.set(),
-            drawerSet = paper.set();
+            drawerSet = paper.set(),
+            shelf;
 
         st.push(paper.rect(14, 174, 12, 130).attr({
             fill: '#9d9d9e',
@@ -114,12 +117,12 @@
         );
 
         st.push(drawerSet,
-            p = paper.rect(26, 214, 35, 5).attr({
+            shelf = paper.rect(26, 214, 35, 5).attr({
                 fill: '#9f9d9d',
                 stroke: 'none'
             }),
             drawerSet.clone().transform('t0,45'),
-            p.clone().transform('t0,45'),
+            shelf.clone().transform('t0,45'),
             drawerSet.clone().transform('t0,90')
         );
 
@@ -185,6 +188,103 @@
 
 
         st.transform('t' + x + ',' + y);
+    }
+
+    function drawChairs(paper, x, y) {
+        paper.clear();
+
+        var foot,
+            st = paper.set(),
+            leftChairXShift = 85,
+            leftChairYShift = 235;
+
+        // Left chair shift from room: x:85, y: 235
+        st.push(
+
+            paper.path('M0,0 0,51 5,51 5,0 z').attr({
+                fill: '#393c3c',
+                stroke: 'none'
+            }),
+            paper.path('M5,44 5,51 52,51 52,44 z').attr({
+                fill: '#353332',
+                stroke: 'none'
+            }),
+            paper.set(
+                foot = paper.rect(2, 51, 3, 13),
+                //foot.clone().transform('t45,0'),
+                paper.rect(47, 51, 3, 13),
+                paper.rect(24, 51, 3, 5),
+                paper.rect(63, 42, 3, 14)
+            ).attr({
+                fill: '#696666',
+                stroke: 'none'
+            }),
+            paper.path('M5,44 52,44 52,51 76,39 76,34 28,34 z').attr({
+                fill: '#bab8b3',
+                stroke: 'none'
+            }),
+            paper.path('M5,0 5,44 28,34 28,0 z').attr({
+                fill: '#5c5e60',
+                stroke: 'none'
+            })
+        );
+
+        st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
+    }
+
+    function drawChairs_ROOM_RELATIVE(paper, x, y) {
+        paper.clear();
+
+        var foot,
+            st = paper.set(),
+            a, b;
+
+        st.push(
+
+            paper.path('M85,235 85,286 90,286 90,235 z').attr({
+                fill: '#393c3c',
+                stroke: 'none'
+            }),
+            paper.path('M90,279 90,286 137,286 137,279 z').attr({
+                fill: '#353332',
+                stroke: 'none'
+            }),
+            paper.set(
+                foot = paper.rect(87, 286, 3, 13),
+                //foot.clone().transform('t45,0'),
+                paper.rect(132, 286, 3, 13),
+                paper.rect(109, 286, 3, 5),
+                paper.rect(148, 277, 3, 14)
+            ).attr({
+                fill: '#696666',
+                stroke: 'none'
+            }),
+            paper.path('M90,279 137,279 137,286 161,274 161,269 113,269 z').attr({
+                fill: '#bab8b3',
+                stroke: 'none'
+            }),
+            paper.path('M90,235 90,279 113,269 113,235 z').attr({
+                fill: '#5c5e60',
+                stroke: 'none'
+            })
+        );
+
+        //st.clone().transform('t100,0s-1,1');
+        //st.clone().transform('t100,0 s-1,1');
+
+        //st.transform('t' + x + ',' + y);
+
+        // paper.path('M185,0 185,304');
+        // a = paper.rect(85, 235, 5, 51).attr({
+        //     fill: '#393c3c',
+        //     stroke: 'none'
+        // }),
+        // b = paper.rect(90, 279, 47, 7).attr({
+        //     fill: '#353332',
+        //     stroke: 'none'
+        // })
+        // console.log(b.matrix);
+        // console.log(b.matrix.clone().scale(2));
     }
 
     function drawRoomChart(paper, x, y) {}
