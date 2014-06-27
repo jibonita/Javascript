@@ -11,10 +11,8 @@
         stroke: 'none'
     });
 
-    // draw chart outside the office
     drawOutOfficeChart(paper, 22, 90);
 
-    // draw room walls
     drawRoomWalls(paper, 135, 27);
 
     drawCabinet(paper, 135, 27);
@@ -27,9 +25,14 @@
 
     drawTVScreen(paper, 135, 27);
 
+    drawWaterMachine(paper, 135, 27);
+
     drawGuys(paper, 135, 27);
 
+    drawBoss(paper);
 
+
+    // draw chart outside the office
     function drawOutOfficeChart(paper, x, y) {
         var st = paper.set();
         st.push(
@@ -86,7 +89,62 @@
         st.transform('t' + x + ',' + y);
     }
 
-    function drawCabinet(paper, x, y) {}
+    function drawCabinet(paper, x, y) {
+        var st = paper.set(),
+            drawerSet = paper.set();
+
+        st.push(paper.rect(14, 174, 12, 130).attr({
+            fill: '#9d9d9e',
+            stroke: 'none'
+        }));
+
+        drawerSet.push(
+            paper.rect(26, 174, 35, 40).attr({
+                fill: '#dcdbdd',
+                stroke: 'none'
+            }),
+            paper.rect(34, 180, 17, 8).attr({
+                stroke: '#fff',
+                "stroke-width": 2
+            }),
+            paper.rect(34, 204, 17, 4).attr({
+                fill: '#abacac',
+                stroke: 'none'
+            })
+        );
+
+        st.push(drawerSet,
+            p = paper.rect(26, 214, 35, 5).attr({
+                fill: '#9f9d9d',
+                stroke: 'none'
+            }),
+            drawerSet.clone().transform('t0,45'),
+            p.clone().transform('t0,45'),
+            drawerSet.clone().transform('t0,90')
+        );
+
+        //DRAW FLOWER
+        st.push(
+            paper.path('M29,160 L48,160').attr({
+                stroke: '#a19f9f',
+                "stroke-width": 2
+            }),
+            paper.path('M30,161 34,174 42,174 47,161 z').attr({
+                fill: '#9c9e9c',
+                stroke: 'none'
+            }),
+            paper.path('M37,159 37,149 39,147 39,144 40,144 41,140, 42,140').attr({
+                stroke: '#707576',
+                "stroke-width": 2
+            }),
+            paper.path('M40,146 45,147 48,150 51,152').attr({
+                stroke: '#878b8d',
+                "stroke-width": 3
+            })
+        );
+
+        applyTransform(x, y, st);
+    }
 
     function drawWorkTable(paper, x, y) {
         var st = paper.set(),
@@ -136,4 +194,27 @@
     function drawTVScreen(paper, x, y) {}
 
     function drawGuys(paper, x, y) {}
+
+    function drawWaterMachine(paper, x, y) {}
+
+    function drawBoss() {}
+
+    //** apply transform. Some of the elements will have 'double' transform and we don't want the second transorm to overrite the first
+    //** this functions works ONLY FOR ONE level of subordination
+    function applyTransform(x, y, st) {
+        var emx;
+        st.forEach(
+            function(element, index) {
+                if (element.length) {
+                    element.forEach(function(e, i) {
+                        emx = e.matrix.split();
+                        e.transform('t' + (x + emx.dx) + ',' + (y + emx.dy));
+                    });
+                } else {
+                    emx = element.matrix.split();
+                    element.transform('t' + (x + emx.dx) + ',' + (y + emx.dy));
+                }
+            }
+        );
+    }
 })();
