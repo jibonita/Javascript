@@ -151,21 +151,23 @@
 
     function drawWorkTable(paper, x, y) {
         var st = paper.set(),
-            feetSet = paper.set();
+            feetSet = paper.set(),
+            leftChairXShift = 136,
+            leftChairYShift = 256;
 
         // table carpet
         st.push(
-            paper.path('M136,304 182,289 565,289 609,304 z').attr({
-                fill: '#8e9090',
+            paper.path('M0,48 46,33 429,33 473,48 z').attr({
+                fill: '#938e8c',
                 stroke: 'none'
             })
         );
 
         feetSet.push(
-            paper.path('M165,283 L165,301'),
-            paper.path('M585,283 L585,301'),
-            paper.path('M203,283 L203,292'),
-            paper.path('M540,283 L540,292')
+            paper.path('M29,27 L29,45'),
+            paper.path('M449,27 L449,45'),
+            paper.path('M67,27 L67,36'),
+            paper.path('M404,27 L404,36')
         ).attr({
             stroke: '#5f6060',
             "stroke-width": 4
@@ -173,25 +175,25 @@
         st.push(feetSet);
 
         st.push(
-            paper.rect(163, 267, 424, 16).attr({
+            paper.rect(27, 11, 424, 16).attr({
                 fill: '#7a7c7c',
                 stroke: 'none'
             })
         );
 
         st.push(
-            paper.path('M163,267 L587,267 L 544,256 L203,256 z').attr({
+            paper.path('M27,11 L451,11 L408,0 L67,0 z').attr({
                 fill: '#fcfdfc',
                 stroke: 'none'
             })
         );
 
 
-        st.transform('t' + x + ',' + y);
+        st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
     }
 
     function drawChairs(paper, x, y) {
-        paper.clear();
+        //paper.clear();
 
         var foot,
             st = paper.set(),
@@ -230,6 +232,48 @@
         );
 
         st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
+    }
+
+    function drawWorkTable_ROOM_RELATIVE(paper, x, y) {
+        paper.clear();
+        var st = paper.set(),
+            feetSet = paper.set();
+
+        // table carpet
+        st.push(
+            paper.path('M136,304 182,289 565,289 609,304 z').attr({
+                fill: '#8e9090',
+                stroke: 'none'
+            })
+        );
+
+        feetSet.push(
+            paper.path('M165,283 L165,301'),
+            paper.path('M585,283 L585,301'),
+            paper.path('M203,283 L203,292'),
+            paper.path('M540,283 L540,292')
+        ).attr({
+            stroke: '#5f6060',
+            "stroke-width": 4
+        });
+        st.push(feetSet);
+
+        st.push(
+            paper.rect(163, 267, 424, 16).attr({
+                fill: '#7a7c7c',
+                stroke: 'none'
+            })
+        );
+
+        st.push(
+            paper.path('M163,267 L587,267 L 544,256 L203,256 z').attr({
+                fill: '#fcfdfc',
+                stroke: 'none'
+            })
+        );
+
+
+        st.transform('t' + x + ',' + y);
     }
 
     function drawChairs_ROOM_RELATIVE(paper, x, y) {
