@@ -1,4 +1,5 @@
 (function() {
+    var paper = Raphael(containerID, containerWidth, containerHeight);
 
     // background 1st - base level
     paper.rect(0, 0, containerWidth, 60).attr({
@@ -30,8 +31,6 @@
     drawWaterMachine(paper, 135, 27);
 
     drawGuys(paper, 135, 27);
-
-    drawBoss(paper);
 
 
     // draw chart outside the office
@@ -234,114 +233,14 @@
         st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
     }
 
-    function drawWorkTable_ROOM_RELATIVE(paper, x, y) {
-        paper.clear();
-        var st = paper.set(),
-            feetSet = paper.set();
-
-        // table carpet
-        st.push(
-            paper.path('M136,304 182,289 565,289 609,304 z').attr({
-                fill: '#8e9090',
-                stroke: 'none'
-            })
-        );
-
-        feetSet.push(
-            paper.path('M165,283 L165,301'),
-            paper.path('M585,283 L585,301'),
-            paper.path('M203,283 L203,292'),
-            paper.path('M540,283 L540,292')
-        ).attr({
-            stroke: '#5f6060',
-            "stroke-width": 4
-        });
-        st.push(feetSet);
-
-        st.push(
-            paper.rect(163, 267, 424, 16).attr({
-                fill: '#7a7c7c',
-                stroke: 'none'
-            })
-        );
-
-        st.push(
-            paper.path('M163,267 L587,267 L 544,256 L203,256 z').attr({
-                fill: '#fcfdfc',
-                stroke: 'none'
-            })
-        );
-
-
-        st.transform('t' + x + ',' + y);
-    }
-
-    function drawChairs_ROOM_RELATIVE(paper, x, y) {
-        paper.clear();
-
-        var foot,
-            st = paper.set(),
-            a, b;
-
-        st.push(
-
-            paper.path('M85,235 85,286 90,286 90,235 z').attr({
-                fill: '#393c3c',
-                stroke: 'none'
-            }),
-            paper.path('M90,279 90,286 137,286 137,279 z').attr({
-                fill: '#353332',
-                stroke: 'none'
-            }),
-            paper.set(
-                foot = paper.rect(87, 286, 3, 13),
-                //foot.clone().transform('t45,0'),
-                paper.rect(132, 286, 3, 13),
-                paper.rect(109, 286, 3, 5),
-                paper.rect(148, 277, 3, 14)
-            ).attr({
-                fill: '#696666',
-                stroke: 'none'
-            }),
-            paper.path('M90,279 137,279 137,286 161,274 161,269 113,269 z').attr({
-                fill: '#bab8b3',
-                stroke: 'none'
-            }),
-            paper.path('M90,235 90,279 113,269 113,235 z').attr({
-                fill: '#5c5e60',
-                stroke: 'none'
-            })
-        );
-
-        //st.clone().transform('t100,0s-1,1');
-        //st.clone().transform('t100,0 s-1,1');
-
-        //st.transform('t' + x + ',' + y);
-
-        // paper.path('M185,0 185,304');
-        // a = paper.rect(85, 235, 5, 51).attr({
-        //     fill: '#393c3c',
-        //     stroke: 'none'
-        // }),
-        // b = paper.rect(90, 279, 47, 7).attr({
-        //     fill: '#353332',
-        //     stroke: 'none'
-        // })
-        // console.log(b.matrix);
-        // console.log(b.matrix.clone().scale(2));
-    }
-
     function drawRoomChart(paper, x, y) {}
 
     function drawClock(paper, x, y) {}
 
     function drawTVScreen(paper, x, y) {}
 
-    function drawGuys(paper, x, y) {}
-
     function drawWaterMachine(paper, x, y) {}
 
-    function drawBoss() {}
 
     //** apply transform. Some of the elements will have 'double' transform and we don't want the second transorm to overrite the first
     //** this functions works ONLY FOR ONE level of subordination
