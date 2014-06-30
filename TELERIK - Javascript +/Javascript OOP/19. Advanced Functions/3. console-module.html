@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="console-module.js"></script>
+</head>
+<body>
+    <div class="container">
+        Please open the Console block of your browser
+    </div>
+    <script>
+        //tests
+
+        specialConsole.writeLine();
+        specialConsole.writeLine("Message: hello"); //logs to the console "Message: hello"
+        specialConsole.writeLine("Message: {0} {1}, {0} de!", "hello", "Ribok"); //logs to the console "Message: hello Ribok, hello de!"
+
+        // print objects
+        var student = { name: "Ivan", age: 17 };
+        specialConsole.writeLine(student);
+        var div = document.getElementsByClassName("container")[0];
+        specialConsole.writeLine(div);
+
+        // print errors
+        specialConsole.writeError("Error: {0}", "Something happened");
+        specialConsole.writeError("Error: {0}, {1}", "Something happened", "Tomorrow is the day!");
+
+        // warning
+        specialConsole.writeWarning("Warning: {0}", "A warning");
+    </script>
+</body>
+</html>
