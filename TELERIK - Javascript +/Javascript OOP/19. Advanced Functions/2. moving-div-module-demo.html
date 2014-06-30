@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            position: relative;
+        }
+        div{
+            position: absolute;
+        }
+        .container{
+            position: relative;
+            margin: 300px auto auto 700px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    </div>
+
+    <script src="moving-module.js"></script>
+    <script>
+        //This is the DEMO
+        movingShapes.add("ellipse");
+        movingShapes.add("ellipse", ".container");
+        movingShapes.add("rect");
+        movingShapes.add("ellipse");
+        movingShapes.add("rect", ".container");
+        movingShapes.add("ellipse");
+        movingShapes.add("ellipse", ".container");
+        movingShapes.add("rect");
+        movingShapes.add("ellipse", ".container");
+    </script>
+
+</body>
+</html>
