@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>Canvas Module Demo</title>
+	<style type="text/css">
+	canvas{
+		height: 500px;
+		width: 700px;
+		border: 1px dashed red;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="drawMe" width="700" height="500" ></canvas>
+
+	<script src="canvas-module.js"></script>
+	<script type="text/javascript">
+		var drawScreen = new Shape("#drawMe");
+		
+		drawScreen.rect({
+			y:14,
+			x:25,
+			height:50,
+			"stroke-style": "red",
+			width:23
+		});
+
+		drawScreen.circle({
+			y:100,
+			x:250,
+			r:50,
+			"fill-style": "#f563ae",
+			"stroke-style": "#12ff34",
+			"line-width":7
+		});
+
+		// default color and width line:
+		drawScreen.line({
+			y2:200,
+			x1:150,
+			x2:56,
+			y1:400
+		});
+
+		drawScreen.line({
+			y2:100,
+			x1:250,
+			x2:50,
+			y1:300,
+			"stroke-style": "#77a390",
+			"line-width":4
+		});
+		// wrong circle - will throw an exception in the console
+		drawScreen.circle({
+			y:100,
+			x:250
+		});
+	</script>
+</body>
+</html>
