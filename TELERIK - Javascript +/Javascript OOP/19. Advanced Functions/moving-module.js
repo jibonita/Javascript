@@ -5,7 +5,8 @@ var movingShapes = (function() {
 
     function addMovingShape(moveType, container) {
         var element = createElement();
-        if (!container) container = "body";
+        //if (!container) container = "body";
+        container = container || "body";
         document.querySelector(container).appendChild(element);
 
         setInitialTopLeft(element);
