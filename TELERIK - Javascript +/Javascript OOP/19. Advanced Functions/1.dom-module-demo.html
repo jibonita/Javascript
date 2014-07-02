@@ -1,0 +1,87 @@
+<html>
+<head>
+	<title>DOM Module Demo</title>
+	<script src="dom-module.js"></script>
+    <style>
+        .container {
+            position: relative;
+        }
+
+        .fixed-div {
+            position: absolute;
+            height: 300px;
+            width: 300px;
+            border: 2px solid black;
+            color: black;
+        }
+
+        .fixed-result-div {
+            background: yellow;
+            top: 40px;
+            left: 10px;
+        }
+
+        .uls-result-div {
+            background: red;
+            top: 10px;
+            left: 400px;
+        }
+    </style>
+</head>
+<body>
+	<div class="container content-wrapper">
+        <aside id="popular-videos-today">
+            <h2 class="show">Click Here To Display Buffer Demo</h2>
+            <ul>
+                <li data-img-count="1" class="active">Deadliest Catch Fantasy Game: Deadliest Catch Fantasy Game: Scoring Recaps</li>
+                <li data-img-count="2">MythBusters: JATO Revisited</li>
+                <li data-img-count="3">MythBusters: JATO Rocket Car Aftershow</li>
+                <li data-img-count="4">After the Catch 6: After the Catch 2012 - View From Shore</li>
+                <li data-img-count="5">Discover National Parks: America&#39;s Natural Wonders</li>
+                <li data-img-count="6">Deadliest Catch 9: Deadliest Catch: Season 9 Video Highlights</li>
+                <li data-img-count="7">Dinosaurs: Dinosaur Videos</li>
+            </ul>
+        </aside>
+    </div>
+
+    <script>
+        // This is the DEMO
+        // I've changed the BUFFER SIZE to 5, so here only 5 DIVs will be added to the DOM. The 6th one will stay in the buffer
+
+
+        var divYellow = createDemoContainer("fixed-result-div");
+
+        var divRed = createDemoContainer("uls-result-div");
+
+        domModule.addHandler(".show", "click", function () {
+            bufferOneDemo();
+            bufferTwoDemo();
+        });
+
+        function createDemoContainer(classname) {
+            var div = document.createElement("div");
+            div.className = "fixed-div " + classname;
+            domModule.addElement(div, ".container");
+            return div;
+        }
+        function bufferOneDemo() {
+            for (var i = 0; i < 6; i++) {
+                var addElem = divYellow.cloneNode(true);
+                addElem.innerHTML = i;
+                addElem.style.top = (i + 1) * 10 + "px";
+                addElem.style.left = (i + 1) * 10 + "px";
+                domModule.addToBuffer(".fixed-result-div", addElem);
+            }
+		}
+
+        function bufferTwoDemo() {
+            //get the LI elements found somewhere in the page and using the buffer put them in the "red" container
+            var ulVideos = domModule.css("#popular-videos-today ul li");
+            var i;
+            for (i = 0; i < ulVideos.length; i++) {
+                domModule.addToBuffer(".uls-result-div", ulVideos[i]);
+            }
+        }
+    </script>
+</body>
+</html>
