@@ -4,8 +4,14 @@
 	<style>
 		#container svg{
 			background: #dcdede;
-
 			border: 1px solid red;
+			border-radius: 10px;
+		}
+		#container .the-canvas{
+			position: absolute;
+			top:10px;
+			left:10px;
+			border: 1px solid green;
 			border-radius: 10px;
 		}
 	</style>
@@ -15,11 +21,13 @@
 <div id="container"></div>
 <div><img src="mockups/2014-06-24_173403.png"></div>
 
+<script src='scripts/libs/jquery-2.1.1.min.js'></script>
 <script src='scripts/libs/raphael-min.js'></script>
 <script src='scripts/libs/kinetic.min.js'></script>
 <script src='scripts/_references.js'></script>
 <script src='scripts/settings.js'></script>
 
+<script src='scripts/room-widgets.js'></script>
 <script src='scripts/background.js'></script>
 <script src='scripts/google-guys.js'></script>
 
