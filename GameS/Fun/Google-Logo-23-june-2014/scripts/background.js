@@ -1,38 +1,6 @@
 (function() {
     var paper = Raphael(containerID, containerWidth, containerHeight);
 
-    // background 1st - base level
-    paper.rect(0, 0, containerWidth, 60).attr({
-        fill: '#acadac',
-        stroke: 'none'
-    });
-
-    paper.rect(0, containerHeight - 60, containerWidth, 60).attr({
-        fill: '#acadac',
-        stroke: 'none'
-    });
-
-    drawOutOfficeChart(paper, 22, 90);
-
-    drawRoomWalls(paper, 135, 27);
-
-    drawCabinet(paper, 135, 27);
-
-    drawWorkTable(paper, 135, 27);
-
-    drawChairs(paper, 135, 27);
-
-    drawRoomChart(paper, 135, 27);
-
-    drawClock(paper, 135, 27);
-
-    drawTVScreen(paper, 135, 27);
-
-    drawWaterMachine(paper, 135, 27);
-
-    drawGuys(paper, 135, 27);
-
-
     // draw chart outside the office
     function drawOutOfficeChart(paper, x, y) {
         var st = paper.set();
@@ -233,15 +201,6 @@
         st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
     }
 
-    function drawRoomChart(paper, x, y) {}
-
-    function drawClock(paper, x, y) {}
-
-    function drawTVScreen(paper, x, y) {}
-
-    function drawWaterMachine(paper, x, y) {}
-
-
     //** apply transform. Some of the elements will have 'double' transform and we don't want the second transorm to overrite the first
     //** this functions works ONLY FOR ONE level of subordination
     function applyTransform(x, y, st) {
@@ -260,4 +219,26 @@
             }
         );
     }
+
+    // background 1st - base level
+    paper.rect(0, 0, containerWidth, 60).attr({
+        fill: '#acadac',
+        stroke: 'none'
+    });
+
+    paper.rect(0, containerHeight - 60, containerWidth, 60).attr({
+        fill: '#acadac',
+        stroke: 'none'
+    });
+
+    drawOutOfficeChart(paper, 22, 90);
+
+    drawRoomWalls(paper, 135, 27);
+
+    drawCabinet(paper, 135, 27);
+
+    drawWorkTable(paper, 135, 27);
+
+    drawChairs(paper, 135, 27);
+
 })();
