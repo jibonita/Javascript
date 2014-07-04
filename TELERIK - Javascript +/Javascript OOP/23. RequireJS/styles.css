@@ -1,0 +1,25 @@
+#container{
+	width: 200px;
+}
+#display{
+	background: url(images/bottom_arrow.png) center right no-repeat;
+	border: 1px dashed #D4DBED;
+}
+/*div{	
+	border: 1px solid red;
+}
+div div{	
+	border: 1px solid green;
+	margin: 5px;
+}*/
+.hovered{
+	background: #ccc;
+}
+
+.person-item{
+	border: 1px solid #333;
+}
+.person-item img{
+	height: 40px;
+	width: auto;
+}
