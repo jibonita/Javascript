@@ -35,19 +35,6 @@ $.fn.gallery = function() {
         // make the gallery thumbnails not clickable removing their 'onclick' event handler
         $this.find('.image-container').off('click');
 
-        // add event handler to the previous image
-        $this.find('.selected .previous-image').on('click', {
-            elem: prevIndex
-        }, function(e) {
-            fillSelectedBlockWithImages(e.data.elem);
-        });
-
-        // add event handler to the next image
-        $this.find('.selected .next-image').on('click', {
-            elem: nextIndex
-        }, function(e) {
-            fillSelectedBlockWithImages(e.data.elem);
-        });
     };
 
     $this.find('.image-container').on('click', onClickHandler);
@@ -65,6 +52,19 @@ $.fn.gallery = function() {
         $this.find('.image-container').on('click', onClickHandler);
     });
 
+    // add event handler to the previous image
+    $this.find('.selected .previous-image').on('click', function(e) {
+        selectedIndex = prevIndex;
+        fillSelectedBlockWithImages(selectedIndex);
+    });
+
+    // add event handler to the next image
+    $this.find('.selected .next-image').on('click', function(e) {
+        selectedIndex = nextIndex;
+        fillSelectedBlockWithImages(selectedIndex);
+    });
+
+
     function getColumns(args) {
         if (args.length > 0) {
             return args[0];
@@ -78,21 +78,21 @@ $.fn.gallery = function() {
         nextIndex = (selectedIndex < imagesCount ? selectedIndex + 1 : 1);
 
         // enlarge current clicked image
-        $this.find('.selected .current-image').html(
-            $this.find('.image-container:nth-child(' + selectedIndex + ')').html()
+        $this.find('.selected .current-image img')
+            .attr('src',
+                $this.find('.image-container:nth-child(' + selectedIndex + ') img').attr('src')
         );
-        $this.find('.selected .current-image img').attr('id', 'current-image').removeAttr('data-info');
 
         // set previous image
-        $this.find('.selected .previous-image').html(
-            $this.find('.image-container:nth-child(' + prevIndex + ')').html()
+        $this.find('.selected .previous-image img')
+            .attr('src',
+                $this.find('.image-container:nth-child(' + prevIndex + ') img').attr('src')
         );
-        $this.find('.selected .previous-image img').attr('id', 'previous-image').removeAttr('data-info');
 
         // set previous and next images
-        $this.find('.selected .next-image').html(
-            $this.find('.image-container:nth-child(' + nextIndex + ')').html()
+        $this.find('.selected .next-image img')
+            .attr('src',
+                $this.find('.image-container:nth-child(' + nextIndex + ') img').attr('src')
         );
-        $this.find('.selected .next-image img').attr('id', 'next-image').removeAttr('data-info');
     }
 };
