@@ -7,11 +7,10 @@
         }
     });
 
-    require(['jquery', 'combo-box', 'data/data'], function(_jq, controls, data) {
+    require(['jquery', 'combo-box', 'data/data'], function(_jq, controls, people) {
 
         // putting the function in $() is equal to '$.ready' which is 'document.onload'
         $(function() {
-
             var comboBox = controls.ComboBox(people);
             var template = $("#person-template").html();
             var comboBoxHtml = comboBox.render(template);

@@ -73,7 +73,7 @@ define(['handlebars'], function() {
                     $resultHtml.append($displayBox).append($comboWrapper);
                     return $resultHtml;
                 };
-                return '';
+                return null;
 
             }
         };
