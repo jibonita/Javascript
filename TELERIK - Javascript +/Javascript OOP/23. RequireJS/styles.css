@@ -5,6 +5,9 @@
 	background: url(images/bottom_arrow.png) center right no-repeat;
 	border: 1px dashed #D4DBED;
 }
+#display .person-item{
+	border: 1px dashed #D4DBED;
+}
 /*div{	
 	border: 1px solid red;
 }
