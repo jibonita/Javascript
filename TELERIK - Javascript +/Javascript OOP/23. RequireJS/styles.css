@@ -12,7 +12,7 @@ body{
 	border: 1px dashed #D4DBED;
 }
 
-.hovered{
+#combo-wrapper .hovered{
 	background: #ccc;
 }
 

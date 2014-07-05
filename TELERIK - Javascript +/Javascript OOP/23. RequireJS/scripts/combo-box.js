@@ -1,24 +1,19 @@
 define(['handlebars'], function() {
-    jQuery.fn.outerHTML = function() {
-        return jQuery('<div />').append(this.eq(0).clone()).html();
-    };
+    var comboWrapperId = 'combo-wrapper';
+
     var ComboBox = (function() {
-        var selectedOptionClass = 'selected-option';
 
         function ComboBox(data) {
-            console.log("in constructo:" + data.length);
-
             this.data = data;
-
         }
 
         function addEvents(element, display) {
             var $element = $(element),
                 $displayBox = $(display);
 
-            // TODO the element that is selected should not have the same id as the elements from the drop-down
             $element.children().on('click', function() {
-                $displayBox.html($(this).removeClass('hovered').outerHTML());
+                // the element that is selected should not have the same id as the elements from the drop-down
+                $displayBox.empty().append($(this).clone().removeClass('hovered').removeAttr('id'));
                 $element.hide();
             });
 
@@ -49,27 +44,16 @@ define(['handlebars'], function() {
                     $displayBox = $('<div>').attr('id', 'display').html("Select option...");
 
                     // create drop-down
-                    $comboWrapper = $('<div>').attr('id', 'combo-wrapper').hide();
+                    $comboWrapper = $('<div>').attr('id', comboWrapperId).hide();
 
                     var goTemplate = Handlebars.compile(template);
-                    // $comboWrapper.html(goTemplate({
-                    //     options: this.data
-                    // }));
                     for (var i = 0; i < this.data.length; i++) {
                         var item = goTemplate(this.data[i]);
                         $(item).appendTo($comboWrapper);
-                        //$comboWrapper.append($(goTemplate(this.data[i])));
                     };
-
-                    //$comboWrapper.children().first().addClass('selected');
 
                     addEvents($comboWrapper, $displayBox);
 
-
-                    // $('#container').html($displayBox.outerHTML() + $comboWrapper.outerHTML());
-                    // $('#container').append($displayBox);
-                    // $('#container').append($comboWrapper);
-                    //return $displayBox.outerHTML() + $comboWrapper.outerHTML();
                     $resultHtml.append($displayBox).append($comboWrapper);
                     return $resultHtml;
                 };
