@@ -1,18 +1,21 @@
 var directions = {
     right: {
-        x: 1,
-        y: 0
+        dx: 1,
+        dy: 0
     },
     left: {
-        x: -1,
-        y: 0
+        dx: -1,
+        dy: 0
     },
     top: {
-        x: 0,
-        y: -1
+        dx: 0,
+        dy: -1
     },
     bottom: {
-        x: 0,
-        y: 1
+        dx: 0,
+        dy: 1
     }
-}
+};
+
+var CELL_SIZE = 24;
+var INITIAL_SNAKE_LENGTH = 5;

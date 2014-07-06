@@ -1,15 +1,23 @@
 <html>
 <head>
 	<title>Snake</title>
-	<script src="scripts/libs/require.js" data-main="scripts/main"></script>
+	<script src="scripts/libs/require.min.js" data-main="scripts/main"></script>
+	<style type="text/css">
+	#snake-canvas{
+		background: #3a4719;
+	}
+	</style>
 </head>
 <body>
-	<div id="container"></div>
+	<div id="container">
+		<div>The game is not completed and it's very BUGGY!</div>
+		<canvas id="snake-canvas" width="900" height="600"></canvas>
+	</div>
 
 	<script src="scripts/constants.js"></script>
 	<script src="scripts/game-objects.js"></script>
 	<script src="scripts/renderer.js"></script>
-	<script src="scripts/game-control.js"></script>
-	
+	<script src="scripts/engine.js"></script>
+		
 </body>
 </html>
