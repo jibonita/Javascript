@@ -19,3 +19,4 @@ var directions = {
 
 var CELL_SIZE = 24;
 var INITIAL_SNAKE_LENGTH = 5;
+var WALLS_COUNT = 10;

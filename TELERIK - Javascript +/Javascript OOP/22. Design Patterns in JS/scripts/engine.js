@@ -5,6 +5,10 @@ var engine = (function() {
 
     // add events 
     function addSnakeMovementEvents(gameItems, renderer) {
+        var gameItems = this._gameItems,
+            renderer = this.renderer,
+            snake = this.snake;
+
         $(document).keydown(function(e) {
             var direction,
                 dirKeyPressed = true,
@@ -12,8 +16,7 @@ var engine = (function() {
                 actions = {
                     move: false,
                     eat: false
-                },
-                snake = gameItems[0];
+                };
 
             switch (e.keyCode) {
                 case 37:
@@ -88,6 +91,7 @@ var engine = (function() {
         for (var i = 1; i < objects.length; i++) {
             var item = objects[i];
             if (item.getPosition().x === position.x && item.getPosition().y === position.y) {
+
                 if (item instanceof gameObject.Food) {
                     objects.splice(i, 1);
                     actions = {
@@ -112,34 +116,38 @@ var engine = (function() {
     }
 
     function generateWalls() {
-        //TODO: replace with random
+        var walls = [],
+            position,
+            generatedWall;
 
-        var wallsCount = 10;
-        var walls = [new gameObject.Wall({
-                x: 24,
-                y: 48
-            }, CELL_SIZE),
-            new gameObject.Wall({
-                x: 240,
-                y: 480
-            }, CELL_SIZE),
-            new gameObject.Wall({
-                x: 480,
-                y: 240
-            }, CELL_SIZE)
-        ];
+        for (var i = 0; i < WALLS_COUNT; i++) {
+            position = getRandomPosition();
+            generatedWall = new gameObject.Wall(position, CELL_SIZE);
+
+            //TODO: Check for repeated coordinates
+
+            walls.push(generatedWall);
+        };
 
         return walls;
     }
 
     function generateFood() {
-        var food = [];
-        food.push(new gameObject.Food({
-            x: random(0, 37) * CELL_SIZE,
-            y: random(0, 24) * CELL_SIZE
-        }, CELL_SIZE));
+        var food = [],
+            position = getRandomPosition();
+        food.push(new gameObject.Food(position, CELL_SIZE));
 
         return food;
+    }
+
+    function getRandomPosition() {
+        var position = {
+            x: random(0, 36) * CELL_SIZE,
+            y: random(0, 24) * CELL_SIZE
+        };
+        // TODO: Use the this._positionsMap to check if generated position is free
+
+        return position;
     }
 
     var Game = (function() {
@@ -150,35 +158,35 @@ var engine = (function() {
             this.self = this;
             this.renderer = renderer;
             this.snake = new gameObject.Snake({
-                x: 120,
-                y: 144
+                x: INITIAL_SNAKE_LENGTH * CELL_SIZE,
+                y: random(6, 24) * CELL_SIZE
             }, INITIAL_SNAKE_LENGTH, CELL_SIZE);
 
-            this.gameItems = [this.snake];
+            this._gameItems = [this.snake];
 
             for (var i = 0; i < walls.length; i++) {
-                this.gameItems.push(walls[i]);
+                this._gameItems.push(walls[i]);
             }
             for (var i = 0; i < food.length; i++) {
-                this.gameItems.push(food[i]);
+                this._gameItems.push(food[i]);
             }
+
+            this._positionsMap = [];
 
         }
         Game.prototype = {
             run: function() {
-                for (var i = 0; i < this.gameItems.length; i++) {
-                    this.renderer.draw(this.gameItems[i]);
+                for (var i = 0; i < this._gameItems.length; i++) {
+                    this.renderer.draw(this._gameItems[i]);
                 }
 
-                addSnakeMovementEvents(this.gameItems, this.renderer);
+                addSnakeMovementEvents.call(this);
 
             }
         };
 
         return Game;
     })();
-
-
 
     return {
         Game: Game

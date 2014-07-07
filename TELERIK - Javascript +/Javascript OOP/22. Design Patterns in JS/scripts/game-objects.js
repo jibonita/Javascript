@@ -87,44 +87,44 @@ var gameObject = (function() {
             };
         };
 
-        Snake.prototype.move = function(direction) {
-            var head = this.snakeBody[0],
-                firstPart = this.snakeBody[1];
-            if (head.getPosition().y === firstPart.getPosition().y) {
-                if (head.getPosition().x > firstPart.getPosition().x && direction == directions.left) {
-                    // no move;
-                    return false;
-                }
-                if (head.getPosition().x < firstPart.getPosition().x && direction == directions.right) {
-                    // no move;
-                    return false;
-                }
-            }
+        // Snake.prototype.move = function(direction) {
+        //     var head = this.snakeBody[0],
+        //         firstPart = this.snakeBody[1];
+        //     if (head.getPosition().y === firstPart.getPosition().y) {
+        //         if (head.getPosition().x > firstPart.getPosition().x && direction == directions.left) {
+        //             // no move;
+        //             return false;
+        //         }
+        //         if (head.getPosition().x < firstPart.getPosition().x && direction == directions.right) {
+        //             // no move;
+        //             return false;
+        //         }
+        //     }
 
-            if (head.getPosition().x === firstPart.getPosition().x) {
-                if (head.getPosition().y > firstPart.getPosition().y && direction == directions.top) {
-                    // no move;
-                    return false;
-                }
-                if (head.getPosition().y < firstPart.getPosition().y && direction == directions.bottom) {
-                    // no move;
-                    return false;
-                }
-            }
-            // move all the elements from the last to the second at the position of the cell before them
-            // i.e last-> set position of the 'before last', ..., third -> position of the 2nd, 2nd-> of the 1st
-            for (var i = this.size - 1; i > 0; i--) {
-                this.snakeBody[i].position = this.snakeBody[i - 1].position;
-            };
+        //     if (head.getPosition().x === firstPart.getPosition().x) {
+        //         if (head.getPosition().y > firstPart.getPosition().y && direction == directions.top) {
+        //             // no move;
+        //             return false;
+        //         }
+        //         if (head.getPosition().y < firstPart.getPosition().y && direction == directions.bottom) {
+        //             // no move;
+        //             return false;
+        //         }
+        //     }
+        //     // move all the elements from the last to the second at the position of the cell before them
+        //     // i.e last-> set position of the 'before last', ..., third -> position of the 2nd, 2nd-> of the 1st
+        //     for (var i = this.size - 1; i > 0; i--) {
+        //         this.snakeBody[i].position = this.snakeBody[i - 1].position;
+        //     };
 
-            // the first element of the snake, i.e its head, will move according to the direction
-            this.snakeBody[0].position = {
-                x: this.snakeBody[0].position.x + direction.dx * CELL_SIZE,
-                y: this.snakeBody[0].position.y + direction.dy * CELL_SIZE
-            };
+        //     // the first element of the snake, i.e its head, will move according to the direction
+        //     this.snakeBody[0].position = {
+        //         x: this.snakeBody[0].position.x + direction.dx * CELL_SIZE,
+        //         y: this.snakeBody[0].position.y + direction.dy * CELL_SIZE
+        //     };
 
-            return true;
-        };
+        //     return true;
+        // };
 
         return Snake;
     })();
