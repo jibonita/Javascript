@@ -4,17 +4,28 @@
         paths: {
             'jquery': 'libs/jquery-2.1.1.min',
             'kinetic': 'libs/kinetic.min',
-            'renderer': 'renderer'
+            'renderer': 'renderer',
+            'gameObject': 'game-objects',
+            'engine': 'engine'
         }
     });
 
-    require(['jquery'], function(_jq) {
+    require(['jquery', 'renderer', 'engine'], function(_jq, renderer, engine) {
 
         // putting the function in $() is equal to '$.ready' which is 'document.onload'
         $(function() {
             var gameRenderer = new renderer.Renderer('#snake-canvas');
-            var game = new engine.Game(gameRenderer);
-            game.run();
+            // var game = new engine.Game(gameRenderer);
+            // game.run();
         });
     });
+
+    // require(['jquery', 'constants'], function(_jq, Settings) {
+    //     console.log(Settings)
+    //     var settings = new Settings()
+    //     console.log(settings.CELL_SIZE)
+    //     console.log(settings.directions)
+    //     // putting the function in $() is equal to '$.ready' which is 'document.onload'
+
+    // });
 })();
