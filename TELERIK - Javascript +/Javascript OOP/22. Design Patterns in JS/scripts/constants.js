@@ -3,7 +3,7 @@ define(function() {
     var Settings = (function() {
 
         function Settings() {
-            var directions = {
+            this.directions = {
                 right: {
                     dx: 1,
                     dy: 0
@@ -31,5 +31,9 @@ define(function() {
 
     })();
 
-    return Settings;
+    return {
+        Settings: function() {
+            return new Settings();
+        }
+    };
 });

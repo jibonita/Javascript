@@ -15,17 +15,8 @@
         // putting the function in $() is equal to '$.ready' which is 'document.onload'
         $(function() {
             var gameRenderer = new renderer.Renderer('#snake-canvas');
-            // var game = new engine.Game(gameRenderer);
-            // game.run();
+            var game = new engine.Game(gameRenderer);
+            game.run();
         });
     });
-
-    // require(['jquery', 'constants'], function(_jq, Settings) {
-    //     console.log(Settings)
-    //     var settings = new Settings()
-    //     console.log(settings.CELL_SIZE)
-    //     console.log(settings.directions)
-    //     // putting the function in $() is equal to '$.ready' which is 'document.onload'
-
-    // });
 })();

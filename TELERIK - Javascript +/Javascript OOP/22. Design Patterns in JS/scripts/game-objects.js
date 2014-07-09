@@ -1,6 +1,7 @@
-define(['constants'], function(Settings) {
-    var directions = Settings.directions,
-        CELL_SIZE = Settings.CELL_SIZE;
+define(['constants'], function(constants) {
+    var settings = constants.Settings(),
+        directions = settings.directions,
+        CELL_SIZE = settings.CELL_SIZE;
 
     var gameObject = (function() {
         function GameObject(position, size) {

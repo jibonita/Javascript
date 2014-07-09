@@ -1,8 +1,9 @@
-define(['gameObject', 'renderer', 'constants'], function(gameObject, renderer, Settings) {
-    var directions = Settings.directions,
-        CELL_SIZE = Settings.CELL_SIZE,
-        INITIAL_SNAKE_LENGTH = Settings.INITIAL_SNAKE_LENGTH,
-        WALLS_COUNT = Settings.WALLS_COUNT;
+define(['gameObject', 'renderer', 'constants'], function(gameObject, renderer, constants) {
+    var settings = constants.Settings(),
+        directions = settings.directions,
+        CELL_SIZE = settings.CELL_SIZE,
+        INITIAL_SNAKE_LENGTH = settings.INITIAL_SNAKE_LENGTH,
+        WALLS_COUNT = settings.WALLS_COUNT;
 
     var Engine = (function() {
         function random(min, max) {
