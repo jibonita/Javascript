@@ -45,15 +45,26 @@ define(['constants'], function(constants) {
                 var head = this.snakeBody[0],
                     firstPart = this.snakeBody[1];
 
+                // TODO: fix the comparison for direction
 
                 if (head.getPosition().y === firstPart.getPosition().y) {
-                    // prevent the snake to move left when it's body stays to the left of the head    
-                    if (head.getPosition().x > firstPart.getPosition().x && direction == directions.left) {
+                    // prevent the snake to move left when it's body stays to the left of the head
+                    // if (head.getPosition().x > firstPart.getPosition().x && direction == directions.left) {
+                    //     // no move;
+                    //     return false;
+                    // }
+                    // // prevent the snake to move right when it's body stays to the right of the head
+                    // if (head.getPosition().x < firstPart.getPosition().x && direction == directions.right) {
+                    //     // no move;
+                    //     return false;
+                    // }
+
+                    if (head.getPosition().x > firstPart.getPosition().x && direction.dx == directions.left.dx && direction.dy == directions.left.dy) {
                         // no move;
                         return false;
                     }
                     // prevent the snake to move right when it's body stays to the right of the head
-                    if (head.getPosition().x < firstPart.getPosition().x && direction == directions.right) {
+                    if (head.getPosition().x < firstPart.getPosition().x && direction.dx == directions.right.dx && direction.dy == directions.right.dy) {
                         // no move;
                         return false;
                     }
@@ -61,12 +72,12 @@ define(['constants'], function(constants) {
 
                 if (head.getPosition().x === firstPart.getPosition().x) {
                     // prevent the snake to move up when it's body stays above the head
-                    if (head.getPosition().y > firstPart.getPosition().y && direction == directions.top) {
+                    if (head.getPosition().y > firstPart.getPosition().y && direction.dx == directions.top.dx && direction.dy == directions.top.dy) {
                         // no move;
                         return false;
                     }
                     // prevent the snake to move down when it's body stays below  the head
-                    if (head.getPosition().y < firstPart.getPosition().y && direction == directions.bottom) {
+                    if (head.getPosition().y < firstPart.getPosition().y && direction.dx == directions.bottom.dx && direction.dy == directions.bottom.dy) {
                         // no move;
                         return false;
                     }

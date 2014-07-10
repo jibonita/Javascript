@@ -24,7 +24,7 @@ define(function() {
 
             this.CELL_SIZE = 24;
             this.INITIAL_SNAKE_LENGTH = 5;
-            this.WALLS_COUNT = 10;
+            this.WALLS_COUNT = 2;
         }
 
         return Settings;
