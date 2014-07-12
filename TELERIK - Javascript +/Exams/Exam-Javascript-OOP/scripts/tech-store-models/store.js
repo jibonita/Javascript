@@ -12,19 +12,19 @@ define(['tech-store-models/item'], function(Item) {
 
         function sortByName(item1, item2) {
             // alphabetical sort is case insensitive sort by name 
-            return (item1.name.toLowerCase() < item2.name.toLowerCase() ? -1 : 1);
+            return (item1.name().toLowerCase() < item2.name().toLowerCase() ? -1 : 1);
         }
 
         function sortByPrice(item1, item2) {
             return item1.price - item2.price;
         }
 
-        function returnItemsWithType(typeList, sortBy) {
+        function getItemsByType(typeList, sortBy) {
             var itemsToReturn = [],
                 itemsList = this._itemsList.slice(0);
 
             itemsList.map(function(item) {
-                if (typeList.indexOf(item.type) > -1) {
+                if (typeList.indexOf(item.type()) > -1) {
                     itemsToReturn.push(item);
                 }
             });
@@ -37,7 +37,7 @@ define(['tech-store-models/item'], function(Item) {
             var itemsToReturn = [];
 
             this._itemsList.map(function(item) {
-                if (item.price >= min && item.price <= max) {
+                if (item.price() >= min && item.price() <= max) {
                     itemsToReturn.push(item);
                 }
             });
@@ -58,7 +58,6 @@ define(['tech-store-models/item'], function(Item) {
 
         Store.prototype = {
             addItem: function(item) {
-                //adds an item to the stock of the store. A store can keep in stock only items of type Item
                 if (!(item instanceof Item)) {
                     throw {
                         message: 'Trying to add to the Store an object that is not an instance of Item'
@@ -71,16 +70,16 @@ define(['tech-store-models/item'], function(Item) {
                 return returnSortedBy.call(this, sortByName);
             },
             getSmartPhones: function() {
-                return returnItemsWithType.call(this, ['smart-phone'], sortByName);
+                return getItemsByType.call(this, ['smart-phone'], sortByName);
             },
             getMobiles: function() {
-                return returnItemsWithType.call(this, ['smart-phone', 'tablet'], sortByName);
+                return getItemsByType.call(this, ['smart-phone', 'tablet'], sortByName);
             },
             getComputers: function() {
-                return returnItemsWithType.call(this, ['pc', 'notebook'], sortByName);
+                return getItemsByType.call(this, ['pc', 'notebook'], sortByName);
             },
             filterItemsByType: function(filterType) {
-                return returnItemsWithType.call(this, [filterType], sortByName);
+                return getItemsByType.call(this, [filterType], sortByName);
             },
             filterItemsByPrice: function(options) {
                 var options = options || {};
@@ -89,10 +88,10 @@ define(['tech-store-models/item'], function(Item) {
             countItemsByType: function() {
                 var typesToCountPairs = {};
                 this._itemsList.map(function(item) {
-                    if (item.type in typesToCountPairs) {
-                        typesToCountPairs[item.type]++;
+                    if (item.type() in typesToCountPairs) {
+                        typesToCountPairs[item.type()]++;
                     } else {
-                        typesToCountPairs[item.type] = 1;
+                        typesToCountPairs[item.type()] = 1;
                     }
                 });
                 return typesToCountPairs;
@@ -100,7 +99,7 @@ define(['tech-store-models/item'], function(Item) {
             filterItemsByName: function(partOfName) {
                 var itemsToReturn = [];
                 this._itemsList.map(function(item) {
-                    if (item.name.toLowerCase().indexOf(partOfName.toLowerCase()) > -1) {
+                    if (item.name().toLowerCase().indexOf(partOfName.toLowerCase()) > -1) {
                         itemsToReturn.push(item);
                     }
                 });
