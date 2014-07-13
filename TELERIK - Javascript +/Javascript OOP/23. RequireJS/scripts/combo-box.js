@@ -4,7 +4,7 @@ define(['handlebars'], function() {
     var ComboBox = (function() {
 
         function ComboBox(data) {
-            this.data = data;
+            this.data = data instanceof Array ? data : '';
         }
 
         function addEvents(element, display) {
@@ -14,7 +14,8 @@ define(['handlebars'], function() {
             $element.children().on('click', function() {
                 // the element that is selected should not have the same id as the elements from the drop-down
                 $displayBox.empty().append($(this).clone().removeClass('hovered').removeAttr('id'));
-                $element.hide();
+                //$element.hide();
+                $element.slideUp();
             });
 
             $element.children().on('mouseover', function() {
@@ -27,7 +28,8 @@ define(['handlebars'], function() {
             });
 
             $displayBox.on('click', function() {
-                $element.show();
+                //$element.show();
+                $element.slideDown();
             });
 
         }
