@@ -53,6 +53,12 @@ define(['tech-store-models/item'], function(Item) {
                     message: 'Store name length should be between ' + NAME_MIN_LENGTH + ' and ' + NAME_MAX_LENGTH
                 };
             }
+            if (!(typeof name === 'string' || typeof name === 'String')) {
+                throw {
+                    message: 'name bust be a string value'
+                };
+            }
+
             this._name = name;
         }
 

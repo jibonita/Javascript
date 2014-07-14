@@ -21,8 +21,11 @@ define([], function() {
                             message: 'Item name length should be between ' + NAME_MIN_LENGTH + ' and ' + NAME_MAX_LENGTH
                         };
                     }
-                    // TODO: Check if value is string
-
+                    if (!(typeof value === 'string' || typeof value === 'String')) {
+                        throw {
+                            message: 'name bust be a string value'
+                        };
+                    }
                     this._name = value;
                 }
                 return this._name;
