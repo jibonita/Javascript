@@ -1,8 +1,25 @@
-(function() {
+define(['raphael', 'settings'], function(Raphael, Settings) {
+    var containerID = Settings.container.containerID,
+        containerWidth = Settings.container.containerWidth,
+        containerHeight = Settings.container.containerHeight;
+
     var paper = Raphael(containerID, containerWidth, containerHeight);
 
+    function drawBases() {
+        // background 1st - base level
+        paper.rect(0, 0, containerWidth, 60).attr({
+            fill: '#acadac',
+            stroke: 'none'
+        });
+
+        paper.rect(0, containerHeight - 60, containerWidth, 60).attr({
+            fill: '#acadac',
+            stroke: 'none'
+        });
+    }
+
     // draw chart outside the office
-    function drawOutOfficeChart(paper, x, y) {
+    function drawOutOfficeChart(x, y) {
         var st = paper.set();
         st.push(
             paper.rect(0, 14, 82, 49).attr({
@@ -32,7 +49,7 @@
         st.transform('t' + x + ',' + y);
     }
 
-    function drawRoomWalls(paper, x, y) {
+    function drawRoomWalls(x, y) {
         var st = paper.set();
         st.push(
 
@@ -58,7 +75,7 @@
         st.transform('t' + x + ',' + y);
     }
 
-    function drawCabinet(paper, x, y) {
+    function drawCabinet(x, y) {
         var st = paper.set(),
             drawerSet = paper.set(),
             shelf;
@@ -116,7 +133,7 @@
         applyTransform(x, y, st);
     }
 
-    function drawWorkTable(paper, x, y) {
+    function drawWorkTable(x, y) {
         var st = paper.set(),
             feetSet = paper.set(),
             leftChairXShift = 136,
@@ -159,7 +176,7 @@
         st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
     }
 
-    function drawChairs(paper, x, y) {
+    function drawChairs(x, y) {
         //paper.clear();
 
         var foot,
@@ -220,25 +237,12 @@
         );
     }
 
-    // background 1st - base level
-    paper.rect(0, 0, containerWidth, 60).attr({
-        fill: '#acadac',
-        stroke: 'none'
-    });
-
-    paper.rect(0, containerHeight - 60, containerWidth, 60).attr({
-        fill: '#acadac',
-        stroke: 'none'
-    });
-
-    drawOutOfficeChart(paper, 22, 90);
-
-    drawRoomWalls(paper, 135, 27);
-
-    drawCabinet(paper, 135, 27);
-
-    drawWorkTable(paper, 135, 27);
-
-    drawChairs(paper, 135, 27);
-
-})();
+    return {
+        drawBases: drawBases,
+        drawOutOfficeChart: drawOutOfficeChart,
+        drawRoomWalls: drawRoomWalls,
+        drawCabinet: drawCabinet,
+        drawWorkTable: drawWorkTable,
+        drawChairs: drawChairs
+    };
+});
