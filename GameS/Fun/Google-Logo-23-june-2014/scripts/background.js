@@ -177,8 +177,7 @@ define(['raphael', 'settings'], function(Raphael, Settings) {
     }
 
     function drawChairs(x, y) {
-        //paper.clear();
-
+        var chairFeetColor = '#696666';
         var foot,
             st = paper.set(),
             leftChairXShift = 85,
@@ -202,7 +201,7 @@ define(['raphael', 'settings'], function(Raphael, Settings) {
                 paper.rect(24, 51, 3, 5),
                 paper.rect(63, 42, 3, 14)
             ).attr({
-                fill: '#696666',
+                fill: chairFeetColor,
                 stroke: 'none'
             }),
             paper.path('M5,44 52,44 52,51 76,39 76,34 28,34 z').attr({
