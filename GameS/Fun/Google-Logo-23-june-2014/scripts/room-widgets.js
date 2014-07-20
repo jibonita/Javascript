@@ -83,12 +83,151 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
     function drawTVScreen(x, y) {}
 
     function drawWaterMachine(x, y) {
-        var line,
+
+        drawWaterBottle(x, y);
+    }
+
+    function drawWaterBottle(x, y) {
+        var outlineColor = '#787a7c',
+            waterColor = '#a8bed7',
+            leftVerticalX = 5,
+            topHorizontalY = 3,
+            cornersRadius = 7,
+            centralWidth = 36,
+            verticalLinesLength = [10, 24, 10],
+            verticalRoundsRadius = 4,
+            waterPadding = 2;
+        var verticalLinesStartY = [],
+            rightVerticalX = leftVerticalX + 2 * cornersRadius + centralWidth;
+
+        verticalLinesStartY.push(topHorizontalY + cornersRadius);
+        verticalLinesStartY.push(verticalLinesStartY[0] + 2 * verticalRoundsRadius + verticalLinesLength[0]);
+        verticalLinesStartY.push(verticalLinesStartY[1] + 2 * verticalRoundsRadius + verticalLinesLength[1]);
+
+        var arc, line, vertRound,
+            line1, line2, line3,
             group = new Kinetic.Group();
 
-        // TODO
-
-
+        group.add(
+            // top horizontal line
+            line = new Kinetic.Line({
+                points: [leftVerticalX + cornersRadius, topHorizontalY, rightVerticalX - cornersRadius, topHorizontalY],
+                stroke: outlineColor,
+                tension: 1
+            }),
+            // top left round corner
+            arc = new Kinetic.Arc({
+                x: leftVerticalX + cornersRadius,
+                y: topHorizontalY + cornersRadius,
+                outerRadius: cornersRadius,
+                innerRadius: cornersRadius,
+                stroke: outlineColor,
+                strokeWidth: 1,
+                angle: 90,
+                rotationDeg: -180
+            }),
+            line1 = new Kinetic.Line({
+                points: [leftVerticalX, verticalLinesStartY[0], leftVerticalX, verticalLinesStartY[0] + verticalLinesLength[0]],
+                stroke: outlineColor,
+                tension: 1
+            }),
+            //1st vertical round at the left,
+            vertRound = new Kinetic.Arc({
+                x: leftVerticalX,
+                y: verticalLinesStartY[0] + verticalLinesLength[0] + verticalRoundsRadius,
+                outerRadius: verticalRoundsRadius,
+                innerRadius: verticalRoundsRadius,
+                stroke: outlineColor,
+                strokeWidth: 1,
+                angle: 180,
+                rotationDeg: 90
+            }),
+            line2 = new Kinetic.Line({
+                points: [leftVerticalX, verticalLinesStartY[1], leftVerticalX, verticalLinesStartY[1] + verticalLinesLength[1]],
+                stroke: outlineColor,
+                tension: 1
+            }),
+            //2nd vertical round at the left,
+            vertRound.clone({
+                x: vertRound.attrs.x,
+                y: verticalLinesStartY[1] + verticalLinesLength[1] + verticalRoundsRadius
+            }),
+            line3 = new Kinetic.Line({
+                points: [leftVerticalX, verticalLinesStartY[2], leftVerticalX, verticalLinesStartY[2] + verticalLinesLength[2]],
+                stroke: outlineColor,
+                tension: 1
+            }),
+            // bottom left round corner
+            new Kinetic.Arc({
+                x: leftVerticalX + cornersRadius,
+                y: verticalLinesStartY[2] + verticalLinesLength[2],
+                outerRadius: 7,
+                innerRadius: 7,
+                stroke: outlineColor,
+                strokeWidth: 1,
+                angle: 90,
+                rotationDeg: 90
+            }),
+            // top right round corner
+            new Kinetic.Arc({
+                x: rightVerticalX - cornersRadius,
+                y: topHorizontalY + cornersRadius,
+                outerRadius: cornersRadius,
+                innerRadius: cornersRadius,
+                stroke: outlineColor,
+                strokeWidth: 1,
+                angle: 90,
+                rotationDeg: -90
+            }),
+            line1.clone({
+                x: rightVerticalX - leftVerticalX,
+                y: line1.attrs.y
+            }),
+            //1st vertical round at the right,
+            vertRound.clone({
+                x: rightVerticalX,
+                y: vertRound.attrs.y,
+                rotationDeg: -90
+            }),
+            line2.clone({
+                x: rightVerticalX - leftVerticalX,
+                y: line1.attrs.y
+            }),
+            //2nd vertical round at the right,
+            vertRound.clone({
+                x: rightVerticalX,
+                y: 52 + verticalRoundsRadius,
+                rotationDeg: -90
+            }),
+            line3.clone({
+                x: rightVerticalX - leftVerticalX,
+                y: line1.attrs.y
+            }),
+            // bottom left round corner
+            new Kinetic.Arc({
+                x: rightVerticalX - cornersRadius,
+                y: 70,
+                outerRadius: 7,
+                innerRadius: 7,
+                stroke: outlineColor,
+                strokeWidth: 1,
+                angle: 90,
+                rotationDeg: 0
+            }),
+            // bottom horizontal line
+            line.clone({
+                x: line.attrs.x,
+                y: 70 - topHorizontalY + cornersRadius
+            }),
+            // add water
+            new Kinetic.Rect({
+                x: leftVerticalX + waterPadding,
+                y: verticalLinesStartY[1] + verticalLinesLength[1] / 2,
+                width: centralWidth + 2 * cornersRadius - 2 * waterPadding,
+                height: 70 - topHorizontalY + cornersRadius - (verticalLinesStartY[1] + verticalLinesLength[1] / 2),
+                fill: waterColor
+            })
+        );
 
 
         layer.add(group);
@@ -96,10 +235,9 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
     }
 
     function drawChairs(x, y) {
-        //paper.clear();
+        var chairFeetColor = '#696666'
 
         var foot,
-            //st = paper.set(),
             leftChairXShift = 85,
             leftChairYShift = 235;
 
@@ -111,7 +249,8 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
                 x: 2,
                 y: 51,
                 width: 3,
-                height: 13
+                height: 13,
+                fill: chairFeetColor
             }),
             foot.clone({
                 x: foot.attrs.x + 45,
@@ -121,18 +260,17 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
                 x: 24,
                 y: 51,
                 width: 3,
-                height: 5
+                height: 5,
+                fill: chairFeetColor
             }),
             new Kinetic.Rect({
                 x: 63,
                 y: 42,
                 width: 3,
-                height: 14
+                height: 14,
+                fill: chairFeetColor
             })
         );
-        feet.setAttrs({
-            fill: '#696666'
-        });
 
         // Left chair shift from room: x:85, y: 235
         group.add(
@@ -156,11 +294,9 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
             })
         );
 
-
-        // st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
         group.move({
-            x: x,
-            y: y
+            x: x + leftChairXShift,
+            y: y + leftChairYShift
         });
 
         layer.add(group);
