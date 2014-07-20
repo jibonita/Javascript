@@ -24,8 +24,6 @@
 
         background.drawChairs(135, 27);
 
-        roomWidgets.drawChairs(135, 27);
-
         // room widgets
         roomWidgets.drawRoomChart(135, 27);
 
