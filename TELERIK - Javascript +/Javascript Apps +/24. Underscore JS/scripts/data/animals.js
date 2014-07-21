@@ -1,7 +1,6 @@
 // I used this site to generate data: http://www.json-generator.com/
 // Code generator:
 // var animals = ['ant', 'bird', 'cat', 'chicken', 'cow', 'dog', 'elephant', 'fish', 'fox', 'horse', 'kangaroo', 'lion', 'monkey', 'penguin', 'pig', 'rabbit', 'sheep', 'tiger', 'whale', 'wolf'];
-
 // [
 //   '{{repeat(50)}}',
 //   {
@@ -12,7 +11,7 @@
 //     }
 //   }
 // ]
-//** PLEASE NOTE THAT ANIMAL SPECIE AND NUMBER OF LEGS ARE NOT CONSISTENT IN THIS JSON ABJECT!!!!!!!
+//** PLEASE NOTE THAT ANIMAL SPECIE AND NUMBER OF LEGS ARE NOT CONSISTENT IN THIS JSON OBJECT!!!!!!!
 
 var animals = [{
     "id": 0,
