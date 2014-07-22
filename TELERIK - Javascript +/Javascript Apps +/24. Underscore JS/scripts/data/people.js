@@ -16,406 +16,411 @@
 //   }
 // ]
 
-var people = [
-    [{
-        "id": 0,
-        "firstname": "Elizabet",
-        "lastname": "Biddle"
-    }, {
-        "id": 1,
-        "firstname": "Warner",
-        "lastname": "Espiritu"
-    }, {
-        "id": 2,
-        "firstname": "Libbie",
-        "lastname": "Edmonson"
-    }, {
-        "id": 3,
-        "firstname": "Kathleen",
-        "lastname": "Edmonson"
-    }, {
-        "id": 4,
-        "firstname": "Libbie",
-        "lastname": "Digennaro"
-    }, {
-        "id": 5,
-        "firstname": "Andres",
-        "lastname": "Natale"
-    }, {
-        "id": 6,
-        "firstname": "Melania",
-        "lastname": "Gorman"
-    }, {
-        "id": 7,
-        "firstname": "Ken",
-        "lastname": "Xu"
-    }, {
-        "id": 8,
-        "firstname": "Sanjuanita",
-        "lastname": "Jaco"
-    }, {
-        "id": 9,
-        "firstname": "Danica",
-        "lastname": "Trott"
-    }, {
-        "id": 10,
-        "firstname": "Jacklyn",
-        "lastname": "Quill"
-    }, {
-        "id": 11,
-        "firstname": "Elizabet",
-        "lastname": "Low"
-    }, {
-        "id": 12,
-        "firstname": "Kendrick",
-        "lastname": "Zeolla"
-    }, {
-        "id": 13,
-        "firstname": "Libbie",
-        "lastname": "Zeolla"
-    }, {
-        "id": 14,
-        "firstname": "Ken",
-        "lastname": "Quill"
-    }, {
-        "id": 15,
-        "firstname": "Beatris",
-        "lastname": "Torgrimson"
-    }, {
-        "id": 16,
-        "firstname": "Sanjuanita",
-        "lastname": "Quill"
-    }, {
-        "id": 17,
-        "firstname": "Elizabet",
-        "lastname": "Trott"
-    }, {
-        "id": 18,
-        "firstname": "Christia",
-        "lastname": "Levesque"
-    }, {
-        "id": 19,
-        "firstname": "Zonia",
-        "lastname": "Trott"
-    }, {
-        "id": 20,
-        "firstname": "Melania",
-        "lastname": "Duckett"
-    }, {
-        "id": 21,
-        "firstname": "Libbie",
-        "lastname": "Hooks"
-    }, {
-        "id": 22,
-        "firstname": "Elease",
-        "lastname": "Hooks"
-    }, {
-        "id": 23,
-        "firstname": "Sanjuanita",
-        "lastname": "Quill"
-    }, {
-        "id": 24,
-        "firstname": "Taunya",
-        "lastname": "Biddle"
-    }, {
-        "id": 25,
-        "firstname": "Nancy",
-        "lastname": "Redfearn"
-    }, {
-        "id": 26,
-        "firstname": "Edison",
-        "lastname": "Edmonson"
-    }, {
-        "id": 27,
-        "firstname": "Ken",
-        "lastname": "Jacobsen"
-    }, {
-        "id": 28,
-        "firstname": "Kathleen",
-        "lastname": "Espiritu"
-    }, {
-        "id": 29,
-        "firstname": "Christia",
-        "lastname": "Hooks"
-    }, {
-        "id": 30,
-        "firstname": "Sanjuanita",
-        "lastname": "Trott"
-    }, {
-        "id": 31,
-        "firstname": "Jacklyn",
-        "lastname": "Peebles"
-    }, {
-        "id": 32,
-        "firstname": "Melania",
-        "lastname": "Gorman"
-    }, {
-        "id": 33,
-        "firstname": "Taunya",
-        "lastname": "Kalish"
-    }, {
-        "id": 34,
-        "firstname": "Val",
-        "lastname": "Hooks"
-    }, {
-        "id": 35,
-        "firstname": "Elizabet",
-        "lastname": "Reigle"
-    }, {
-        "id": 36,
-        "firstname": "Taunya",
-        "lastname": "Peebles"
-    }, {
-        "id": 37,
-        "firstname": "Zonia",
-        "lastname": "Jaco"
-    }, {
-        "id": 38,
-        "firstname": "Taunya",
-        "lastname": "Hillary"
-    }, {
-        "id": 39,
-        "firstname": "Kalyn",
-        "lastname": "Jaco"
-    }, {
-        "id": 40,
-        "firstname": "Joseph",
-        "lastname": "Torgrimson"
-    }, {
-        "id": 41,
-        "firstname": "Joseph",
-        "lastname": "Digennaro"
-    }, {
-        "id": 42,
-        "firstname": "Sanjuanita",
-        "lastname": "Espiritu"
-    }, {
-        "id": 43,
-        "firstname": "Marquerite",
-        "lastname": "Edmonson"
-    }, {
-        "id": 44,
-        "firstname": "Libbie",
-        "lastname": "Low"
-    }, {
-        "id": 45,
-        "firstname": "Libbie",
-        "lastname": "Espiritu"
-    }, {
-        "id": 46,
-        "firstname": "Beatris",
-        "lastname": "Jacobsen"
-    }, {
-        "id": 47,
-        "firstname": "Zonia",
-        "lastname": "Gorman"
-    }, {
-        "id": 48,
-        "firstname": "Edison",
-        "lastname": "Levesque"
-    }, {
-        "id": 49,
-        "firstname": "Edison",
-        "lastname": "Espiritu"
-    }, {
-        "id": 50,
-        "firstname": "Kathleen",
-        "lastname": "Edmonson"
-    }, {
-        "id": 51,
-        "firstname": "Taunya",
-        "lastname": "Xu"
-    }, {
-        "id": 52,
-        "firstname": "Libbie",
-        "lastname": "Natale"
-    }, {
-        "id": 53,
-        "firstname": "Zonia",
-        "lastname": "Natale"
-    }, {
-        "id": 54,
-        "firstname": "Marquerite",
-        "lastname": "Xu"
-    }, {
-        "id": 55,
-        "firstname": "Edison",
-        "lastname": "Trott"
-    }, {
-        "id": 56,
-        "firstname": "Beatris",
-        "lastname": "Gorman"
-    }, {
-        "id": 57,
-        "firstname": "Jacklyn",
-        "lastname": "Biddle"
-    }, {
-        "id": 58,
-        "firstname": "Sanjuanita",
-        "lastname": "Edmonson"
-    }, {
-        "id": 59,
-        "firstname": "Andres",
-        "lastname": "Peebles"
-    }, {
-        "id": 60,
-        "firstname": "Marquerite",
-        "lastname": "Duckett"
-    }, {
-        "id": 61,
-        "firstname": "Sanjuanita",
-        "lastname": "Levesque"
-    }, {
-        "id": 62,
-        "firstname": "Taunya",
-        "lastname": "Hooks"
-    }, {
-        "id": 63,
-        "firstname": "Danica",
-        "lastname": "Kalish"
-    }, {
-        "id": 64,
-        "firstname": "Marquerite",
-        "lastname": "Jaco"
-    }, {
-        "id": 65,
-        "firstname": "Jacklyn",
-        "lastname": "Edmonson"
-    }, {
-        "id": 66,
-        "firstname": "Kendrick",
-        "lastname": "Levesque"
-    }, {
-        "id": 67,
-        "firstname": "Edison",
-        "lastname": "Jacobsen"
-    }, {
-        "id": 68,
-        "firstname": "Sanjuanita",
-        "lastname": "Hillary"
-    }, {
-        "id": 69,
-        "firstname": "Andres",
-        "lastname": "Espiritu"
-    }, {
-        "id": 70,
-        "firstname": "Marquerite",
-        "lastname": "Hooks"
-    }, {
-        "id": 71,
-        "firstname": "Kathleen",
-        "lastname": "Espiritu"
-    }, {
-        "id": 72,
-        "firstname": "Joseph",
-        "lastname": "Low"
-    }, {
-        "id": 73,
-        "firstname": "Erinn",
-        "lastname": "Low"
-    }, {
-        "id": 74,
-        "firstname": "Nancy",
-        "lastname": "Low"
-    }, {
-        "id": 75,
-        "firstname": "Ken",
-        "lastname": "Biddle"
-    }, {
-        "id": 76,
-        "firstname": "Danica",
-        "lastname": "Jacobsen"
-    }, {
-        "id": 77,
-        "firstname": "Taunya",
-        "lastname": "Natale"
-    }, {
-        "id": 78,
-        "firstname": "Jacklyn",
-        "lastname": "Jaco"
-    }, {
-        "id": 79,
-        "firstname": "Danica",
-        "lastname": "Digennaro"
-    }, {
-        "id": 80,
-        "firstname": "Elease",
-        "lastname": "Loar"
-    }, {
-        "id": 81,
-        "firstname": "Val",
-        "lastname": "Loar"
-    }, {
-        "id": 82,
-        "firstname": "Melania",
-        "lastname": "Kalish"
-    }, {
-        "id": 83,
-        "firstname": "Elizabet",
-        "lastname": "Natale"
-    }, {
-        "id": 84,
-        "firstname": "Sanjuanita",
-        "lastname": "Quill"
-    }, {
-        "id": 85,
-        "firstname": "Christia",
-        "lastname": "Duckett"
-    }, {
-        "id": 86,
-        "firstname": "Kathleen",
-        "lastname": "Jacobsen"
-    }, {
-        "id": 87,
-        "firstname": "Taunya",
-        "lastname": "Kalish"
-    }, {
-        "id": 88,
-        "firstname": "Ken",
-        "lastname": "Espiritu"
-    }, {
-        "id": 89,
-        "firstname": "Elease",
-        "lastname": "Zeolla"
-    }, {
-        "id": 90,
-        "firstname": "Edison",
-        "lastname": "Peebles"
-    }, {
-        "id": 91,
-        "firstname": "Kathleen",
-        "lastname": "Torgrimson"
-    }, {
-        "id": 92,
-        "firstname": "Warner",
-        "lastname": "Biddle"
-    }, {
-        "id": 93,
-        "firstname": "Edison",
-        "lastname": "Jaco"
-    }, {
-        "id": 94,
-        "firstname": "Sanjuanita",
-        "lastname": "Jacobsen"
-    }, {
-        "id": 95,
-        "firstname": "Nancy",
-        "lastname": "Edmonson"
-    }, {
-        "id": 96,
-        "firstname": "Christia",
-        "lastname": "Jacobsen"
-    }, {
-        "id": 97,
-        "firstname": "Edison",
-        "lastname": "Edmonson"
-    }, {
-        "id": 98,
-        "firstname": "Beatris",
-        "lastname": "Hillary"
-    }, {
-        "id": 99,
-        "firstname": "Sanjuanita",
-        "lastname": "Zeolla"
-    }]
-];
+var people = [{
+    "id": 0,
+    "firstname": "Elizabet",
+    "lastname": "Biddle"
+}, {
+    "id": 1,
+    "firstname": "Warner",
+    "lastname": "Espiritu"
+}, {
+    "id": 2,
+    "firstname": "Libbie",
+    "lastname": "Edmonson"
+}, {
+    "id": 3,
+    "firstname": "Kathleen",
+    "lastname": "Edmonson"
+}, {
+    "id": 4,
+    "firstname": "Libbie",
+    "lastname": "Digennaro"
+}, {
+    "id": 5,
+    "firstname": "Andres",
+    "lastname": "Natale"
+}, {
+    "id": 6,
+    "firstname": "Melania",
+    "lastname": "Gorman"
+}, {
+    "id": 7,
+    "firstname": "Ken",
+    "lastname": "Xu"
+}, {
+    "id": 8,
+    "firstname": "Sanjuanita",
+    "lastname": "Jaco"
+}, {
+    "id": 9,
+    "firstname": "Danica",
+    "lastname": "Trott"
+}, {
+    "id": 10,
+    "firstname": "Jacklyn",
+    "lastname": "Quill"
+}, {
+    "id": 11,
+    "firstname": "Elizabet",
+    "lastname": "Low"
+}, {
+    "id": 12,
+    "firstname": "Kendrick",
+    "lastname": "Zeolla"
+}, {
+    "id": 13,
+    "firstname": "Libbie",
+    "lastname": "Zeolla"
+}, {
+    "id": 14,
+    "firstname": "Ken",
+    "lastname": "Quill"
+}, {
+    "id": 15,
+    "firstname": "Beatris",
+    "lastname": "Torgrimson"
+}, {
+    "id": 16,
+    "firstname": "Sanjuanita",
+    "lastname": "Quill"
+}, {
+    "id": 17,
+    "firstname": "Elizabet",
+    "lastname": "Trott"
+}, {
+    "id": 18,
+    "firstname": "Christia",
+    "lastname": "Levesque"
+}, {
+    "id": 19,
+    "firstname": "Zonia",
+    "lastname": "Trott"
+}, {
+    "id": 20,
+    "firstname": "Melania",
+    "lastname": "Duckett"
+}, {
+    "id": 21,
+    "firstname": "Libbie",
+    "lastname": "Hooks"
+}, {
+    "id": 22,
+    "firstname": "Elease",
+    "lastname": "Hooks"
+}, {
+    "id": 23,
+    "firstname": "Sanjuanita",
+    "lastname": "Quill"
+}, {
+    "id": 24,
+    "firstname": "Taunya",
+    "lastname": "Biddle"
+}, {
+    "id": 25,
+    "firstname": "Nancy",
+    "lastname": "Redfearn"
+}, {
+    "id": 26,
+    "firstname": "Edison",
+    "lastname": "Edmonson"
+}, {
+    "id": 27,
+    "firstname": "Ken",
+    "lastname": "Jacobsen"
+}, {
+    "id": 28,
+    "firstname": "Kathleen",
+    "lastname": "Espiritu"
+}, {
+    "id": 29,
+    "firstname": "Christia",
+    "lastname": "Hooks"
+}, {
+    "id": 30,
+    "firstname": "Sanjuanita",
+    "lastname": "Trott"
+}, {
+    "id": 31,
+    "firstname": "Jacklyn",
+    "lastname": "Peebles"
+}, {
+    "id": 32,
+    "firstname": "Melania",
+    "lastname": "Gorman"
+}, {
+    "id": 33,
+    "firstname": "Taunya",
+    "lastname": "Kalish"
+}, {
+    "id": 34,
+    "firstname": "Val",
+    "lastname": "Hooks"
+}, {
+    "id": 35,
+    "firstname": "Elizabet",
+    "lastname": "Reigle"
+}, {
+    "id": 36,
+    "firstname": "Taunya",
+    "lastname": "Peebles"
+}, {
+    "id": 37,
+    "firstname": "Zonia",
+    "lastname": "Jaco"
+}, {
+    "id": 38,
+    "firstname": "Taunya",
+    "lastname": "Hillary"
+}, {
+    "id": 39,
+    "firstname": "Kalyn",
+    "lastname": "Jaco"
+}, {
+    "id": 40,
+    "firstname": "Joseph",
+    "lastname": "Torgrimson"
+}, {
+    "id": 41,
+    "firstname": "Joseph",
+    "lastname": "Digennaro"
+}, {
+    "id": 42,
+    "firstname": "Sanjuanita",
+    "lastname": "Espiritu"
+}, {
+    "id": 43,
+    "firstname": "Marquerite",
+    "lastname": "Edmonson"
+}, {
+    "id": 44,
+    "firstname": "Libbie",
+    "lastname": "Low"
+}, {
+    "id": 45,
+    "firstname": "Libbie",
+    "lastname": "Espiritu"
+}, {
+    "id": 46,
+    "firstname": "Beatris",
+    "lastname": "Jacobsen"
+}, {
+    "id": 47,
+    "firstname": "Zonia",
+    "lastname": "Gorman"
+}, {
+    "id": 48,
+    "firstname": "Edison",
+    "lastname": "Levesque"
+}, {
+    "id": 49,
+    "firstname": "Edison",
+    "lastname": "Espiritu"
+}, {
+    "id": 50,
+    "firstname": "Kathleen",
+    "lastname": "Edmonson"
+}, {
+    "id": 51,
+    "firstname": "Taunya",
+    "lastname": "Xu"
+}, {
+    "id": 52,
+    "firstname": "Libbie",
+    "lastname": "Natale"
+}, {
+    "id": 53,
+    "firstname": "Zonia",
+    "lastname": "Natale"
+}, {
+    "id": 54,
+    "firstname": "Marquerite",
+    "lastname": "Xu"
+}, {
+    "id": 55,
+    "firstname": "Edison",
+    "lastname": "Trott"
+}, {
+    "id": 56,
+    "firstname": "Beatris",
+    "lastname": "Gorman"
+}, {
+    "id": 57,
+    "firstname": "Jacklyn",
+    "lastname": "Biddle"
+}, {
+    "id": 58,
+    "firstname": "Sanjuanita",
+    "lastname": "Edmonson"
+}, {
+    "id": 59,
+    "firstname": "Andres",
+    "lastname": "Peebles"
+}, {
+    "id": 60,
+    "firstname": "Marquerite",
+    "lastname": "Duckett"
+}, {
+    "id": 61,
+    "firstname": "Sanjuanita",
+    "lastname": "Levesque"
+}, {
+    "id": 62,
+    "firstname": "Taunya",
+    "lastname": "Hooks"
+}, {
+    "id": 63,
+    "firstname": "Danica",
+    "lastname": "Kalish"
+}, {
+    "id": 64,
+    "firstname": "Marquerite",
+    "lastname": "Jaco"
+}, {
+    "id": 65,
+    "firstname": "Jacklyn",
+    "lastname": "Edmonson"
+}, {
+    "id": 66,
+    "firstname": "Kendrick",
+    "lastname": "Levesque"
+}, {
+    "id": 67,
+    "firstname": "Edison",
+    "lastname": "Jacobsen"
+}, {
+    "id": 68,
+    "firstname": "Sanjuanita",
+    "lastname": "Hillary"
+}, {
+    "id": 69,
+    "firstname": "Andres",
+    "lastname": "Espiritu"
+}, {
+    "id": 70,
+    "firstname": "Marquerite",
+    "lastname": "Hooks"
+}, {
+    "id": 71,
+    "firstname": "Kathleen",
+    "lastname": "Espiritu"
+}, {
+    "id": 72,
+    "firstname": "Joseph",
+    "lastname": "Low"
+}, {
+    "id": 73,
+    "firstname": "Erinn",
+    "lastname": "Low"
+}, {
+    "id": 74,
+    "firstname": "Nancy",
+    "lastname": "Low"
+}, {
+    "id": 75,
+    "firstname": "Ken",
+    "lastname": "Biddle"
+}, {
+    "id": 76,
+    "firstname": "Danica",
+    "lastname": "Jacobsen"
+}, {
+    "id": 77,
+    "firstname": "Taunya",
+    "lastname": "Natale"
+}, {
+    "id": 78,
+    "firstname": "Jacklyn",
+    "lastname": "Jaco"
+}, {
+    "id": 79,
+    "firstname": "Danica",
+    "lastname": "Digennaro"
+}, {
+    "id": 80,
+    "firstname": "Elease",
+    "lastname": "Loar"
+}, {
+    "id": 81,
+    "firstname": "Val",
+    "lastname": "Loar"
+}, {
+    "id": 82,
+    "firstname": "Melania",
+    "lastname": "Kalish"
+}, {
+    "id": 83,
+    "firstname": "Elizabet",
+    "lastname": "Natale"
+}, {
+    "id": 84,
+    "firstname": "Sanjuanita",
+    "lastname": "Quill"
+}, {
+    "id": 85,
+    "firstname": "Christia",
+    "lastname": "Duckett"
+}, {
+    "id": 86,
+    "firstname": "Kathleen",
+    "lastname": "Jacobsen"
+}, {
+    "id": 87,
+    "firstname": "Taunya",
+    "lastname": "Kalish"
+}, {
+    "id": 88,
+    "firstname": "Ken",
+    "lastname": "Espiritu"
+}, {
+    "id": 89,
+    "firstname": "Elease",
+    "lastname": "Zeolla"
+}, {
+    "id": 90,
+    "firstname": "Edison",
+    "lastname": "Peebles"
+}, {
+    "id": 91,
+    "firstname": "Kathleen",
+    "lastname": "Torgrimson"
+}, {
+    "id": 92,
+    "firstname": "Warner",
+    "lastname": "Biddle"
+}, {
+    "id": 93,
+    "firstname": "Edison",
+    "lastname": "Jaco"
+}, {
+    "id": 94,
+    "firstname": "Sanjuanita",
+    "lastname": "Jacobsen"
+}, {
+    "id": 95,
+    "firstname": "Nancy",
+    "lastname": "Edmonson"
+}, {
+    "id": 96,
+    "firstname": "Christia",
+    "lastname": "Jacobsen"
+}, {
+    "id": 97,
+    "firstname": "Edison",
+    "lastname": "Edmonson"
+}, {
+    "id": 98,
+    "firstname": "Beatris",
+    "lastname": "Hillary"
+}, {
+    "id": 99,
+    "firstname": "Sanjuanita",
+    "lastname": "Zeolla"
+}];
+
+// this is used for Node.js
+if (typeof require !== 'undefined') {
+    module.exports = {
+        people: people
+    };
+}
