@@ -15,11 +15,11 @@
 // ]
 
 var students = [{
-    "firstname": "Nielsen",
-    "lastname": "Morrison",
-    "age": 12,
-    "gender": "male",
-    "marks": [
+    firstname: "Nielsen",
+    lastname: "Morrison",
+    age: 12,
+    gender: "male",
+    marks: [
         6,
         5,
         7,
@@ -29,11 +29,11 @@ var students = [{
         4
     ]
 }, {
-    "firstname": "Dina",
-    "lastname": "Schwartz",
-    "age": 8,
-    "gender": "female",
-    "marks": [
+    firstname: "Dina",
+    lastname: "Schwartz",
+    age: 8,
+    gender: "female",
+    marks: [
         6,
         5,
         10,
@@ -43,11 +43,11 @@ var students = [{
         6
     ]
 }, {
-    "firstname": "Nora",
-    "lastname": "Torres",
-    "age": 11,
-    "gender": "female",
-    "marks": [
+    firstname: "Nora",
+    lastname: "Torres",
+    age: 11,
+    gender: "female",
+    marks: [
         4,
         9,
         8,
@@ -57,11 +57,11 @@ var students = [{
         8
     ]
 }, {
-    "firstname": "Hayden",
-    "lastname": "Carson",
-    "age": 36,
-    "gender": "male",
-    "marks": [
+    firstname: "Hayden",
+    lastname: "Carson",
+    age: 36,
+    gender: "male",
+    marks: [
         5,
         6,
         7,
@@ -71,11 +71,11 @@ var students = [{
         10
     ]
 }, {
-    "firstname": "Best",
-    "lastname": "Garrett",
-    "age": 32,
-    "gender": "male",
-    "marks": [
+    firstname: "Best",
+    lastname: "Garrett",
+    age: 32,
+    gender: "male",
+    marks: [
         10,
         5,
         5,
@@ -85,11 +85,11 @@ var students = [{
         4
     ]
 }, {
-    "firstname": "Virginia",
-    "lastname": "Clarke",
-    "age": 37,
-    "gender": "female",
-    "marks": [
+    firstname: "Virginia",
+    lastname: "Clarke",
+    age: 37,
+    gender: "female",
+    marks: [
         7,
         10,
         5,
@@ -99,11 +99,11 @@ var students = [{
         10
     ]
 }, {
-    "firstname": "Pearson",
-    "lastname": "Hyde",
-    "age": 18,
-    "gender": "male",
-    "marks": [
+    firstname: "Pearson",
+    lastname: "Hyde",
+    age: 18,
+    gender: "male",
+    marks: [
         10,
         9,
         9,
@@ -113,11 +113,11 @@ var students = [{
         7
     ]
 }, {
-    "firstname": "Janet",
-    "lastname": "Cabrera",
-    "age": 20,
-    "gender": "female",
-    "marks": [
+    firstname: "Janet",
+    lastname: "Cabrera",
+    age: 20,
+    gender: "female",
+    marks: [
         8,
         10,
         5,
@@ -127,11 +127,11 @@ var students = [{
         3
     ]
 }, {
-    "firstname": "Hernandez",
-    "lastname": "Ware",
-    "age": 33,
-    "gender": "male",
-    "marks": [
+    firstname: "Hernandez",
+    lastname: "Ware",
+    age: 33,
+    gender: "male",
+    marks: [
         10,
         10,
         6,
@@ -141,11 +141,11 @@ var students = [{
         6
     ]
 }, {
-    "firstname": "Rowland",
-    "lastname": "Good",
-    "age": 8,
-    "gender": "male",
-    "marks": [
+    firstname: "Rowland",
+    lastname: "Good",
+    age: 8,
+    gender: "male",
+    marks: [
         9,
         3,
         9,
@@ -155,11 +155,11 @@ var students = [{
         5
     ]
 }, {
-    "firstname": "Robin",
-    "lastname": "Keith",
-    "age": 5,
-    "gender": "female",
-    "marks": [
+    firstname: "Robin",
+    lastname: "Keith",
+    age: 5,
+    gender: "female",
+    marks: [
         3,
         10,
         5,
@@ -169,11 +169,11 @@ var students = [{
         7
     ]
 }, {
-    "firstname": "Burch",
-    "lastname": "Harris",
-    "age": 33,
-    "gender": "male",
-    "marks": [
+    firstname: "Burch",
+    lastname: "Harris",
+    age: 33,
+    gender: "male",
+    marks: [
         5,
         2,
         10,
@@ -183,11 +183,11 @@ var students = [{
         3
     ]
 }, {
-    "firstname": "Deirdre",
-    "lastname": "Barron",
-    "age": 25,
-    "gender": "female",
-    "marks": [
+    firstname: "Deirdre",
+    lastname: "Barron",
+    age: 24,
+    gender: "female",
+    marks: [
         5,
         2,
         7,
@@ -197,11 +197,11 @@ var students = [{
         8
     ]
 }, {
-    "firstname": "Sims",
-    "lastname": "Beard",
-    "age": 36,
-    "gender": "male",
-    "marks": [
+    firstname: "Sims",
+    lastname: "Beard",
+    age: 36,
+    gender: "male",
+    marks: [
         5,
         10,
         4,
@@ -211,11 +211,11 @@ var students = [{
         3
     ]
 }, {
-    "firstname": "Josie",
-    "lastname": "Randall",
-    "age": 20,
-    "gender": "female",
-    "marks": [
+    firstname: "Josie",
+    lastname: "Randall",
+    age: 20,
+    gender: "female",
+    marks: [
         10,
         10,
         6,
@@ -225,11 +225,11 @@ var students = [{
         2
     ]
 }, {
-    "firstname": "Hickman",
-    "lastname": "Howard",
-    "age": 38,
-    "gender": "male",
-    "marks": [
+    firstname: "Hickman",
+    lastname: "Howard",
+    age: 38,
+    gender: "male",
+    marks: [
         2,
         5,
         8,
@@ -239,11 +239,11 @@ var students = [{
         4
     ]
 }, {
-    "firstname": "Grimes",
-    "lastname": "Walter",
-    "age": 19,
-    "gender": "male",
-    "marks": [
+    firstname: "Grimes",
+    lastname: "Walter",
+    age: 19,
+    gender: "male",
+    marks: [
         10,
         3,
         8,
@@ -253,11 +253,11 @@ var students = [{
         7
     ]
 }, {
-    "firstname": "Leah",
-    "lastname": "Mcdonald",
-    "age": 12,
-    "gender": "female",
-    "marks": [
+    firstname: "Leah",
+    lastname: "Mcdonald",
+    age: 12,
+    gender: "female",
+    marks: [
         3,
         7,
         3,
@@ -267,11 +267,11 @@ var students = [{
         7
     ]
 }, {
-    "firstname": "Madeleine",
-    "lastname": "Valencia",
-    "age": 21,
-    "gender": "female",
-    "marks": [
+    firstname: "Madeleine",
+    lastname: "Valencia",
+    age: 21,
+    gender: "female",
+    marks: [
         3,
         4,
         2,
@@ -281,11 +281,11 @@ var students = [{
         4
     ]
 }, {
-    "firstname": "Elise",
-    "lastname": "Ray",
-    "age": 6,
-    "gender": "female",
-    "marks": [
+    firstname: "Elise",
+    lastname: "Ray",
+    age: 6,
+    gender: "female",
+    marks: [
         3,
         7,
         5,
@@ -295,11 +295,11 @@ var students = [{
         7
     ]
 }, {
-    "firstname": "Simon",
-    "lastname": "Gates",
-    "age": 29,
-    "gender": "male",
-    "marks": [
+    firstname: "Simon",
+    lastname: "Gates",
+    age: 29,
+    gender: "male",
+    marks: [
         6,
         4,
         7,
@@ -309,11 +309,11 @@ var students = [{
         3
     ]
 }, {
-    "firstname": "Estela",
-    "lastname": "Quinn",
-    "age": 29,
-    "gender": "female",
-    "marks": [
+    firstname: "Estela",
+    lastname: "Quinn",
+    age: 29,
+    gender: "female",
+    marks: [
         4,
         8,
         2,
@@ -323,11 +323,11 @@ var students = [{
         4
     ]
 }, {
-    "firstname": "Mejia",
-    "lastname": "Morton",
-    "age": 19,
-    "gender": "male",
-    "marks": [
+    firstname: "Mejia",
+    lastname: "Morton",
+    age: 19,
+    gender: "male",
+    marks: [
         2,
         9,
         8,
@@ -337,11 +337,11 @@ var students = [{
         5
     ]
 }, {
-    "firstname": "Church",
-    "lastname": "Caldwell",
-    "age": 21,
-    "gender": "male",
-    "marks": [
+    firstname: "Church",
+    lastname: "Caldwell",
+    age: 21,
+    gender: "male",
+    marks: [
         9,
         3,
         8,
@@ -351,11 +351,11 @@ var students = [{
         2
     ]
 }, {
-    "firstname": "Murray",
-    "lastname": "Weeks",
-    "age": 19,
-    "gender": "male",
-    "marks": [
+    firstname: "Murray",
+    lastname: "Weeks",
+    age: 19,
+    gender: "male",
+    marks: [
         4,
         9,
         6,
@@ -365,11 +365,11 @@ var students = [{
         9
     ]
 }, {
-    "firstname": "Hart",
-    "lastname": "Kane",
-    "age": 11,
-    "gender": "male",
-    "marks": [
+    firstname: "Hart",
+    lastname: "Kane",
+    age: 11,
+    gender: "male",
+    marks: [
         10,
         2,
         3,
@@ -379,11 +379,11 @@ var students = [{
         10
     ]
 }, {
-    "firstname": "Tia",
-    "lastname": "Forbes",
-    "age": 21,
-    "gender": "female",
-    "marks": [
+    firstname: "Day",
+    lastname: "Forbes",
+    age: 21,
+    gender: "female",
+    marks: [
         3,
         6,
         2,
@@ -393,11 +393,11 @@ var students = [{
         6
     ]
 }, {
-    "firstname": "Day",
-    "lastname": "Humphrey",
-    "age": 40,
-    "gender": "male",
-    "marks": [
+    firstname: "Day",
+    lastname: "Humphrey",
+    age: 40,
+    gender: "male",
+    marks: [
         10,
         6,
         5,
@@ -407,11 +407,11 @@ var students = [{
         4
     ]
 }, {
-    "firstname": "Hattie",
-    "lastname": "Ellison",
-    "age": 5,
-    "gender": "female",
-    "marks": [
+    firstname: "Hattie",
+    lastname: "Ellison",
+    age: 5,
+    gender: "female",
+    marks: [
         2,
         7,
         5,
@@ -421,11 +421,11 @@ var students = [{
         2
     ]
 }, {
-    "firstname": "Mcpherson",
-    "lastname": "Foley",
-    "age": 10,
-    "gender": "male",
-    "marks": [
+    firstname: "Mcpherson",
+    lastname: "Foley",
+    age: 10,
+    gender: "male",
+    marks: [
         7,
         2,
         10,
@@ -435,3 +435,10 @@ var students = [{
         6
     ]
 }];
+
+// this is used for Node.js
+if (typeof require !== 'undefined') {
+    module.exports = {
+        students: students
+    };
+}
