@@ -1,0 +1,10 @@
+input#user-guess{
+	font-size: 36pt;
+	width: 90pt;
+	size: 4;
+}
+td{border:1px solid gray;}
+
+.r-number{
+	font-size: 30px;
+}
