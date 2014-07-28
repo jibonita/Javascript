@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crowd Chat</title>
+	<link rel="stylesheet" type="text/css" href="skin.css">
+</head>
+<body>
+	<ul id="menu">
+		<li>
+            <a href="#/">Home</a>
+        </li>
+		<li>
+            <a href="#/login">Login</a>
+        </li>
+        <li>
+            <a href="#/logout">Logout</a>
+        </li>	
+    </ul>
+	<div id="main-content"></div>
+	<div id="chat-box"></div>
+	<div id="comment-block">
+		<input id="user-comment" /><button id="send-comment">Send</button>
+	</div>
+	
+
+	<script id="chat-post-template" type="x-mustache-template">
+		<li class="person-line">
+			<span class="by-author">{{{by}}}:</span> 
+			<span class="author-text">{{{text}}}</span>
+		</li>
+	</script>
+	<script src="scripts/libs/require.min.js" data-main="scripts/app"></script>
+</body>
+</html>

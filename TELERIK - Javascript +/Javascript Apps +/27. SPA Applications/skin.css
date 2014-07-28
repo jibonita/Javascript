@@ -1,0 +1,36 @@
+#chat-box{
+	width: 500px;
+	height: 400px;
+	border: 1px solid #333;
+	overflow: auto;
+}
+
+ul{
+	list-style-type: none;
+	margin:0;
+	padding: 0;
+}
+
+ul#menu li{
+	display: inline-block;
+	padding: 15px;
+}
+
+#chat-box ul li {
+	background: #fff;
+}
+
+#chat-box ul li:nth-child(2n){
+	background: #ddd;
+}
+
+input#user-comment{
+	width: 450px;
+}
+button#send-comment{
+	width: 50px;
+}
+
+#comment-block{
+	display: none;
+}
