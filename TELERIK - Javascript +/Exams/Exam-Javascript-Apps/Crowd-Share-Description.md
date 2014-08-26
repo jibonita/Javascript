@@ -52,7 +52,7 @@ Using the REST API, implement the Crowd Share application, following the require
 
 ###Implementation Requirements
 
-Use all the endpoints from the REST API. Full description can be found in *Crowd-Share-Services.md* file.
+Use all the endpoints from the REST API. Full description can be found in <a href="https://github.com/jibonita/Javascript/blob/TLearning/TELERIK%20-%20Javascript%20%2B/Exams/Exam-Javascript-Apps/Crowd-Share-Services.md">*Crowd-Share-Services.md*</a> file.
 
 ###Application Structure Requirements
 
