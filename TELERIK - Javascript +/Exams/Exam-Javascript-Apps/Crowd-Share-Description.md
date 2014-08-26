@@ -16,7 +16,7 @@ Visitors must register in order to post to the Crowd Share application.
 The application has the following workflow:
 
 1.	Visitors enter the application
-
+    
     a. They can view all the posts, even if not logged-in
     
     b. They can register or login a user
@@ -53,6 +53,15 @@ Using the REST API, implement the Crowd Share application, following the require
 ###Implementation Requirements
 
 Use all the endpoints from the REST API. Full description can be found in <a href="https://github.com/jibonita/Javascript/blob/TLearning/TELERIK%20-%20Javascript%20%2B/Exams/Exam-Javascript-Apps/Crowd-Share-Services.md">*Crowd-Share-Services.md*</a> file.
+
+| Method     | Endpoint    | Brief description |
+| --------|---------|-------|
+| POST  | /user   | Registers an user. Needs a username and authentication code    |
+| POST | /auth | Logs-in an user. Needs a username and authentication code. Returns a session key.    |
+| PUT  | /user   | Logs-out an user. Needs a session key    |
+| POST | /post | Creates a new post. Needs a session key    |
+| GET  | /post   | Fetch posts from server. Can filter posts either by User or by search pattern    |
+
 
 ###Application Structure Requirements
 
