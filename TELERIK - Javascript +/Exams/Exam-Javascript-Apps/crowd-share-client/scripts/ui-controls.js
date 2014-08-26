@@ -13,7 +13,6 @@ define(['jquery', 'validate'], function($, Validator) {
                     .then(function(data) {
                         self.rootElement.html(data);
                     });
-
             },
 
             getUsernameText: function() {
@@ -65,7 +64,6 @@ define(['jquery', 'validate'], function($, Validator) {
                     .then(function(data) {
                         self.rootElement.html(data);
                     });
-
             },
 
             getUsernameText: function() {
@@ -114,7 +112,6 @@ define(['jquery', 'validate'], function($, Validator) {
                     .then(function(data) {
                         self.rootElement.html(data);
                     });
-
             },
 
             getPostTitle: function() {

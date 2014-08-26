@@ -13,8 +13,8 @@
         }
     });
 
-    require(['jquery', 'sammy', 'mustache', 'controller'],
-        function($, sammy, mustache, controller) {
+    require(['jquery', 'sammy', 'controller'],
+        function($, sammy, controller) {
 
             var app = sammy('#main-content', function() {
 
@@ -44,11 +44,6 @@
             $('#send-comment').on('click', function() {
                 //controller.postToChat();
             });
-
-            // // refresh the chat to get latest posts
-            // setInterval(function() {
-            //     controller.loadChat();
-            // }, 700);
 
         });
 })();
