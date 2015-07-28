@@ -1,9 +1,14 @@
 define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
+    var containerID = Settings.container.containerID,
+        containerWidth = Settings.container.containerWidth,
+        containerHeight = Settings.container.containerHeight;
+
+    $('#'+containerID).append($('<div>').attr('id', containerID + 'Canvas'));
 
     var stage = new Kinetic.Stage({
-        container: Settings.container.containerID,
-        width: Settings.container.containerWidth,
-        height: Settings.container.containerHeight
+        container: containerID + 'Canvas',
+        width: containerWidth,
+        height: containerHeight
     });
     var layer = new Kinetic.Layer();
     $('#' + Settings.container.containerID).find('.kineticjs-content').css('position', 'absolute');

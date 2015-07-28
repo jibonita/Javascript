@@ -9,23 +9,27 @@
         }
     });
 
-    //require(['room-widgets', 'background'], function(roomWidgets, background) {
-    require(['room-widgets'], function(roomWidgets) {
+    require(['room-widgets', 'background'], function(roomWidgets, background) {
+    //require(['room-widgets'], function(roomWidgets) {
+    //require([ 'background'], function( background) {
+    //require(['background','room-widgets'], function(background, roomWidgets) {
 
         // background stuff
-        // background.drawBases();
+         background.drawBases();
 
-        // background.drawOutOfficeChart(22, 90);
+        background.drawOutOfficeChart(22, 90);
 
-        // background.drawRoomWalls(135, 27);
+        background.drawRoomWalls(135, 27);
 
-        // background.drawCabinet(135, 27);
+        background.drawCabinet(135, 27);
 
-        // background.drawWorkTable(135, 27);
+        background.drawWorkTable(135, 27);
 
-        // background.drawChairs(135, 27);
+        background.drawChairs(135, 27);
 
         // room widgets
+        //roomWidgets.drawChairs(135, 27); --> rafael chairs are more clear
+
         roomWidgets.drawRoomChart(135, 27);
 
         roomWidgets.drawClock(618, 72);

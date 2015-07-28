@@ -1,9 +1,11 @@
-define(['raphael', 'settings'], function(Raphael, Settings) {
+define(['raphael', 'settings', 'jquery'], function(Raphael, Settings, $) {
     var containerID = Settings.container.containerID,
         containerWidth = Settings.container.containerWidth,
         containerHeight = Settings.container.containerHeight;
 
-    var paper = Raphael(containerID, containerWidth, containerHeight);
+    $('#'+containerID).append($('<div>').attr('id',containerID+'SVG'));
+
+    var paper = Raphael(containerID+'SVG', containerWidth, containerHeight);
 
     function drawBases() {
         // background 1st - base level
