@@ -85,6 +85,7 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
     function drawWaterMachine(x, y) {
 
         drawWaterBottle(x, y);
+        drawWaterBody(x+2, y+77);
     }
 
     function drawWaterBottle(x, y) {
@@ -229,6 +230,83 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
             })
         );
 
+        group.move({
+            x: x,
+            y: y
+        });
+
+        layer.add(group);
+        stage.add(layer);
+    }
+
+    function drawWaterBody(x, y){
+        var cup, 
+            cupHorizShift = 40,
+            cupVertShift = 7,
+            group = new Kinetic.Group();
+
+        group.add(
+            //vertical panels
+            new Kinetic.Rect({
+                x: 0,
+                y: 0,
+                width: 40,
+                height: 80,
+                fill: '#dcdedc'
+              }),
+            new Kinetic.Rect({
+                x: 40,
+                y: 0,
+                width: 16,
+                height: 80,
+                fill: '#9c9da0'
+              }),
+            // stuff in the light pane;
+            new Kinetic.Rect({
+                x: (40-6)/2,
+                y: 6,
+                width: 6,
+                height: 12,
+                fill: '#9c9da0'
+              }),            
+            new Kinetic.Rect({
+                x: (40-30)/2,
+                y: 22,
+                width: 30,
+                height: 25,
+                strokeWidth: 2,
+                stroke: '#9c9da0'
+              }),
+            //cups. Create bottem cup and clone it for the middle and top one
+            cup = new Kinetic.Shape({
+                sceneFunc: function(context) {
+                  context.beginPath();
+                  context.moveTo(1+cupHorizShift,29);
+                  context.lineTo(15+cupHorizShift,29);
+                  context.lineTo(12+cupHorizShift,44);
+                  context.lineTo(4+cupHorizShift,44);
+                  context.closePath();
+                  // KineticJS specific context method
+                  context.fillStrokeShape(this);
+                },
+                fill: '#ffffff'
+              }),
+            // middle cup - positioned on cupVertShift from the original 'cup'
+           cup2 = cup.clone({
+                x: cup.attrs.x,
+                y: -cupVertShift
+            }),
+            // top cup
+            cup.clone({
+                x: cup.attrs.x,
+                y: -2*cupVertShift
+            })
+        );
+
+        group.move({
+            x: x,
+            y: y
+        });
 
         layer.add(group);
         stage.add(layer);

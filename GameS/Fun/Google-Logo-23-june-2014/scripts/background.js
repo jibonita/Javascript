@@ -217,7 +217,7 @@ define(['raphael', 'settings'], function(Raphael, Settings) {
         st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
     }
 
-    //** apply transform. Some of the elements will have 'double' transform and we don't want the second transorm to overrite the first
+    //** apply transform. Some of the elements will have 'double' transform and we don't want the second transorm to override the first
     //** this functions works ONLY FOR ONE level of subordination
     function applyTransform(x, y, st) {
         var emx;

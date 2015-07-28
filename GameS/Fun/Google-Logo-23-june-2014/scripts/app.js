@@ -9,7 +9,8 @@
         }
     });
 
-    require(['room-widgets', 'background'], function(roomWidgets, background) {
+    //require(['room-widgets', 'background'], function(roomWidgets, background) {
+    require(['room-widgets'], function(roomWidgets) {
 
         // background stuff
         // background.drawBases();
@@ -22,7 +23,7 @@
 
         // background.drawWorkTable(135, 27);
 
-        background.drawChairs(135, 27);
+        // background.drawChairs(135, 27);
 
         // room widgets
         roomWidgets.drawRoomChart(135, 27);
