@@ -21,7 +21,7 @@ define(['raphael', 'settings', 'jquery'], function(Raphael, Settings, $) {
     }
 
     // draw chart outside the office
-    function drawOutOfficeChart(x, y) {
+    function drawOutsideOfficeChart(x, y) {
         var st = paper.set();
         st.push(
             paper.rect(0, 14, 82, 49).attr({
@@ -179,6 +179,23 @@ define(['raphael', 'settings', 'jquery'], function(Raphael, Settings, $) {
     }
 
     function drawChairs(x, y) {
+
+        drawLeftChair(x,y);
+
+        drawRightChair(x,y);
+
+        drawMiddlechairs(x, y);
+    }
+
+    function drawRightChair(x,y){
+        // TODO...
+    }
+
+    function drawMiddlechairs(x, y){
+        // TODO...
+    }
+
+    function drawLeftChair(x, y) {
         var chairFeetColor = '#696666';
         var foot,
             st = paper.set(),
@@ -240,10 +257,11 @@ define(['raphael', 'settings', 'jquery'], function(Raphael, Settings, $) {
 
     return {
         drawBases: drawBases,
-        drawOutOfficeChart: drawOutOfficeChart,
+        drawOutsideOfficeChart: drawOutsideOfficeChart,
         drawRoomWalls: drawRoomWalls,
         drawCabinet: drawCabinet,
         drawWorkTable: drawWorkTable,
-        drawChairs: drawChairs
+        drawChairs: drawChairs, 
+        paper: paper
     };
 });

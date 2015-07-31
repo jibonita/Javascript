@@ -9,33 +9,38 @@
         }
     });
 
-    require(['room-widgets', 'background'], function(roomWidgets, background) {
+    require(['room-widgets', 'background', 'google-guys'], function(roomWidgets, background, googles) {
     //require(['room-widgets'], function(roomWidgets) {
     //require([ 'background'], function( background) {
     //require(['background','room-widgets'], function(background, roomWidgets) {
 
         // background stuff
-         background.drawBases();
+        // background.drawBases();
 
-        background.drawOutOfficeChart(22, 90);
+        // background.drawOutsideOfficeChart(22, 90);
 
-        background.drawRoomWalls(135, 27);
+        // // background.drawInsideOfficeChart(x,y);
 
-        background.drawCabinet(135, 27);
+        // background.drawRoomWalls(135, 27);
 
-        background.drawWorkTable(135, 27);
+        // background.drawCabinet(135, 27);
 
-        background.drawChairs(135, 27);
+        // background.drawWorkTable(135, 27);
 
-        // room widgets
-        //roomWidgets.drawChairs(135, 27); --> rafael chairs are more clear
+         background.drawChairs(135, 27);
 
-        roomWidgets.drawRoomChart(135, 27);
+        // // room widgets
+        // //roomWidgets.drawChairs(135, 27); --> rafael chairs are more clear
 
-        roomWidgets.drawClock(618, 72);
+        // roomWidgets.drawRoomChart(135, 27);
 
-        roomWidgets.drawTVScreen(135, 27);
+        // roomWidgets.drawClock(618, 72);
 
-        roomWidgets.drawWaterMachine(810, 170);
+        // roomWidgets.drawTVScreen(135, 27);
+
+        // roomWidgets.drawWaterMachine(810, 170);
+
+        // google letters
+        googles.drawGuys(135, 27);
     });
 })();
