@@ -5,14 +5,15 @@
             'jquery': 'libs/jquery-2.1.1.min',
             'raphael': 'libs/raphael-min',
             'kinetic': 'libs/kinetic.min',
-            'settings': 'settings'
+            'settings': 'settings',
+            'common': 'common-methods'
         }
     });
 
     require(['room-widgets', 'background', 'google-guys'], function(roomWidgets, background, googles) {
-    //require(['room-widgets'], function(roomWidgets) {
-    //require([ 'background'], function( background) {
-    //require(['background','room-widgets'], function(background, roomWidgets) {
+        //require(['room-widgets'], function(roomWidgets) {
+        //require([ 'background'], function( background) {
+        //require(['background','room-widgets'], function(background, roomWidgets) {
 
         // background stuff
         // background.drawBases();
@@ -27,7 +28,7 @@
 
         // background.drawWorkTable(135, 27);
 
-         background.drawChairs(135, 27);
+        background.drawChairs(135, 27);
 
         // // room widgets
         // //roomWidgets.drawChairs(135, 27); --> rafael chairs are more clear

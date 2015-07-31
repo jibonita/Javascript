@@ -1,4 +1,4 @@
-define(['raphael', 'settings', 'jquery'], function(Raphael, Settings, $) {
+define(['raphael', 'settings', 'jquery', 'common'], function(Raphael, Settings, $, common) {
     var containerID = Settings.container.containerID,
         containerWidth = Settings.container.containerWidth,
         containerHeight = Settings.container.containerHeight;
@@ -132,7 +132,7 @@ define(['raphael', 'settings', 'jquery'], function(Raphael, Settings, $) {
             })
         );
 
-        applyTransform(x, y, st);
+        common.applyTransform(x, y, st);
     }
 
     function drawWorkTable(x, y) {
@@ -236,24 +236,7 @@ define(['raphael', 'settings', 'jquery'], function(Raphael, Settings, $) {
         st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
     }
 
-    //** apply transform. Some of the elements will have 'double' transform and we don't want the second transorm to override the first
-    //** this functions works ONLY FOR ONE level of subordination
-    function applyTransform(x, y, st) {
-        var emx;
-        st.forEach(
-            function(element, index) {
-                if (element.length) {
-                    element.forEach(function(e, i) {
-                        emx = e.matrix.split();
-                        e.transform('t' + (x + emx.dx) + ',' + (y + emx.dy));
-                    });
-                } else {
-                    emx = element.matrix.split();
-                    element.transform('t' + (x + emx.dx) + ',' + (y + emx.dy));
-                }
-            }
-        );
-    }
+    
 
     return {
         drawBases: drawBases,
