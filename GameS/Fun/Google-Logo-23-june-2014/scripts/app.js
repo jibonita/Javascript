@@ -15,6 +15,7 @@
         //require([ 'background'], function( background) {
         //require(['background','room-widgets'], function(background, roomWidgets) {
 
+        
         // background stuff
         // background.drawBases();
 
@@ -26,9 +27,12 @@
 
         // background.drawCabinet(135, 27);
 
-        // background.drawWorkTable(135, 27);
-
         background.drawChairs(135, 27);
+
+         // google letters
+        googles.drawGuys(135, 27);
+
+        background.drawWorkTable(135, 27);
 
         // // room widgets
         // //roomWidgets.drawChairs(135, 27); --> rafael chairs are more clear

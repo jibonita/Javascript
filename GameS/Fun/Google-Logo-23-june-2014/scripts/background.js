@@ -3,9 +3,9 @@ define(['raphael', 'settings', 'jquery', 'common'], function(Raphael, Settings, 
         containerWidth = Settings.container.containerWidth,
         containerHeight = Settings.container.containerHeight;
 
-    $('#'+containerID).append($('<div>').attr('id',containerID+'SVG'));
+    $('#' + containerID).append($('<div>').attr('id', containerID + 'SVG'));
 
-    var paper = Raphael(containerID+'SVG', containerWidth, containerHeight);
+    var paper = Raphael(containerID + 'SVG', containerWidth, containerHeight);
 
     function drawBases() {
         // background 1st - base level
@@ -180,19 +180,39 @@ define(['raphael', 'settings', 'jquery', 'common'], function(Raphael, Settings, 
 
     function drawChairs(x, y) {
 
-        drawLeftChair(x,y);
+        drawLeftChair(x, y);
 
-        drawRightChair(x,y);
+        drawRightChair(x, y);
 
         drawMiddlechairs(x, y);
     }
 
-    function drawRightChair(x,y){
+    function drawRightChair(x, y) {
         // TODO...
     }
 
-    function drawMiddlechairs(x, y){
+    function drawMiddlechairs(x, y) {
         // TODO...
+        var st = paper.set(),
+            chair_left,
+         xShift = 205,
+            yShift = 238,
+            secondOxShift = 110,
+            gChairShift = 230,
+            lChairShift = 297;
+
+        st.push(
+            // first o chair
+            chair_left = paper.rect(0, 0, 42, 18),
+            chair_left.clone().transform("t"+secondOxShift+",0"),
+            chair_left.clone().transform("t"+gChairShift+",0"),
+            chair_left.clone().transform("t"+lChairShift+",0")
+        ).attr({
+            fill: '#5C5E60',
+            stroke: 'none'
+        });
+
+        common.applyTransform((x + xShift), (y + yShift), st);
     }
 
     function drawLeftChair(x, y) {
@@ -236,7 +256,7 @@ define(['raphael', 'settings', 'jquery', 'common'], function(Raphael, Settings, 
         st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
     }
 
-    
+
 
     return {
         drawBases: drawBases,
@@ -244,7 +264,7 @@ define(['raphael', 'settings', 'jquery', 'common'], function(Raphael, Settings, 
         drawRoomWalls: drawRoomWalls,
         drawCabinet: drawCabinet,
         drawWorkTable: drawWorkTable,
-        drawChairs: drawChairs, 
+        drawChairs: drawChairs,
         paper: paper
     };
 });
