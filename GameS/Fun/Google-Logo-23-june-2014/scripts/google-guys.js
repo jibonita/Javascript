@@ -4,13 +4,16 @@ define(['background', 'common'], function(background, common) {
     var paper = background.paper;
 
     // sample
-    paper.path("M0,29 C3,-10 55,-10 58,29 L38,29 C35,17 23,17 20,29");
+    //paper.path("M0,29 C3,-10 55,-10 58,29 L38,29 C35,17 23,17 20,29");
 
     function drawGuys(x, y) {
 
         drawUpG(x, y);
 
+        drawO(x, y);
+
         drawE(x, y);
+
     }
 
     function drawUpG(x, y) {
@@ -51,11 +54,31 @@ define(['background', 'common'], function(background, common) {
             stroke: 'none'
         })
         //    .transform("t" + (x + rightChairXShift) + "," + (y + rightChairYShift));
-            
+
         common.applyTransform((x + rightChairXShift), (y + rightChairYShift), st);
 
         // e-bottom. use e-top and rotate it
         //eTop.clone().transform("t" + (x + rightChairXShift) + "," + (y + rightChairYShift) + "t0,80r180");
+    }
+
+    function drawO(x, y) {
+        var st = paper.set(),
+            xShift = 200,
+            yShift = 180,
+            secondOxShift = 110;
+
+
+        paper.path("M10,45 a27,35 0 1,1 0,1 z")
+            .attr({
+                stroke: '#cc4e3c',
+                "stroke-width": 20
+            }).transform('t' + (x + xShift) + ',' + (y + yShift) + 'r-12');
+
+        paper.path("M10,45 a27,35 0 1,1 0,1 z")
+            .attr({
+                stroke: '#f4bd34',
+                "stroke-width": 20
+            }).transform('t' + (x + xShift + secondOxShift) + ',' + (y + yShift) + 'r15');
     }
 
     return {
