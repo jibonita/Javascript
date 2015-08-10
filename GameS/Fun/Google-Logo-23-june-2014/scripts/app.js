@@ -15,7 +15,6 @@
         //require([ 'background'], function( background) {
         //require(['background','room-widgets'], function(background, roomWidgets) {
 
-        
         // background stuff
         // background.drawBases();
 
@@ -29,7 +28,7 @@
 
         background.drawChairs(135, 27);
 
-         // google letters
+        // google letters
         googles.drawGuys(135, 27);
 
         background.drawWorkTable(135, 27);
@@ -45,7 +44,6 @@
 
         // roomWidgets.drawWaterMachine(810, 170);
 
-        // google letters
-        googles.drawGuys(135, 27);
+        
     });
 })();

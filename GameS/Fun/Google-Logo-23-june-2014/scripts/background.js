@@ -195,7 +195,7 @@ define(['raphael', 'settings', 'jquery', 'common'], function(Raphael, Settings, 
         // TODO...
         var st = paper.set(),
             chair_left,
-         xShift = 205,
+            xShift = 205,
             yShift = 238,
             secondOxShift = 110,
             gChairShift = 230,
@@ -204,9 +204,9 @@ define(['raphael', 'settings', 'jquery', 'common'], function(Raphael, Settings, 
         st.push(
             // first o chair
             chair_left = paper.rect(0, 0, 42, 18),
-            chair_left.clone().transform("t"+secondOxShift+",0"),
-            chair_left.clone().transform("t"+gChairShift+",0"),
-            chair_left.clone().transform("t"+lChairShift+",0")
+            chair_left.clone().transform("t" + secondOxShift + ",0"),
+            chair_left.clone().transform("t" + gChairShift + ",0"),
+            chair_left.clone().transform("t" + lChairShift + ",0")
         ).attr({
             fill: '#5C5E60',
             stroke: 'none'
@@ -256,8 +256,7 @@ define(['raphael', 'settings', 'jquery', 'common'], function(Raphael, Settings, 
         st.transform('t' + (x + leftChairXShift) + ',' + (y + leftChairYShift));
     }
 
-
-
+    
     return {
         drawBases: drawBases,
         drawOutsideOfficeChart: drawOutsideOfficeChart,
