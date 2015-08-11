@@ -3,7 +3,7 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
         containerWidth = Settings.container.containerWidth,
         containerHeight = Settings.container.containerHeight;
 
-    $('#'+containerID).append($('<div>').attr('id', containerID + 'Canvas'));
+    $('#' + containerID).append($('<div>').attr('id', containerID + 'Canvas'));
 
     var stage = new Kinetic.Stage({
         container: containerID + 'Canvas',
@@ -14,7 +14,148 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
     $('#' + Settings.container.containerID).find('.kineticjs-content').css('position', 'absolute');
     $('#' + Settings.container.containerID).find('.kineticjs-content').addClass('the-canvas');
 
-    function drawRoomChart(x, y) {}
+    function drawRoomChart(x, y) {
+
+    }
+
+    function drawTVScreen(x, y) {
+        var player, player2, player3, ball,
+            group = new Kinetic.Group(),
+            xShiftInRoom = 180,
+            yShiftInRoom = 46;
+
+        x += xShiftInRoom;
+        y += yShiftInRoom;
+
+        group.add(
+            //frame
+            new Kinetic.Rect({
+                x: 0,
+                y: 0,
+                width: 228,
+                height: 112,
+                strokeWidth: 6,
+                stroke: '#3b3735',
+                fill: '#8FCA4F'
+            }),
+            //field middle line
+            new Kinetic.Shape({
+                sceneFunc: function(context) {
+                    context.beginPath();
+                    context.moveTo(76, 3);
+                    context.lineTo(80, 3);
+                    context.lineTo(148, 109);
+                    context.lineTo(144, 109);
+                    context.closePath();
+                    // KineticJS specific context method
+                    context.fillStrokeShape(this);
+                },
+                fill: '#ffffff'
+            }),
+            // field arc line
+            new Kinetic.Ellipse({
+                x: 114,
+                y: 56,
+                radius: {
+                    x: 35,
+                    y: 20
+                },
+                stroke: '#ffffff',
+                strokeWidth: 3
+            }),
+            ball = new Kinetic.Circle({
+                x: 85,
+                y: 37,
+                radius: 6,
+                fill: '#E7EB34'
+            }),
+            //players
+            player = new Kinetic.Rect({
+                x: 46,
+                y: 23,
+                width: 8,
+                height: 25,
+                fill: '#7753a7'
+            }),
+            player.clone({
+                x: 124,
+                y: 10
+            }),
+            player2 = player.clone({
+                x: 96,
+                y: 63
+            }),
+            player3 = player.clone({
+                x: 73,
+                y: 45,
+                fill: '#C84B3D'
+            })
+        );
+
+
+
+        group.move({
+            x: x,
+            y: y
+        });
+
+        layer.add(group);
+        stage.add(layer);
+
+        //animation should run here
+        //*** THIS is not finished
+
+
+        var ballX, ballY;
+        var period = 2000; // in ms
+        var amplitude = 124 - 46,
+            centerX = 46 + 6 + 8; // ballRadius - 6, PlayerWidth-8
+
+        var anim = new Kinetic.Animation(function(frame) {
+            //$('#info').html(frame.time);
+            amplitude = 124 - 46;
+            centerX = 46 + 6 + 8;
+
+            //** movement: player1-player2
+            ballX = amplitude * frame.time / period + centerX;
+            ballY = 23 + 25 + (10 - 23) * (ballX - centerX) / (124 - centerX); //ballYPos-23, playerHeight-25
+            ball.setX(ballX);
+            ball.setY(ballY);
+
+            //** movement: player2-player3
+            if (ballX >= 124 - 6) {
+
+                amplitude = 96 - 124;
+                centerX = 124 - 6;
+
+                ballX = amplitude * frame.time / period + centerX + 21; //?? what is 21
+                ballY = 10 + 25 + (63 - 10) * (ballX - centerX) / (96 - centerX); //ballYPos-10, playerHeight-25
+
+                ball.setX(ballX);
+                ball.setY(ballY);
+
+
+
+                if (ballX <= 96 + 6) {
+                    anim.stop();
+                    //var prevX = ballX;
+                    //$('#info').html(prevX+'/'+ballX + ',' + ballY);
+
+                    //** movement: player3-player1
+                    // TODO .....
+
+                    
+                }
+            }
+
+        }, layer);
+
+        anim.start();
+
+
+
+
+    }
 
     function drawClock(x, y) {
         // var clockColor = '#87888c',
@@ -85,12 +226,12 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
         stage.add(layer);
     }
 
-    function drawTVScreen(x, y) {}
+
 
     function drawWaterMachine(x, y) {
 
         drawWaterBottle(x, y);
-        drawWaterBody(x+2, y+77);
+        drawWaterBody(x + 2, y + 77);
     }
 
     function drawWaterBottle(x, y) {
@@ -244,8 +385,8 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
         stage.add(layer);
     }
 
-    function drawWaterBody(x, y){
-        var cup, 
+    function drawWaterBody(x, y) {
+        var cup,
             cupHorizShift = 40,
             cupVertShift = 7,
             group = new Kinetic.Group();
@@ -258,53 +399,53 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
                 width: 40,
                 height: 80,
                 fill: '#dcdedc'
-              }),
+            }),
             new Kinetic.Rect({
                 x: 40,
                 y: 0,
                 width: 16,
                 height: 80,
                 fill: '#9c9da0'
-              }),
+            }),
             // stuff in the light pane;
             new Kinetic.Rect({
-                x: (40-6)/2,
+                x: (40 - 6) / 2,
                 y: 6,
                 width: 6,
                 height: 12,
                 fill: '#9c9da0'
-              }),            
+            }),
             new Kinetic.Rect({
-                x: (40-30)/2,
+                x: (40 - 30) / 2,
                 y: 22,
                 width: 30,
                 height: 25,
                 strokeWidth: 2,
                 stroke: '#9c9da0'
-              }),
+            }),
             //cups. Create bottem cup and clone it for the middle and top one
             cup = new Kinetic.Shape({
                 sceneFunc: function(context) {
-                  context.beginPath();
-                  context.moveTo(1+cupHorizShift,29);
-                  context.lineTo(15+cupHorizShift,29);
-                  context.lineTo(12+cupHorizShift,44);
-                  context.lineTo(4+cupHorizShift,44);
-                  context.closePath();
-                  // KineticJS specific context method
-                  context.fillStrokeShape(this);
+                    context.beginPath();
+                    context.moveTo(1 + cupHorizShift, 29);
+                    context.lineTo(15 + cupHorizShift, 29);
+                    context.lineTo(12 + cupHorizShift, 44);
+                    context.lineTo(4 + cupHorizShift, 44);
+                    context.closePath();
+                    // KineticJS specific context method
+                    context.fillStrokeShape(this);
                 },
                 fill: '#ffffff'
-              }),
+            }),
             // middle cup - positioned on cupVertShift from the original 'cup'
-           cup2 = cup.clone({
+            cup2 = cup.clone({
                 x: cup.attrs.x,
                 y: -cupVertShift
             }),
             // top cup
             cup.clone({
                 x: cup.attrs.x,
-                y: -2*cupVertShift
+                y: -2 * cupVertShift
             })
         );
 
