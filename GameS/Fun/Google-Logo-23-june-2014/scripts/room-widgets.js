@@ -77,15 +77,15 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
                 height: 25,
                 fill: '#7753a7'
             }),
-            player.clone({
+            player2 = player.clone({
                 x: 124,
                 y: 10
             }),
-            player2 = player.clone({
+            player3 = player.clone({
                 x: 96,
                 y: 63
             }),
-            player3 = player.clone({
+            player.clone({
                 x: 73,
                 y: 45,
                 fill: '#C84B3D'
@@ -106,15 +106,15 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
         //*** THIS is not finished
 
 
+
         var ballX, ballY;
         var period = 2000; // in ms
-        var amplitude = 124 - 46,
-            centerX = 46 + 6 + 8; // ballRadius - 6, PlayerWidth-8
+        var amplitude, centerX;
 
         var anim = new Kinetic.Animation(function(frame) {
             //$('#info').html(frame.time);
             amplitude = 124 - 46;
-            centerX = 46 + 6 + 8;
+            centerX = 46 + 6 + 8; // ballRadius - 6, PlayerWidth-8
 
             //** movement: player1-player2
             ballX = amplitude * frame.time / period + centerX;
@@ -135,17 +135,37 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
                 ball.setY(ballY);
 
 
-
                 if (ballX <= 96 + 6) {
-                    anim.stop();
+                    //                    anim.stop();
                     //var prevX = ballX;
                     //$('#info').html(prevX+'/'+ballX + ',' + ballY);
 
+                    amplitude = 46 - 96;
+                    centerX = 96 + 6;
+
+                    ballX = amplitude * frame.time / period + centerX + 46 + 6 + 8;
+                    ballY = 63 + 25 + (23 - 63) * (ballX - centerX) / (46 - centerX); //ballYPos-63, playerHeight-25
+
+                    ball.setX(ballX);
+                    ball.setY(ballY);
                     //** movement: player3-player1
                     // TODO .....
 
-                    
+                    if (ballX <= 46 + 6) {
+/// NOW WHAT????
+                        amplitude = 124 - 46;
+                        centerX = 46 + 6 + 8; // ballRadius - 6, PlayerWidth-8
+
+                        //** movement: player1-player2
+                        ballX = amplitude * frame.time / period + centerX;
+                        ballY = 23 + 25 + (10 - 23) * (ballX - centerX) / (124 - centerX); //ballYPos-23, playerHeight-25
+                        ball.setX(ballX);
+                        ball.setY(ballY);
+
+                        anim.stop();
+                    }
                 }
+
             }
 
         }, layer);
