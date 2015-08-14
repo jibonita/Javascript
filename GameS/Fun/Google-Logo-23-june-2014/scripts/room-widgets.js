@@ -108,23 +108,115 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
 
 
         var ballX, ballY;
-        var period = 2000; // in ms
+        var tgA2, tgA3;
+        var period = 1000; // in ms
         var amplitude, centerX;
+        var isStop = false;
 
         var anim = new Kinetic.Animation(function(frame) {
-            //$('#info').html(frame.time);
+            //$('#info html(frame.time);
+            // 156 = 78+28+50 //dx
+            var frameStep = (frame.time) % (3 * period);
+            if (frameStep >= 0 && frameStep <= period) {
+
+                if (isStop) {
+                  //  anim.stop();
+                }
+
+
+                // 1-2
+                //console.log('p 1111');
+
+                //** movement: player1-player2
+                centerX = 46 + 6 + 8; // ballRadius - 6, PlayerWidth-8
+                amplitude = 124 - centerX; //- 46 - 8 - 6; // ballRadius - 6, PlayerWidth-8
+
+                ballX = amplitude * (frameStep % period) / period + centerX;
+                ballY = 23 + 25 + (10 - 23) * (ballX - centerX) / (124 - centerX); //ballYPos-23, playerHeight-25
+                ball.setX(ballX);
+                ball.setY(ballY);
+
+            } else if (frameStep <= 2 * period) {
+                // 2-3
+                // console.log('p 2222');
+
+                //** initialize only once
+                if (tgA2 == undefined) {
+                    tgA2 = (63 + 25 / 12 - (10 + 25)) / (124 - 6 - (96 + 6));
+                }
+
+                //** movement: player2-player3
+                centerX = 124 - 6;
+                amplitude = 96 - centerX; //- 124 + 6;
+
+                ballX = amplitude * (frameStep % period) / period + centerX;
+                //ballX = amplitude * frameStep / period + centerX + 27; //?? what is 27??
+                //ballY = 63 - (63 - 10) * (ballX - centerX) / (96 + 6 - centerX); //ballYPos-10, playerHeight-25
+                //ballY = -(63 - 35) * (ballX - 96) / amplitude;
+                ballY = (63 + 25 / 12) - (tgA2 * (ballX - (96 + 6)));
+
+                //console.log(ballX + ',' + ballY);
+
+                ball.setX(ballX);
+                ball.setY(ballY);
+
+
+
+
+            } else {
+                //3-1
+
+
+                //console.log('p 3333');
+                //** initialize only once
+                if (tgA3 == undefined) {
+                    tgA3 = ((63 + (25 / 2)) - (23 + 25)) / ((96 + 6) - (46 + 6 + 8));
+                }
+
+                //** movement: player3-player1
+                centerX = 96 + 6; // ballRadius - 6, PlayerWidth-8
+                amplitude = 46 + 6 + 8 - centerX; // - 96 - 6;
+
+                // ballX = amplitude * frameStep / period + centerX + 85; //?? what is 85?
+                ballX = amplitude * (frameStep % period) / period + centerX;
+                ballY = (23 + 25) + tgA3 * (ballX - (48 + 6 + 8));
+                console.log(ballX + ',' + ballY);
+
+                ball.setX(ballX);
+                ball.setY(ballY);
+
+                isStop = true;
+                //anim.stop();
+            }
+
+
+
+            //tgA3 = ((63 + 25 / 12) - (23 + 25)) / ((96 + 6) - (46 + 6 + 8));
+
+            $('#container').click(function() {
+                anim.stop();
+            });
+
+        }, layer);
+
+        var animOLD = new Kinetic.Animation(function(frame) {
+            //$('#info html(frame.time);
+
+
+
+            //** movement: player1-player2
             amplitude = 124 - 46;
             centerX = 46 + 6 + 8; // ballRadius - 6, PlayerWidth-8
 
-            //** movement: player1-player2
             ballX = amplitude * frame.time / period + centerX;
             ballY = 23 + 25 + (10 - 23) * (ballX - centerX) / (124 - centerX); //ballYPos-23, playerHeight-25
             ball.setX(ballX);
             ball.setY(ballY);
 
-            //** movement: player2-player3
+
             if (ballX >= 124 - 6) {
 
+                //** movement: player2-player3
                 amplitude = 96 - 124;
                 centerX = 124 - 6;
 
@@ -133,6 +225,7 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
 
                 ball.setX(ballX);
                 ball.setY(ballY);
+                //$('#info').html('p 22222');
 
 
                 if (ballX <= 96 + 6) {
@@ -148,11 +241,13 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
 
                     ball.setX(ballX);
                     ball.setY(ballY);
+                    //$('#info').html('p 33333');
+
                     //** movement: player3-player1
                     // TODO .....
 
                     if (ballX <= 46 + 6) {
-/// NOW WHAT????
+                        /// NOW WHAT????
                         amplitude = 124 - 46;
                         centerX = 46 + 6 + 8; // ballRadius - 6, PlayerWidth-8
 
@@ -161,8 +256,10 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
                         ballY = 23 + 25 + (10 - 23) * (ballX - centerX) / (124 - centerX); //ballYPos-23, playerHeight-25
                         ball.setX(ballX);
                         ball.setY(ballY);
-
-                        anim.stop();
+                        //$('#info').html('p 1111');
+                        $('#container').click(function() {
+                            anim.stop();
+                        });
                     }
                 }
 
