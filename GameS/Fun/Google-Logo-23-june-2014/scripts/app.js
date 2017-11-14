@@ -20,7 +20,8 @@
 
         // background.drawOutsideOfficeChart(22, 90);
 
-        // // background.drawInsideOfficeChart(x,y);
+         // Not Imlemented yet. Only function body created...
+        //background.drawInsideOfficeChart(135, 27);
 
         // background.drawRoomWalls(135, 27);
 
@@ -36,10 +37,11 @@
         // // room widgets
         // //roomWidgets.drawChairs(135, 27); --> rafael chairs are more clear
 
-        // roomWidgets.drawRoomChart(135, 27);
+         roomWidgets.drawRoomChart(135, 27);
+
+         //roomWidgets.drawTVScreen(135, 27);
 
         // roomWidgets.drawClock(618, 72);
-
 
         // roomWidgets.drawWaterMachine(810, 170);
 
