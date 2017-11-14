@@ -16,7 +16,7 @@
         //require(['background','room-widgets'], function(background, roomWidgets) {
 
         // background stuff
-        // background.drawBases();
+         background.drawBases();
 
         // background.drawOutsideOfficeChart(22, 90);
 
@@ -40,7 +40,6 @@
 
         // roomWidgets.drawClock(618, 72);
 
-         roomWidgets.drawTVScreen(135, 27);
 
         // roomWidgets.drawWaterMachine(810, 170);
 

@@ -51,6 +51,11 @@ define(['raphael', 'settings', 'jquery', 'common'], function(Raphael, Settings, 
         st.transform('t' + x + ',' + y);
     }
 
+    // draw chart outside the office
+    function drawInsideOfficeChart(x,y){
+        // TO DO: Implementation pending.....
+    }
+
     function drawRoomWalls(x, y) {
         var st = paper.set();
         st.push(
@@ -260,6 +265,7 @@ define(['raphael', 'settings', 'jquery', 'common'], function(Raphael, Settings, 
     return {
         drawBases: drawBases,
         drawOutsideOfficeChart: drawOutsideOfficeChart,
+        drawInsideOfficeChart: drawInsideOfficeChart,
         drawRoomWalls: drawRoomWalls,
         drawCabinet: drawCabinet,
         drawWorkTable: drawWorkTable,

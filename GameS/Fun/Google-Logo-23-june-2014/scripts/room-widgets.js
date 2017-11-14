@@ -14,8 +14,86 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
     $('#' + Settings.container.containerID).find('.kineticjs-content').css('position', 'absolute');
     $('#' + Settings.container.containerID).find('.kineticjs-content').addClass('the-canvas');
 
-    function drawRoomChart(x, y) {
 
+    function drawRoomChart(x, y) {
+        var group = new Kinetic.Group(),
+            chartBasesColor = '#546d8b',
+            chartBasesLineWidth = 5,
+            xShiftInRoom = 180,
+            yShiftInRoom = 46,
+            unitsStep= 17;
+
+        var vertLine, marker;
+
+        // To Do:
+        // use some constants for the marker an replace numbers.
+
+        x += xShiftInRoom;
+        y += yShiftInRoom;
+
+        group.add(
+            drawTvScreenAndChartFrame('#FFF'),
+            vertLine = new Kinetic.Rect({
+                x: 13,
+                y: 18,
+                width: chartBasesLineWidth,
+                height: 80,
+                fill: chartBasesColor
+            }),
+            new Kinetic.Rect({
+                x: vertLine.attrs.x + chartBasesLineWidth,
+                y: vertLine.attrs.y + vertLine.attrs.height - chartBasesLineWidth,
+                width: 200,
+                height: chartBasesLineWidth,
+                fill: chartBasesColor
+            }),
+            // draw units markers
+            marker = new Kinetic.Path({
+                data: 'M'+(vertLine.attrs.x+chartBasesLineWidth)+' '+ (vertLine.attrs.y+10)  
+                       + ' L' +(vertLine.attrs.x+chartBasesLineWidth+10)+' '+ (vertLine.attrs.y+10),
+                func: function(){
+                    alert('M'+(vertLine.attrs.x+chartBasesLineWidth)+' '+ (vertLine.attrs.y+10) + 
+                      ' L' +(vertLine.attrs.x+chartBasesLineWidth+10)+' '+ (vertLine.attrs.y+10))
+                },
+                stroke: chartBasesColor,
+                strokeWidth: 2
+            }),
+            marker.clone({
+                data: 'M'+(vertLine.attrs.x+chartBasesLineWidth)+' '+ (vertLine.attrs.y+10+ unitsStep)  
+                       + ' L' +(vertLine.attrs.x+chartBasesLineWidth+10)+' '+ (vertLine.attrs.y+10+ unitsStep)
+            }),
+             marker.clone({
+                data: 'M'+(vertLine.attrs.x+chartBasesLineWidth)+' '+ (vertLine.attrs.y+10+ 2*unitsStep)  
+                       + ' L' +(vertLine.attrs.x+chartBasesLineWidth+10)+' '+ (vertLine.attrs.y+10+ 2*unitsStep)
+            }),
+            marker.clone({
+                data: 'M'+(vertLine.attrs.x+chartBasesLineWidth)+' '+ (vertLine.attrs.y+10+ 3*unitsStep)  
+                       + ' L' +(vertLine.attrs.x+chartBasesLineWidth+10)+' '+ (vertLine.attrs.y+10+ 3*unitsStep)
+            }),
+            new Kinetic.Path({
+                data: 'M26 55 L50 35 L70 58 L90 38 L112 78 L152 24 L199 71',
+                stroke: '#ec5e68',
+                strokeWidth: 2
+            }), 
+            new Kinetic.Path({
+                data: 'M26 66 L60 38 L90 52 L132 37 L208 48',
+                stroke: '#c7ba49',
+                strokeWidth: 2
+            })
+
+   
+
+            );
+
+        //marker.attrs.func();
+
+        group.move({
+            x: x,
+            y: y
+        });
+
+        layer.add(group);
+        stage.add(layer);
     }
 
     function drawTVScreen(x, y) {
@@ -29,15 +107,7 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
 
         group.add(
             //frame
-            new Kinetic.Rect({
-                x: 0,
-                y: 0,
-                width: 228,
-                height: 112,
-                strokeWidth: 6,
-                stroke: '#3b3735',
-                fill: '#8FCA4F'
-            }),
+            drawTvScreenAndChartFrame('#8FCA4F'),
             //field middle line
             new Kinetic.Shape({
                 sceneFunc: function(context) {
@@ -269,9 +339,19 @@ define(['jquery', 'kinetic', 'settings'], function($, Kinetic, Settings) {
 
         anim.start();
 
+    }
 
-
-
+    function drawTvScreenAndChartFrame(fillColor){
+        //frame
+        return new Kinetic.Rect({
+            x: 0,
+            y: 0,
+            width: 228,
+            height: 112,
+            strokeWidth: 6,
+            stroke: '#3b3735',
+            fill: fillColor
+        });
     }
 
     function drawClock(x, y) {
